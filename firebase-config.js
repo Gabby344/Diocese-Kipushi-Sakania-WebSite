@@ -1,17 +1,20 @@
-// firebase-config.js
+// firebase.js
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+
 const firebaseConfig = {
-  apiKey: "AIzaSyCAZ4mVpW6USIn1dWi0Phq_rN1ZgLwntus",
+  apiKey: "AIzaSyCJqo_7tYI8J8n9q9wQ5s7KvLmZzX8p9r0",
   authDomain: "diocese-sakania-kipushi.firebaseapp.com",
   projectId: "diocese-sakania-kipushi",
   storageBucket: "diocese-sakania-kipushi.firebasestorage.app",
-  messagingSenderId: "766500442837",
-  appId: "1:766500442837:web:9e6278279b1d4a1f1bc85c"
+  messagingSenderId: "123456789012",
+  appId: "1:123456789012:web:abcd1234efgh5678ijkl"
 };
 
 // Initialiser Firebase
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-// Références aux services
-const db = firebase.firestore();
-const storage = firebase.storage();
-const auth = firebase.auth();
+// Initialiser Authentication
+const auth = getAuth(app);
+
+export { auth, app };
