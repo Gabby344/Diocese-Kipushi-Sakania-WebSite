@@ -3,82 +3,105 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Actualités & Événements — Diocèse de Kipushi-Sakania</title>
+<title>Actualités & Événements — Diocèse de Sakania-Kipushi</title>
 <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --primary: #1a4a7a;
-    --secondary: #d4af37;
-    --accent: #8b4513;
-    --light: #f8f9fa;
-    --dark: #343a40;
+    --primary: #1e40af;
+    --secondary: #fbbf24;
+    --accent: #dc2626;
+    --light: #f8fafc;
+    --dark: #1e293b;
+    --gray: #64748b;
     --transition: all 0.3s ease;
   }
   
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { 
-    font-family: 'Roboto', Tahoma, Geneva, Verdana, sans-serif; 
-    background:#f9f9f9; 
-    color:#333; 
-    line-height:1.6; 
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
   }
+  
+  body { 
+    font-family: 'Poppins', sans-serif; 
+    background: #f8fafc; 
+    color: #1e293b; 
+    line-height: 1.7; 
+    overflow-x: hidden;
+  }
+  
   h1, h2, h3, h4, h5 {
     font-family: 'Merriweather', serif;
+    font-weight: 700;
   }
-  a { text-decoration:none; color:inherit; }
-  .container { width:90%; max-width:1200px; margin:0 auto; }
+  
+  a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: var(--transition);
+  }
+  
+  .container { 
+    width: 90%; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+  }
 
   /* Header */
   .site-header { 
-    background:var(--primary); 
-    color:#fff; 
-    padding:1rem 0; 
-    position:sticky; 
-    top:0; 
-    z-index:1000; 
-    box-shadow:0 2px 15px rgba(0,0,0,0.1);
-    transition: var(--transition);
+    background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%); 
+    color: #fff; 
+    padding: 1rem 0; 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    backdrop-filter: blur(10px);
   }
-  .site-header.scrolled {
-    padding: 0.5rem 0;
-  }
+  
   .header-inner { 
-    display:flex; 
+    display: flex; 
     justify-content: space-between; 
-    align-items:center; 
+    align-items: center; 
   }
+  
   .brand { 
-    display:flex; 
-    align-items:center; 
-    gap:0.8rem; 
+    display: flex; 
+    align-items: center; 
+    gap: 1rem; 
   }
+  
   .logo { 
-    height:50px; 
-    border-radius: 5px;
+    height: 60px; 
+    border-radius: 8px;
   }
+  
   .brand-title {
     display: flex;
     flex-direction: column;
+    font-weight: 700;
   }
+  
   .brand-subtitle {
     font-size: 0.8rem;
-    opacity: 0.8;
-    font-weight: normal;
+    opacity: 0.9;
+    font-weight: 300;
   }
+  
   .site-nav { 
-    display:flex; 
-    gap:1.5rem; 
+    display: flex; 
+    gap: 1.5rem; 
   }
+  
   .site-nav a { 
-    color:#fff; 
-    font-weight:500; 
-    padding:0.5rem 1rem; 
-    transition:0.3s; 
-    border-radius:5px;
+    color: #fff; 
+    font-weight: 500; 
+    padding: 0.5rem 1rem; 
+    border-radius: 8px;
     position: relative;
   }
+  
   .site-nav a:after {
     content: '';
     position: absolute;
@@ -89,35 +112,43 @@
     background-color: var(--secondary);
     transition: var(--transition);
   }
+  
   .site-nav a:hover, .site-nav a.active { 
     color: var(--secondary);
   }
+  
   .site-nav a:hover:after, .site-nav a.active:after {
     width: 100%;
   }
+  
   .nav-toggle { 
-    display:none; 
-    background:none; 
-    border:none; 
-    font-size:1.5rem; 
-    color:#fff; 
-    cursor:pointer; 
+    display: none; 
+    background: none; 
+    border: none; 
+    font-size: 1.8rem; 
+    color: #fff; 
+    cursor: pointer; 
+    padding: 0.5rem;
   }
 
   /* Hero */
   .hero { 
-    position:relative; 
-    background:linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1544830288-5a52946cffa8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') center/cover no-repeat; 
-    color:#fff; 
-    text-align:center; 
-    padding:8rem 1rem; 
+    position: relative; 
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%), 
+                url('assets/images/actualites-hero.jpg') center/cover no-repeat; 
+    color: #fff; 
+    text-align: center; 
+    padding: 6rem 1rem; 
+    margin-bottom: 4rem;
   }
+  
   .hero-content {
     position: relative;
     z-index: 1;
     max-width: 800px;
     margin: 0 auto;
   }
+  
   .hero h1 {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
@@ -126,12 +157,14 @@
     transform: translateY(30px);
     animation: fadeInUp 1s forwards 0.5s;
   }
+  
   .hero p {
     font-size: 1.4rem;
     text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s forwards 0.8s;
+    font-weight: 300;
   }
 
   @keyframes fadeInUp {
@@ -143,194 +176,283 @@
 
   /* Main Content */
   main {
-    padding: 4rem 0;
+    padding: 2rem 0 4rem;
   }
 
   /* Featured Article */
   .featured-article {
     margin-bottom: 5rem;
   }
+  
   .featured-card {
     background: white;
-    border-radius: 15px;
+    border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
     display: grid;
     grid-template-columns: 1fr 1fr;
     transform: translateY(30px);
     opacity: 0;
     transition: var(--transition);
+    border: 1px solid #e2e8f0;
   }
+  
   .featured-card.animate {
     transform: translateY(0);
     opacity: 1;
   }
+  
   .featured-image {
     height: 100%;
+    position: relative;
+    overflow: hidden;
   }
+  
   .featured-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transition: var(--transition);
   }
+  
   .featured-card:hover .featured-image img {
     transform: scale(1.05);
   }
+  
   .featured-content {
-    padding: 2.5rem;
+    padding: 3rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
   }
+  
   .featured-tag {
     display: inline-block;
     background: var(--secondary);
     color: var(--dark);
-    padding: 0.4rem 1.2rem;
+    padding: 0.5rem 1.5rem;
     border-radius: 30px;
     font-size: 0.9rem;
-    font-weight: 500;
-    margin-bottom: 1rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
+  
   .featured-content h2 {
-    font-size: 2rem;
-    margin-bottom: 1.2rem;
+    font-size: 2.2rem;
+    margin-bottom: 1.5rem;
     color: var(--primary);
     line-height: 1.3;
   }
+  
+  .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: var(--gray);
+    font-size: 0.9rem;
+  }
+  
+  .featured-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
   .featured-content p {
-    margin-bottom: 1.8rem;
+    margin-bottom: 2rem;
     font-size: 1.1rem;
     line-height: 1.7;
-    color: #666;
+    color: var(--gray);
   }
+  
   .read-more {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    color: var(--primary);
-    font-weight: 500;
+    background: var(--primary);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
     transition: var(--transition);
+    align-self: flex-start;
   }
+  
   .read-more:hover {
-    color: var(--secondary);
-    gap: 0.8rem;
+    background: var(--secondary);
+    color: var(--dark);
+    transform: translateX(10px);
   }
 
   /* Filters */
+  .filters-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    margin-bottom: 3rem;
+    border: 1px solid #e2e8f0;
+  }
+  
   .filters {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
-    margin-bottom: 3rem;
   }
+  
   .filter-btn {
     background: white;
     border: 2px solid var(--primary);
     color: var(--primary);
-    padding: 0.6rem 1.5rem;
-    border-radius: 30px;
+    padding: 0.8rem 1.8rem;
+    border-radius: 50px;
     cursor: pointer;
     transition: var(--transition);
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.9rem;
   }
+  
   .filter-btn:hover, .filter-btn.active {
     background: var(--primary);
     color: white;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(26, 74, 122, 0.2);
+    box-shadow: 0 10px 20px rgba(30, 64, 175, 0.2);
   }
 
   /* News Grid */
   .news-grid { 
-    display:grid; 
-    gap:2.5rem; 
-    grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); 
+    display: grid; 
+    gap: 2.5rem; 
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
     margin-bottom: 4rem;
   }
+  
   .news-card { 
-    background:#fff; 
-    border-radius:15px; 
-    overflow:hidden; 
-    box-shadow:0 5px 20px rgba(0,0,0,0.08); 
-    transition:0.4s;
+    background: #fff; 
+    border-radius: 20px; 
+    overflow: hidden; 
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08); 
+    transition: var(--transition);
     transform: translateY(20px);
     opacity: 0;
+    border: 1px solid #e2e8f0;
   }
+  
   .news-card.animate {
     transform: translateY(0);
     opacity: 1;
   }
+  
   .news-card:hover { 
-    transform:translateY(-10px); 
-    box-shadow:0 15px 30px rgba(0,0,0,0.15); 
+    transform: translateY(-10px); 
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15); 
   }
+  
+  .news-image {
+    position: relative;
+    overflow: hidden;
+    height: 240px;
+  }
+  
   .news-card img { 
-    width:100%; 
-    height:220px; 
-    object-fit:cover; 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
     transition: var(--transition);
   }
+  
   .news-card:hover img {
     transform: scale(1.05);
   }
-  .news-card .content { 
-    padding:1.8rem; 
+  
+  .news-content { 
+    padding: 2rem; 
     position: relative;
   }
+  
   .news-category {
     display: inline-block;
     background: var(--secondary);
     color: var(--dark);
-    padding: 0.3rem 1rem;
+    padding: 0.4rem 1.2rem;
     border-radius: 30px;
     font-size: 0.8rem;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
   }
+  
   .news-card h3 { 
-    color:var(--primary); 
-    margin-bottom:0.8rem; 
+    color: var(--primary); 
+    margin-bottom: 1rem; 
     font-size: 1.4rem;
     line-height: 1.4;
+    font-weight: 700;
   }
-  .news-card p.date { 
-    font-size:0.9rem; 
-    color:#666; 
-    margin-bottom:1rem; 
+  
+  .news-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    color: var(--gray);
+    font-size: 0.9rem;
+  }
+  
+  .news-meta span {
     display: flex;
     align-items: center;
     gap: 0.5rem;
   }
-  .news-card p.date i {
-    color: var(--secondary);
-  }
+  
   .news-card p { 
     margin-bottom: 1.5rem;
-    color: #666;
+    color: var(--gray);
     line-height: 1.7;
+  }
+  
+  .news-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  
+  .news-link:hover {
+    color: var(--secondary);
+    gap: 0.8rem;
   }
 
   /* Agenda */
   .agenda-section {
-    background: var(--light);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     padding: 4rem 0;
-    border-radius: 15px;
-    margin-top: 4rem;
+    border-radius: 20px;
+    margin: 4rem 0;
+    border: 1px solid #e2e8f0;
   }
+  
   .agenda-header {
     text-align: center;
     margin-bottom: 3rem;
   }
+  
   .agenda-header h2 {
     color: var(--primary);
-    font-size: 2.2rem;
+    font-size: 2.5rem;
     margin-bottom: 1rem;
     position: relative;
     display: inline-block;
   }
+  
   .agenda-header h2:after {
     content: '';
     position: absolute;
@@ -338,102 +460,140 @@
     left: 50%;
     transform: translateX(-50%);
     width: 80px;
-    height: 3px;
+    height: 4px;
     background: var(--secondary);
+    border-radius: 2px;
   }
+  
   .agenda-header p {
     max-width: 600px;
     margin: 0 auto;
-    color: #666;
+    color: var(--gray);
     font-size: 1.1rem;
   }
+  
   .agenda-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 2rem;
   }
+  
   .agenda-card {
     background: white;
-    border-radius: 10px;
-    padding: 2rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border-radius: 15px;
+    padding: 2.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
     transition: var(--transition);
     border-left: 4px solid var(--secondary);
     transform: translateY(20px);
     opacity: 0;
+    border: 1px solid #e2e8f0;
   }
+  
   .agenda-card.animate {
     transform: translateY(0);
     opacity: 1;
   }
+  
   .agenda-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
   }
+  
   .agenda-date {
     display: inline-block;
     background: var(--primary);
     color: white;
-    padding: 0.4rem 1.2rem;
+    padding: 0.6rem 1.5rem;
     border-radius: 30px;
     font-size: 0.9rem;
-    margin-bottom: 1rem;
-    font-weight: 500;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
   }
+  
   .agenda-card h3 {
     color: var(--primary);
     margin-bottom: 1rem;
-    font-size: 1.3rem;
+    font-size: 1.4rem;
+    font-weight: 700;
   }
+  
   .agenda-card p {
-    color: #666;
+    color: var(--gray);
     margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  .agenda-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--primary);
+    font-weight: 600;
+    transition: var(--transition);
+  }
+  
+  .agenda-link:hover {
+    color: var(--secondary);
+    gap: 0.8rem;
   }
 
   /* Newsletter */
   .newsletter {
     padding: 5rem 0;
-    background: linear-gradient(rgba(26, 74, 122, 0.9), rgba(26, 74, 122, 0.9)), 
-                url('https://images.unsplash.com/photo-1518991669955-9c7e78ec80ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+    background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%), 
+                url('assets/images/newsletter-bg.jpg') no-repeat center center/cover;
     color: white;
     text-align: center;
-    border-radius: 15px;
-    margin-top: 4rem;
+    border-radius: 20px;
+    margin: 4rem 0;
   }
+  
   .newsletter h2 {
     margin-bottom: 1rem;
-    font-size: 2.2rem;
+    font-size: 2.5rem;
+    font-weight: 700;
   }
+  
   .newsletter p {
     max-width: 600px;
     margin: 0 auto 2.5rem;
     font-size: 1.1rem;
     opacity: 0.9;
+    font-weight: 300;
   }
+  
   .newsletter-form {
     display: flex;
     max-width: 500px;
     margin: 0 auto;
+    gap: 0.5rem;
   }
+  
   .newsletter-input {
     flex: 1;
-    padding: 0.9rem 1.2rem;
+    padding: 1rem 1.5rem;
     border: none;
-    border-radius: 5px 0 0 5px;
+    border-radius: 50px;
     font-size: 1rem;
+    outline: none;
   }
+  
   .newsletter-btn {
     background: var(--secondary);
     color: var(--dark);
     border: none;
-    padding: 0 1.8rem;
-    border-radius: 0 5px 5px 0;
-    font-weight: 500;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    font-weight: 600;
     cursor: pointer;
     transition: var(--transition);
+    white-space: nowrap;
   }
+  
   .newsletter-btn:hover {
-    background: #c19b2a;
+    background: #f59e0b;
+    transform: translateY(-2px);
   }
 
   /* Pagination */
@@ -441,45 +601,55 @@
     display: flex;
     justify-content: center;
     gap: 0.5rem;
-    margin-top: 3rem;
+    margin: 3rem 0;
   }
+  
   .page-btn {
-    width: 45px;
-    height: 45px;
+    width: 50px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     background: white;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
     cursor: pointer;
     transition: var(--transition);
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1rem;
   }
+  
   .page-btn:hover, .page-btn.active {
     background: var(--primary);
     color: white;
     border-color: var(--primary);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(30, 64, 175, 0.2);
   }
 
   /* Footer */
   .site-footer { 
-    background:var(--dark); 
-    color:#fff; 
-    padding:3rem 0 1.5rem;
+    background: var(--dark); 
+    color: #fff; 
+    padding: 4rem 0 2rem;
+    margin-top: 4rem;
   }
+  
   .footer-content {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+    gap: 3rem;
     margin-bottom: 2rem;
   }
+  
   .footer-column h3 {
     margin-bottom: 1.5rem;
     position: relative;
     padding-bottom: 0.5rem;
     color: var(--secondary);
+    font-weight: 600;
   }
+  
   .footer-column h3:after {
     content: '';
     position: absolute;
@@ -489,43 +659,52 @@
     height: 2px;
     background: var(--secondary);
   }
+  
   .footer-links {
     display: flex;
     flex-direction: column;
     gap: 0.8rem;
   }
+  
   .footer-links a {
     transition: var(--transition);
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: #cbd5e1;
   }
+  
   .footer-links a:hover {
     color: var(--secondary);
     padding-left: 5px;
   }
+  
   .footer-bottom {
-    text-align:center; 
-    padding-top:1.5rem; 
-    border-top:1px solid #444; 
-    font-size:0.9rem; 
-    color:#aaa;
+    text-align: center; 
+    padding-top: 2rem; 
+    border-top: 1px solid #374151; 
+    font-size: 0.9rem; 
+    color: #9ca3af;
   }
+  
   .social-links { 
-    display:flex; 
-    gap:1rem; 
-    margin-top:1rem; 
+    display: flex; 
+    gap: 1rem; 
+    margin-top: 1.5rem; 
   }
+  
   .social-links a {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     background: rgba(255,255,255,0.1);
     border-radius: 50%;
     transition: var(--transition);
+    font-size: 1.2rem;
   }
+  
   .social-links a:hover {
     background: var(--secondary);
     color: var(--dark);
@@ -538,6 +717,7 @@
     transform: translateY(30px);
     transition: opacity 0.8s, transform 0.8s;
   }
+  
   .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
@@ -546,45 +726,92 @@
   /* Loading State */
   .loading {
     text-align: center;
-    padding: 3rem;
-    color: #666;
+    padding: 4rem;
+    color: var(--gray);
+    grid-column: 1 / -1;
+  }
+
+  .loading i {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--primary);
+  }
+
+  /* Empty State */
+  .empty-state {
+    text-align: center;
+    padding: 4rem;
+    color: var(--gray);
+    grid-column: 1 / -1;
+  }
+
+  .empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: var(--primary);
+    opacity: 0.5;
   }
 
   /* Responsive */
-  @media(max-width:768px){
-    .site-nav { 
-      display:none; 
-      flex-direction:column; 
-      background:var(--primary); 
-      position:absolute; 
-      top:100%; 
-      left:0;
-      right:0;
-      width:100%; 
-      border-radius:0;
-      padding:1rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .nav-toggle { display:block; }
-    .hero h1 {
-      font-size: 2.5rem;
-    }
-    .hero p {
-      font-size: 1.2rem;
-    }
+  @media (max-width: 968px) {
     .featured-card {
       grid-template-columns: 1fr;
     }
+    
     .featured-image {
-      height: 250px;
+      height: 300px;
     }
+    
+    .news-grid {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    }
+  }
+
+  @media (max-width: 768px) {
+    .site-nav { 
+      display: none; 
+      flex-direction: column; 
+      background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%); 
+      position: absolute; 
+      top: 100%; 
+      left: 0;
+      right: 0;
+      width: 100%; 
+      border-radius: 0;
+      padding: 1rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    
+    .nav-toggle { 
+      display: block; 
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.2rem;
+    }
+    
     .newsletter-form {
       flex-direction: column;
       gap: 0.5rem;
     }
+    
     .newsletter-input, .newsletter-btn {
-      border-radius: 5px;
+      border-radius: 50px;
       width: 100%;
+    }
+    
+    .filters {
+      justify-content: flex-start;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+    
+    .filter-btn {
+      white-space: nowrap;
     }
   }
 </style>
@@ -595,10 +822,10 @@
 <header class="site-header">
   <div class="container header-inner">
     <a href="index.html" class="brand">
-      <img src="https://images.unsplash.com/photo-1544830288-5a52946cffa8?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Logo" class="logo">
+      <img src="assets/images/logo-diocese.png" alt="Diocèse de Sakania-Kipushi" class="logo">
       <span class="brand-title">
-        Diocèse de Kipushi-Sakania
-        <span class="brand-subtitle">Servir le Christ, porter l'Évangile</span>
+        Diocèse de Sakania-Kipushi
+        <span class="brand-subtitle">Servir le Christ dans le Haut-Katanga</span>
       </span>
     </a>
     <nav class="site-nav">
@@ -611,7 +838,9 @@
       <a href="education.html">Éducation</a>
       <a href="contact.html">Contact</a>
     </nav>
-    <button class="nav-toggle" aria-label="Menu">☰</button>
+    <button class="nav-toggle" aria-label="Menu">
+      <i class='bx bx-menu'></i>
+    </button>
   </div>
 </header>
 
@@ -619,7 +848,7 @@
 <section class="hero">
   <div class="hero-content">
     <h1>Actualités & Événements</h1>
-    <p>Restez informés des dernières nouvelles du Diocèse de Kipushi-Sakania</p>
+    <p>Suivez la vie du diocèse et restez informé des dernières nouvelles</p>
   </div>
 </section>
 
@@ -631,18 +860,21 @@
   </section>
 
   <!-- Filters -->
-  <div class="filters">
-    <button class="filter-btn active" data-filter="all">Toutes les actualités</button>
-    <button class="filter-btn" data-filter="evenements">Événements</button>
-    <button class="filter-btn" data-filter="pastorale">Vie Pastorale</button>
-    <button class="filter-btn" data-filter="caritative">Actions Caritatives</button>
-    <button class="filter-btn" data-filter="jeunesse">Jeunesse</button>
-  </div>
+  <section class="filters-section">
+    <div class="filters">
+      <button class="filter-btn active" data-filter="all">Toutes les actualités</button>
+      <button class="filter-btn" data-filter="evenements">Événements</button>
+      <button class="filter-btn" data-filter="pastorale">Vie Pastorale</button>
+      <button class="filter-btn" data-filter="caritative">Actions Caritatives</button>
+      <button class="filter-btn" data-filter="jeunesse">Jeunesse</button>
+      <button class="filter-btn" data-filter="education">Éducation</button>
+    </div>
+  </section>
 
   <!-- News Grid -->
   <div class="news-grid" id="news-grid">
     <div class="loading">
-      <i class='bx bx-loader-circle bx-spin' style="font-size: 2rem; margin-bottom: 1rem;"></i>
+      <i class='bx bx-loader-circle bx-spin'></i>
       <p>Chargement des actualités...</p>
     </div>
   </div>
@@ -660,7 +892,7 @@
     </div>
     <div class="agenda-grid" id="agenda-grid">
       <div class="loading">
-        <i class='bx bx-loader-circle bx-spin' style="font-size: 2rem; margin-bottom: 1rem;"></i>
+        <i class='bx bx-loader-circle bx-spin'></i>
         <p>Chargement des événements...</p>
       </div>
     </div>
@@ -668,8 +900,8 @@
 
   <!-- Newsletter -->
   <section class="newsletter fade-in">
-    <h2>Restez Informés</h2>
-    <p>Abonnez-vous à notre newsletter pour recevoir les actualités du diocèse directement dans votre boîte email</p>
+    <h2>Ne Manquez Aucune Actualité</h2>
+    <p>Abonnez-vous à notre newsletter pour recevoir les dernières nouvelles du diocèse directement dans votre boîte email</p>
     <form class="newsletter-form" id="newsletter-form">
       <input type="email" class="newsletter-input" placeholder="Votre adresse email" required>
       <button type="submit" class="newsletter-btn">S'abonner</button>
@@ -682,8 +914,8 @@
   <div class="container">
     <div class="footer-content">
       <div class="footer-column">
-        <h3>Diocèse de Kipushi-Sakania</h3>
-        <p>Servir le Christ, porter l'Évangile au cœur du Katanga. Une communauté vivante, enracinée dans la foi et tournée vers l'espérance.</p>
+        <h3>Diocèse de Sakania-Kipushi</h3>
+        <p>Érigé le 25 mars 2023, notre diocèse sert la communauté chrétienne du Haut-Katanga avec foi et dévouement.</p>
         <div class="social-links">
           <a href="#"><i class='bx bxl-facebook'></i></a>
           <a href="#"><i class='bx bxl-youtube'></i></a>
@@ -703,32 +935,31 @@
       <div class="footer-column">
         <h3>Contact</h3>
         <div class="footer-links">
-          <a href="#"><i class='bx bx-map'></i> Évêché de Kipushi-Sakania</a>
-          <a href="tel:+243123456789"><i class='bx bx-phone'></i> +243 123 456 789</a>
-          <a href="mailto:contact@diocese-kipushi-sakania.cd"><i class='bx bx-envelope'></i> contact@diocese-kipushi-sakania.cd</a>
+          <a href="contact.html"><i class='bx bx-map'></i> Évêché de Sakania-Kipushi</a>
+          <a href="tel:+243971234567"><i class='bx bx-phone'></i> +243 97 123 4567</a>
+          <a href="mailto:contact@diocese-sakania-kipushi.cd"><i class='bx bx-envelope'></i> contact@diocese-sakania-kipushi.cd</a>
         </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2024 Diocèse de Kipushi-Sakania — Tous droits réservés</p>
+      <p>© 2024 Diocèse de Sakania-Kipushi — Tous droits réservés</p>
     </div>
   </div>
 </footer>
 
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
-
-<!-- Configuration Firebase -->
-<script src="firebase-config.js"></script>
-
+<!-- JS -->
 <script>
   // Navigation Toggle
   const toggle = document.querySelector('.nav-toggle');
   const nav = document.querySelector('.site-nav');
   toggle.addEventListener('click', () => {
-    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+    const isVisible = nav.style.display === 'flex';
+    nav.style.display = isVisible ? 'none' : 'flex';
+    
+    // Animation de l'icône
+    const icon = toggle.querySelector('i');
+    icon.classList.toggle('bx-menu');
+    icon.classList.toggle('bx-x');
   });
 
   // Header scroll effect
@@ -749,29 +980,23 @@
   // Charger l'article vedette
   async function chargerArticleVedette() {
     try {
-      const querySnapshot = await db.collection('actualites')
-        .where('statut', '==', 'publié')
-        .orderBy('date', 'desc')
-        .limit(1)
-        .get();
-      
+      // Simulation d'article vedette (en attendant Firebase)
+      const featuredArticle = {
+        titre: "Installation Solennelle de Monseigneur Gaston Ruvezi",
+        date: new Date('2023-05-27'),
+        contenu: "Cérémonie historique marquant l'installation du premier évêque du diocèse de Sakania-Kipushi. Une célébration empreinte de ferveur et d'espérance pour toute la communauté diocésaine.",
+        categorie: "Événement",
+        imageUrl: "assets/images/installation-eveque.jpg"
+      };
+
       const container = document.getElementById('featured-article');
+      const featuredCard = creerCarteVedette(featuredArticle, 'featured-1');
+      container.innerHTML = featuredCard;
       
-      if (querySnapshot.empty) {
-        container.innerHTML = '';
-        return;
-      }
-      
-      querySnapshot.forEach((doc) => {
-        const actualite = doc.data();
-        const featuredCard = creerCarteVedette(actualite, doc.id);
-        container.innerHTML = featuredCard;
-        
-        // Animation après chargement
-        setTimeout(() => {
-          document.querySelector('.featured-card')?.classList.add('animate');
-        }, 100);
-      });
+      // Animation après chargement
+      setTimeout(() => {
+        document.querySelector('.featured-card')?.classList.add('animate');
+      }, 100);
       
     } catch (error) {
       console.error('Erreur:', error);
@@ -779,19 +1004,28 @@
   }
 
   function creerCarteVedette(actualite, id) {
-    const date = actualite.date ? actualite.date.toDate().toLocaleDateString('fr-FR') : 'Date non disponible';
+    const date = actualite.date ? actualite.date.toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }) : 'Date non disponible';
     
     return `
       <div class="featured-card">
         <div class="featured-image">
-          <img src="${actualite.imageUrl || 'https://images.unsplash.com/photo-1582213782119-d0377ccee6e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80'}" alt="${actualite.titre}">
+          <img src="${actualite.imageUrl || 'assets/images/featured-default.jpg'}" alt="${actualite.titre}">
         </div>
         <div class="featured-content">
-          <span class="featured-tag">Article Vedette</span>
+          <span class="featured-tag">${actualite.categorie || 'Article Vedette'}</span>
           <h2>${actualite.titre}</h2>
-          <p class="date"><i class='bx bx-calendar'></i> ${date}</p>
-          <p>${actualite.contenu.substring(0, 200)}...</p>
-          <a href="actualite-details.html?id=${id}" class="read-more">Lire l'article complet <i class='bx bx-right-arrow-alt'></i></a>
+          <div class="featured-meta">
+            <span><i class='bx bx-calendar'></i> ${date}</span>
+            <span><i class='bx bx-time'></i> Lecture 5 min</span>
+          </div>
+          <p>${actualite.contenu}</p>
+          <a href="actualite-details.html?id=${id}" class="read-more">
+            Lire l'article complet <i class='bx bx-right-arrow-alt'></i>
+          </a>
         </div>
       </div>
     `;
@@ -800,37 +1034,83 @@
   // Charger les actualités avec pagination
   async function chargerActualites(page = 1, categorie = 'all') {
     try {
-      let query = db.collection('actualites')
-        .where('statut', '==', 'publié')
-        .orderBy('date', 'desc');
+      // Simulation de données (en attendant Firebase)
+      const actualites = [
+        {
+          titre: "Lancement du Programme Caritas 2024",
+          date: new Date('2024-06-15'),
+          contenu: "Nouveau projet de développement communautaire visant à soutenir les familles vulnérables dans la région de Kipushi.",
+          categorie: "caritative",
+          imageUrl: "assets/images/caritas-lancement.jpg"
+        },
+        {
+          titre: "Retraite Spirituelle des Jeunes",
+          date: new Date('2024-07-20'),
+          contenu: "Week-end de réflexion et de prière organisé pour les jeunes du diocèse au centre spirituel de Sakania.",
+          categorie: "jeunesse",
+          imageUrl: "assets/images/retraite-jeunes.jpg"
+        },
+        {
+          titre: "Rénovation des Écoles Catholiques",
+          date: new Date('2024-08-10'),
+          contenu: "Début des travaux de réhabilitation des infrastructures scolaires du réseau éducatif diocésain.",
+          categorie: "education",
+          imageUrl: "assets/images/renovation-ecoles.jpg"
+        },
+        {
+          titre: "Pèlerinage Diocésain Annuel",
+          date: new Date('2024-09-05'),
+          contenu: "Grand pèlerinage vers le sanctuaire marial réunissant des milliers de fidèles de tout le diocèse.",
+          categorie: "evenements",
+          imageUrl: "assets/images/pelerinage.jpg"
+        },
+        {
+          titre: "Formation des Catéchistes",
+          date: new Date('2024-10-12'),
+          contenu: "Session de formation continue pour les catéchistes des différentes paroisses du diocèse.",
+          categorie: "pastorale",
+          imageUrl: "assets/images/formation-catechistes.jpg"
+        },
+        {
+          titre: "Concert de Noël au Profit de Caritas",
+          date: new Date('2024-12-15'),
+          contenu: "Grand concert de chorales gospel au profit des œuvres caritatives du diocèse.",
+          categorie: "caritative",
+          imageUrl: "assets/images/concert-noel.jpg"
+        }
+      ];
 
-      if (categorie !== 'all') {
-        query = query.where('categorie', '==', categorie);
-      }
-
-      const querySnapshot = await query.get();
       const container = document.getElementById('news-grid');
       
-      if (querySnapshot.empty) {
-        container.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: #666;">Aucune actualité pour le moment.</p>';
+      // Filtrer par catégorie si nécessaire
+      let filteredActualites = actualites;
+      if (categorie !== 'all') {
+        filteredActualites = actualites.filter(actu => actu.categorie === categorie);
+      }
+
+      if (filteredActualites.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state">
+            <i class='bx bx-news'></i>
+            <h3>Aucune actualité trouvée</h3>
+            <p>Aucune actualité ne correspond aux critères sélectionnés.</p>
+          </div>
+        `;
+        document.getElementById('pagination').style.display = 'none';
         return;
       }
 
       // Calculer la pagination
-      const totalItems = querySnapshot.size;
+      const totalItems = filteredActualites.length;
       const totalPages = Math.ceil(totalItems / itemsPerPage);
       const startIndex = (page - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
 
-      let currentIndex = 0;
+      const actualitesPage = filteredActualites.slice(startIndex, endIndex);
       let html = '';
 
-      querySnapshot.forEach((doc) => {
-        if (currentIndex >= startIndex && currentIndex < endIndex) {
-          const actualite = doc.data();
-          html += creerCarteActualite(actualite, doc.id);
-        }
-        currentIndex++;
+      actualitesPage.forEach((actualite, index) => {
+        html += creerCarteActualite(actualite, `news-${index}`);
       });
 
       container.innerHTML = html;
@@ -847,23 +1127,42 @@
 
     } catch (error) {
       console.error('Erreur:', error);
-      document.getElementById('news-grid').innerHTML = '<p style="grid-column: 1 / -1; text-align: center; padding: 3rem; color: #666;">Erreur lors du chargement des actualités.</p>';
+      document.getElementById('news-grid').innerHTML = `
+        <div class="empty-state">
+          <i class='bx bx-error-circle'></i>
+          <h3>Erreur de chargement</h3>
+          <p>Une erreur est survenue lors du chargement des actualités.</p>
+        </div>
+      `;
     }
   }
 
   function creerCarteActualite(actualite, id) {
-    const date = actualite.date ? actualite.date.toDate().toLocaleDateString('fr-FR') : 'Date non disponible';
-    const contenuAbrege = actualite.contenu.length > 120 ? actualite.contenu.substring(0, 120) + '...' : actualite.contenu;
+    const date = actualite.date ? actualite.date.toLocaleDateString('fr-FR', {
+      year: 'numeric',
+      month: 'short',
+      day: 'numeric'
+    }) : 'Date non disponible';
+    
+    const contenuAbrege = actualite.contenu.length > 120 ? 
+      actualite.contenu.substring(0, 120) + '...' : actualite.contenu;
     
     return `
       <article class="news-card" data-category="${actualite.categorie || 'general'}">
-        <img src="${actualite.imageUrl || 'https://images.unsplash.com/photo-1547981609-4b6bf67b7d52?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'}" alt="${actualite.titre}">
-        <div class="content">
+        <div class="news-image">
+          <img src="${actualite.imageUrl || 'assets/images/news-default.jpg'}" alt="${actualite.titre}">
+        </div>
+        <div class="news-content">
           <span class="news-category">${actualite.categorie || 'Général'}</span>
           <h3>${actualite.titre}</h3>
-          <p class="date"><i class='bx bx-calendar'></i> ${date}</p>
+          <div class="news-meta">
+            <span><i class='bx bx-calendar'></i> ${date}</span>
+            <span><i class='bx bx-time'></i> 3 min</span>
+          </div>
           <p>${contenuAbrege}</p>
-          <a href="actualite-details.html?id=${id}" class="read-more">Lire la suite <i class='bx bx-right-arrow-alt'></i></a>
+          <a href="actualite-details.html?id=${id}" class="news-link">
+            Lire la suite <i class='bx bx-right-arrow-alt'></i>
+          </a>
         </div>
       </article>
     `;
@@ -872,24 +1171,33 @@
   // Charger les événements
   async function chargerEvenements() {
     try {
-      const aujourdhui = new Date();
-      const querySnapshot = await db.collection('evenements')
-        .where('date', '>=', aujourdhui)
-        .orderBy('date', 'asc')
-        .limit(3)
-        .get();
-      
+      // Simulation de données (en attendant Firebase)
+      const evenements = [
+        {
+          titre: "Messe de Minuit Solennelle",
+          date: new Date('2024-12-24'),
+          description: "Célébration de la Nativité du Seigneur en la cathédrale Saint-Pierre-et-Paul de Sakania.",
+          id: "event-1"
+        },
+        {
+          titre: "Journée Mondiale de la Jeunesse Diocésaine",
+          date: new Date('2025-03-15'),
+          description: "Rassemblement des jeunes de tout le diocèse pour une journée de prière, de formation et de partage.",
+          id: "event-2"
+        },
+        {
+          titre: "Confirmation des Jeunes",
+          date: new Date('2025-04-20'),
+          description: "Cérémonie de confirmation présidée par Monseigneur Gaston Ruvezi pour les jeunes catéchumènes.",
+          id: "event-3"
+        }
+      ];
+
       const container = document.getElementById('agenda-grid');
       
-      if (querySnapshot.empty) {
-        container.innerHTML = '<p style="text-align: center; grid-column: 1 / -1; color: #666;">Aucun événement à venir.</p>';
-        return;
-      }
-      
       let html = '';
-      querySnapshot.forEach((doc) => {
-        const evenement = doc.data();
-        const card = creerCarteEvenement(evenement, doc.id);
+      evenements.forEach(evenement => {
+        const card = creerCarteEvenement(evenement);
         html += card;
       });
       
@@ -904,19 +1212,32 @@
       
     } catch (error) {
       console.error('Erreur:', error);
-      document.getElementById('agenda-grid').innerHTML = '<p style="text-align: center; grid-column: 1 / -1; color: #666;">Erreur lors du chargement des événements.</p>';
+      document.getElementById('agenda-grid').innerHTML = `
+        <div class="empty-state">
+          <i class='bx bx-calendar-x'></i>
+          <h3>Aucun événement à venir</h3>
+          <p>Il n'y a pas d'événements programmés pour le moment.</p>
+        </div>
+      `;
     }
   }
 
-  function creerCarteEvenement(evenement, id) {
-    const date = evenement.date ? evenement.date.toDate().toLocaleDateString('fr-FR') : 'Date non disponible';
+  function creerCarteEvenement(evenement) {
+    const date = evenement.date ? evenement.date.toLocaleDateString('fr-FR', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    }) : 'Date non disponible';
     
     return `
       <div class="agenda-card">
         <span class="agenda-date">${date}</span>
         <h3>${evenement.titre}</h3>
         <p>${evenement.description}</p>
-        <a href="evenement-details.html?id=${id}" class="agenda-link">Plus d'infos <i class='bx bx-right-arrow-alt'></i></a>
+        <a href="evenement-details.html?id=${evenement.id}" class="agenda-link">
+          Plus d'informations <i class='bx bx-right-arrow-alt'></i>
+        </a>
       </div>
     `;
   }
@@ -935,17 +1256,25 @@
     
     // Bouton précédent
     if (currentPage > 1) {
-      html += `<button class="page-btn" onclick="changerPage(${currentPage - 1})"><i class='bx bx-chevron-left'></i></button>`;
+      html += `<button class="page-btn" onclick="changerPage(${currentPage - 1})">
+                <i class='bx bx-chevron-left'></i>
+              </button>`;
     }
     
     // Pages
-    for (let i = 1; i <= totalPages; i++) {
-      html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" onclick="changerPage(${i})">${i}</button>`;
+    const startPage = Math.max(1, currentPage - 2);
+    const endPage = Math.min(totalPages, currentPage + 2);
+    
+    for (let i = startPage; i <= endPage; i++) {
+      html += `<button class="page-btn ${i === currentPage ? 'active' : ''}" 
+                       onclick="changerPage(${i})">${i}</button>`;
     }
     
     // Bouton suivant
     if (currentPage < totalPages) {
-      html += `<button class="page-btn" onclick="changerPage(${currentPage + 1})"><i class='bx bx-chevron-right'></i></button>`;
+      html += `<button class="page-btn" onclick="changerPage(${currentPage + 1})">
+                <i class='bx bx-chevron-right'></i>
+              </button>`;
     }
     
     paginationContainer.innerHTML = html;
@@ -979,19 +1308,9 @@
     e.preventDefault();
     const email = this.querySelector('input[type="email"]').value;
     
-    db.collection("newsletter").add({
-      email: email,
-      date: firebase.firestore.FieldValue.serverTimestamp(),
-      statut: "actif"
-    })
-    .then(() => {
-      alert('Merci pour votre inscription à notre newsletter !');
-      this.reset();
-    })
-    .catch((error) => {
-      console.error("Erreur:", error);
-      alert('Une erreur est survenue. Veuillez réessayer.');
-    });
+    // Simulation d'envoi
+    alert('Merci pour votre inscription à notre newsletter ! Vous recevrez bientôt nos actualités.');
+    this.reset();
   });
 
   // Scroll animations
