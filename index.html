@@ -98,6 +98,13 @@
       justify-content: center;
       color: var(--primary);
       font-weight: bold;
+      overflow: hidden;
+    }
+    
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     .brand-title {
@@ -186,18 +193,21 @@
     .hero-slide .slide-content {
       width: 100%; 
       height: 100%; 
-      background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     .hero-overlay {
       position: absolute; 
       inset: 0; 
       background: linear-gradient(135deg, rgba(30, 64, 175, 0.8) 0%, rgba(55, 48, 163, 0.8) 100%);
+      z-index: 1;
     }
     
     .hero-content {
@@ -486,16 +496,18 @@
     .news-image {
       width: 100%; 
       height: 220px; 
-      background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.1rem;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .news-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
       transition: var(--transition);
     }
     
-    .news-card:hover .news-image {
+    .news-card:hover .news-image img {
       transform: scale(1.05);
     }
     
@@ -839,7 +851,9 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil du diocèse">
-        <div class=<img src="logo.JPG">Logo</div>
+        <div class="logo">
+          <img src="logo.JPG" alt="Logo du Diocèse de Sakania-Kipushi">
+        </div>
         <span class="brand-title">
           Diocèse de Sakania-Kipushi
           <span class="brand-subtitle">Servir le Christ dans le Haut-Katanga</span>
@@ -866,20 +880,17 @@
     <div class="hero-slides">
       <div class="hero-slide active">
         <div class="slide-content">
-          <img src="cathedrale.JPG" alt="Cathédrale de Sakania-Kipushi"> --> 
-          Cathédrale de Sakania-Kipushi
-        </div>
-      </div>
-      <div class="hero-slide">
-        <div class="slide-content"
-          <img src="lespretresenchapellerouge.JPG" alt="Célébration eucharistique"> -->
-          Célébration eucharistique
+          <img src="cathedrale.JPG" alt="Cathédrale de Sakania-Kipushi">
         </div>
       </div>
       <div class="hero-slide">
         <div class="slide-content">
-          <img src="quatrepretres.JPG" alt="Communauté du diocèse"> -->
-          Communauté du diocèse
+          <img src="lespretresenchapellerouge.JPG" alt="Célébration eucharistique">
+        </div>
+      </div>
+      <div class="hero-slide">
+        <div class="slide-content">
+          <img src="quatrepretres.JPG" alt="Communauté du diocèse">
         </div>
       </div>
     </div>
@@ -965,11 +976,9 @@
         <p>Restez informé des dernières nouvelles et événements de notre diocèse</p>
       </div>
       <div class="news-grid" id="actualites-accueil">
-        <!-- Les actualités seront chargées dynamiquement ici -->
         <div class="news-card animate">
           <div class="news-image">
-            <!-- REMPLACER PAR VOTRE IMAGE: <img src="assets/images/news-1.jpg" alt="Nomination de Mgr Gaston Ruvezi"> -->
-            Installation de Monseigneur Gaston Ruvezi
+            <img src="ordinationtroispretres.JPG" alt="Installation de Monseigneur Gaston Ruvezi">
           </div>
           <div class="content">
             <span class="news-category">Événement</span>
@@ -983,8 +992,7 @@
         </div>
         <div class="news-card animate">
           <div class="news-image">
-            <!-- REMPLACER PAR VOTRE IMAGE: <img src="assets/images/news-2.jpg" alt="Projet Caritas"> -->
-            Programme Alimentaire Caritas
+            <img src="reunionpretrechapelle.JPG" alt="Programme Alimentaire Caritas">
           </div>
           <div class="content">
             <span class="news-category">Caritas</span>
@@ -998,8 +1006,7 @@
         </div>
         <div class="news-card animate">
           <div class="news-image">
-            <!-- REMPLACER PAR VOTRE IMAGE: <img src="assets/images/news-3.jpg" alt="Éducation"> -->
-            Rénovation des Écoles
+            <img src="messeeleves.JPG" alt="Rénovation des Écoles">
           </div>
           <div class="content">
             <span class="news-category">Éducation</span>
