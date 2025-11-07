@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact — Diocèse de Sakania-Kipushi</title>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset et styles généraux */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #1e293b; 
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+    
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
+
+    /* Header */
+    .site-header { 
+      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+      color: #fff; 
+      padding: 1rem 0; 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .header-inner { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 1rem; 
+    }
+    
+    .logo { 
+      height: 60px; 
+      border-radius: 8px;
+    }
+    
+    .brand-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: white;
+    }
+    
+    .site-nav { 
+      display: flex; 
+      gap: 1.5rem; 
+    }
+    
+    .site-nav a { 
+      color: #fff; 
+      font-weight: 500; 
+      padding: 0.5rem 1rem; 
+      border-radius: 8px;
+      position: relative;
+    }
+    
+    .site-nav a:hover { 
+      background: rgba(255,255,255,0.1); 
+    }
+    
+    .site-nav a.active { 
+      background: rgba(255,255,255,0.2);
+      color: #fbbf24;
+    }
+    
+    .site-nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 1rem;
+      right: 1rem;
+      height: 2px;
+      background: #fbbf24;
+      border-radius: 2px;
+    }
+
+    .nav-toggle { 
+      display: none; 
+      background: none; 
+      border: none; 
+      font-size: 1.8rem; 
+      color: #fff; 
+      cursor: pointer; 
+      padding: 0.5rem;
+    }
+
+    /* Hero Section */
+    .contact-hero {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%),
+                  url('assets/images/contact-hero.jpg') center/cover;
+      color: white;
+      padding: 4rem 1rem;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 3rem;
+    }
+    
+    .contact-hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .contact-hero .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Main Content */
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      margin: 3rem 0;
+    }
+
+    /* Contact Info */
+    .contact-info { 
+      background: #fff; 
+      padding: 3rem 2rem; 
+      border-radius: 20px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+    
+    .contact-info h2 {
+      color: #1e40af;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .contact-info h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #fbbf24;
+      border-radius: 2px;
+    }
+
+    /* Info Grid */
+    .info-grid { 
+      display: flex; 
+      flex-direction: column;
+      gap: 2rem; 
+      margin-top: 2rem; 
+    }
+    
+    .info-item { 
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-radius: 15px;
+      border-left: 4px solid #1e40af;
+      transition: all 0.3s ease;
+    }
+    
+    .info-item:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .info-item i { 
+      font-size: 2rem; 
+      color: #1e40af; 
+      flex-shrink: 0;
+    }
+    
+    .info-content h3 {
+      color: #1e40af;
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+    }
+    
+    .info-content p {
+      color: #4b5563;
+      line-height: 1.6;
+    }
+
+    /* Services List */
+    .services-list {
+      margin-top: 2rem;
+    }
+    
+    .services-list h3 {
+      color: #374151;
+      margin-bottom: 1rem;
+    }
+    
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 0;
+      color: #4b5563;
+    }
+    
+    .service-item i {
+      font-size: 1rem;
+      color: #10b981;
+    }
+
+    /* Contact Form */
+    .contact-form-section { 
+      background: #fff; 
+      padding: 3rem 2rem; 
+      border-radius: 20px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+    
+    .contact-form-section h2 {
+      color: #1e40af;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .contact-form-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #fbbf24;
+      border-radius: 2px;
+    }
+
+    .contact-form { 
+      max-width: 100%; 
+      margin: 0 auto; 
+      display: flex; 
+      flex-direction: column; 
+      gap: 1.5rem; 
+    }
+    
+    .form-group { 
+      display: flex; 
+      flex-direction: column; 
+    }
+    
+    .form-group label { 
+      margin-bottom: 0.5rem; 
+      font-weight: 500;
+      color: #374151;
+    }
+    
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea { 
+      padding: 1rem; 
+      border: 2px solid #e5e7eb; 
+      border-radius: 10px; 
+      font-size: 1rem; 
+      transition: all 0.3s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    .form-group input:focus, 
+    .form-group select:focus, 
+    .form-group textarea:focus { 
+      outline: none; 
+      border-color: #1e40af; 
+      box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1); 
+    }
+    
+    .btn-primary { 
+      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+      color: #fff; 
+      border: none; 
+      padding: 1rem 2rem; 
+      border-radius: 50px; 
+      font-size: 1.1rem; 
+      cursor: pointer; 
+      transition: all 0.3s ease; 
+      display: inline-flex; 
+      align-items: center; 
+      justify-content: center;
+      gap: 0.5rem; 
+      font-weight: 600;
+      margin-top: 1rem;
+    }
+    
+    .btn-primary:hover { 
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(30, 64, 175, 0.3);
+    }
+
+    /* Map Section */
+    .map-section {
+      background: #fff;
+      padding: 3rem 2rem;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      margin: 3rem 0;
+    }
+    
+    .map-section h2 {
+      color: #1e40af;
+      margin-bottom: 2rem;
+      text-align: center;
+    }
+    
+    .map-container {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      height: 400px;
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #64748b;
+      font-size: 1.1rem;
+    }
+
+    /* Footer */
+    .site-footer { 
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #fff; 
+      padding: 3rem 0 1rem; 
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-section h4 {
+      color: #fbbf24;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: #cbd5e1;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: #fbbf24;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #374151;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: #fbbf24;
+      color: #1e40af;
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-nav { 
+        flex-direction: column; 
+        display: none; 
+        background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        right: 0;
+        padding: 1rem;
+        border-radius: 0 0 20px 20px;
+      }
+      
+      .nav-toggle { 
+        display: block; 
+      }
+      
+      .contact-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .contact-hero .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .info-item {
+        flex-direction: column;
+        text-align: center;
+        gap: 1rem;
+      }
+      
+      .info-item i {
+        align-self: center;
+      }
+    }
+  </style>
+</head>
+<body class="page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Accueil du diocèse">
+        <img src="assets/images/logo-diocese.png" alt="Diocèse de Sakania-Kipushi" class="logo"/>
+        <span class="brand-title">Diocèse de Sakania-Kipushi</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="diocese.html">Diocèse</a>
+        <a href="paroisses.html">Paroisses</a>
+        <a href="pastorale.html">Pastorale</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="caritas.html">Caritas</a>
+        <a href="education.html">Éducation</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Ouvrir la navigation">
+        <i class='bx bx-menu'></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="contact-hero">
+    <div class="container">
+      <h1>Contactez-Nous</h1>
+      <p class="subtitle">Nous sommes à votre écoute pour toute question, demande ou information</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="container main">
+    <div class="contact-content">
+      
+      <!-- CONTACT INFO -->
+      <section class="contact-info">
+        <h2>Coordonnées du Diocèse</h2>
+        
+        <div class="info-grid">
+          <div class="info-item">
+            <i class='bx bx-map'></i>
+            <div class="info-content">
+              <h3>Adresse du Siège</h3>
+              <p>
+                <strong>Évêché de Sakania-Kipushi</strong><br>
+                Avenue de la Cathédrale<br>
+                Commune de Sakania<br>
+                Province du Haut-Katanga<br>
+                République Démocratique du Congo
+              </p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class='bx bx-phone'></i>
+            <div class="info-content">
+              <h3>Téléphones</h3>
+              <p>
+                <strong>Secrétariat :</strong> +243 97 123 4567<br>
+                <strong>Évêché :</strong> +243 81 234 5678<br>
+                <strong>Urgences :</strong> +243 99 345 6789
+              </p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class='bx bx-envelope'></i>
+            <div class="info-content">
+              <h3>Emails</h3>
+              <p>
+                <strong>Secrétariat :</strong> secretariat@diocese-sakania-kipushi.cd<br>
+                <strong>Évêque :</strong> eveque@diocese-sakania-kipushi.cd<br>
+                <strong>Informations :</strong> info@diocese-sakania-kipushi.cd
+              </p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class='bx bx-time'></i>
+            <div class="info-content">
+              <h3>Horaires d'Ouverture</h3>
+              <p>
+                <strong>Lundi - Vendredi :</strong> 7h30 - 16h30<br>
+                <strong>Samedi :</strong> 8h00 - 12h00<br>
+                <strong>Dimanche :</strong> Fermé (Célébrations)
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Services Disponibles -->
+        <div class="services-list">
+          <h3>Services Disponibles</h3>
+          <div class="services-grid">
+            <div class="service-item">
+              <i class='bx bx-check-circle'></i>
+              <span>Secrétariat diocésain</span>
+            </div>
+            <div class="service-item">
+              <i class='bx bx-check-circle'></i>
+              <span>Service des sacrements</span>
+            </div>
+            <div class="service-item">
+              <i class='bx bx-check-circle'></i>
+              <span>Service de l'éducation</span>
+            </div>
+            <div class="service-item">
+              <i class='bx bx-check-circle'></i>
+              <span>Service Caritas</span>
+            </div>
+            <div class="service-item">
+              <i class='bx bx-check-circle'></i>
+              <span>Service de la pastorale</span>
+            </div>
+            <div class="service-item">
+              <i class='bx bx-check-circle'></i>
+              <span>Archives diocésaines</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT FORM -->
+      <section class="contact-form-section">
+        <h2>Envoyez-nous un Message</h2>
+        <form id="contactForm" class="contact-form" action="#" method="post" onsubmit="handleContact(event)">
+          <div class="form-group">
+            <label for="name">Nom Complet *</label>
+            <input id="name" name="name" type="text" placeholder="Votre nom et prénom" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Adresse Email *</label>
+            <input id="email" name="email" type="email" placeholder="votre@email.com" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="phone">Téléphone</label>
+            <input id="phone" name="phone" type="tel" placeholder="+243 XX XXX XXXX">
+          </div>
+          
+          <div class="form-group">
+            <label for="service">Service concerné *</label>
+            <select id="service" name="service" required>
+              <option value="">Sélectionnez un service</option>
+              <option value="secretariat">Secrétariat diocésain</option>
+              <option value="eveque">Secrétariat de l'Évêque</option>
+              <option value="sacrements">Service des Sacrements</option>
+              <option value="education">Service de l'Éducation</option>
+              <option value="caritas">Service Caritas</option>
+              <option value="pastorale">Service de la Pastorale</option>
+              <option value="autres">Autres demandes</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" name="message" rows="6" placeholder="Votre message..." required></textarea>
+          </div>
+          
+          <button type="submit" class="btn-primary">
+            <i class='bx bx-send'></i> Envoyer le Message
+          </button>
+        </form>
+      </section>
+    </div>
+
+    <!-- MAP SECTION -->
+    <section class="map-section">
+      <h2>Localisation du Diocèse</h2>
+      <div class="map-container">
+        <div style="text-align: center;">
+          <i class='bx bx-map' style="font-size: 3rem; margin-bottom: 1rem;"></i>
+          <p>Évêché de Sakania-Kipushi<br>
+          <small>Sakania, Haut-Katanga, RDC</small></p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Diocèse de Sakania-Kipushi</h4>
+          <p>Érigé le 25 mars 2023 - Au service de l'Évangile dans le Haut-Katanga.</p>
+          <div class="social-links">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact Rapide</h4>
+          <ul class="footer-links">
+            <li><i class='bx bx-phone'></i> +243 97 123 4567</li>
+            <li><i class='bx bx-envelope'></i> contact@diocese-sakania-kipushi.cd</li>
+            <li><i class='bx bx-map'></i> Sakania, Haut-Katanga</li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Liens Utiles</h4>
+          <ul class="footer-links">
+            <li><a href="diocese.html">Notre Diocèse</a></li>
+            <li><a href="paroisses.html">Paroisses</a></li>
+            <li><a href="actualites.html">Actualités</a></li>
+            <li><a href="caritas.html">Caritas</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 Diocèse de Sakania-Kipushi — Tous droits réservés</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.site-nav');
+      
+      toggle && toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !expanded);
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        
+        // Animation du bouton
+        toggle.querySelector('i').classList.toggle('bx-menu');
+        toggle.querySelector('i').classList.toggle('bx-x');
+      });
+
+      // Animation au défilement
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observer les éléments
+      const animatedElements = document.querySelectorAll('.info-item, .contact-form-section, .map-section');
+      animatedElements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(element);
+      });
+    });
+
+    function handleContact(e){
+      e.preventDefault();
+      const form = e.target;
+      const data = {
+        name: form.name.value,
+        email: form.email.value,
+        phone: form.phone.value,
+        service: form.service.value,
+        message: form.message.value
+      };
+      
+      // Simulation d'envoi
+      const serviceNames = {
+        'secretariat': 'Secrétariat diocésain',
+        'eveque': 'Secrétariat de l\'Évêque',
+        'sacrements': 'Service des Sacrements',
+        'education': 'Service de l\'Éducation',
+        'caritas': 'Service Caritas',
+        'pastorale': 'Service de la Pastorale',
+        'autres': 'Autres demandes'
+      };
+      
+      alert(`Merci ${data.name} !\nVotre message a été envoyé au ${serviceNames[data.service]}.\nNous vous répondrons dans les plus brefs délais.`);
+      form.reset();
+    }
+  </script>
+</body>
+</html>
