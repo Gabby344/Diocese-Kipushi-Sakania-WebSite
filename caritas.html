@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caritas & Œuvres Sociales — Diocèse de Sakania-Kipushi</title>
+<link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  /* Reset & Base */
+  * { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+    font-family: 'Poppins', sans-serif; 
+  }
+  
+  body { 
+    background: #f8fafc; 
+    color: #1f2937; 
+    line-height: 1.6; 
+    overflow-x: hidden;
+  }
+  
+  a { 
+    text-decoration: none; 
+    color: inherit; 
+    transition: all 0.3s ease;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* Header */
+  header { 
+    background: #fff; 
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1); 
+    position: sticky; 
+    top: 0; 
+    z-index: 1000; 
+    backdrop-filter: blur(10px);
+  }
+  
+  .nav-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+  
+  .logo { 
+    height: 60px; 
+    border-radius: 8px;
+  }
+  
+  .desktop-nav { 
+    display: flex; 
+    gap: 2rem; 
+    align-items: center;
+  }
+  
+  .desktop-nav a { 
+    font-weight: 500; 
+    color: #374151; 
+    padding: 0.5rem 0;
+    position: relative;
+  }
+  
+  .desktop-nav a:hover, 
+  .desktop-nav a.active { 
+    color: #2563eb; 
+  }
+  
+  .desktop-nav a.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: #2563eb;
+    border-radius: 2px;
+  }
+  
+  .nav-toggle { 
+    display: none; 
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    color: #374151;
+  }
+
+  /* Mobile Nav */
+  .mobile-nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 2000;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    backdrop-filter: blur(10px);
+  }
+  
+  .mobile-nav.active {
+    display: flex;
+  }
+  
+  .mobile-nav a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #374151;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-nav a:hover,
+  .mobile-nav a.active {
+    background: #2563eb;
+    color: white;
+  }
+  
+  .close-nav {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #374151;
+  }
+
+  /* Hero Section */
+  .hero {
+    position: relative;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    text-align: center;
+    padding: 120px 20px;
+    overflow: hidden;
+  }
+  
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+    background-size: cover;
+  }
+  
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+  
+  .hero p {
+    font-size: 1.3rem;
+    opacity: 0.95;
+    margin-bottom: 2rem;
+    font-weight: 300;
+  }
+  
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-top: 3rem;
+    flex-wrap: wrap;
+  }
+  
+  .stat-item {
+    text-align: center;
+  }
+  
+  .stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #fbbf24;
+    display: block;
+  }
+  
+  .stat-label {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* Main Content */
+  main {
+    padding: 80px 20px;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: #1e40af;
+    position: relative;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #fbbf24;
+    border-radius: 2px;
+  }
+
+  /* Grid Layout */
+  .grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
+
+  /* Cards */
+  .card {
+    background: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid #e5e7eb;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+  
+  .card-img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover .card-img {
+    transform: scale(1.05);
+  }
+  
+  .card-content {
+    padding: 2rem;
+  }
+  
+  .card h3 {
+    font-size: 1.5rem;
+    color: #1e40af;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  .card p {
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-features {
+    list-style: none;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card-features li {
+    padding: 0.3rem 0;
+    color: #4b5563;
+    position: relative;
+    padding-left: 1.5rem;
+  }
+  
+  .card-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #10b981;
+    font-weight: bold;
+  }
+  
+  .card-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #2563eb;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+  
+  .card-btn:hover {
+    background: #1d4ed8;
+    transform: translateX(5px);
+  }
+
+  /* CTA Section */
+  .cta {
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    color: white;
+    text-align: center;
+    padding: 5rem 2rem;
+    border-radius: 30px;
+    margin-top: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .cta::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><circle cx="200" cy="50" r="30"/><circle cx="600" cy="30" r="20"/><circle cx="800" cy="70" r="25"/></svg>');
+  }
+  
+  .cta-content {
+    position: relative;
+    z-index: 2;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  .cta h3 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+  }
+  
+  .cta p {
+    font-size: 1.2rem;
+    opacity: 0.95;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .btn-primary {
+    background: #fbbf24;
+    color: #1e40af;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    border: 2px solid #fbbf24;
+  }
+  
+  .btn-primary:hover {
+    background: transparent;
+    color: #fbbf24;
+    transform: translateY(-3px);
+  }
+  
+  .btn-secondary {
+    background: transparent;
+    color: white;
+    font-weight: 600;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    border: 2px solid white;
+    transition: all 0.3s ease;
+  }
+  
+  .btn-secondary:hover {
+    background: white;
+    color: #1e40af;
+    transform: translateY(-3px);
+  }
+
+  /* Footer */
+  footer {
+    background: #1e293b;
+    color: white;
+    padding: 4rem 0 2rem;
+    margin-top: 5rem;
+  }
+  
+  .footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+  
+  .footer-section h4 {
+    color: #fbbf24;
+    margin-bottom: 1.5rem;
+    font-size: 1.2rem;
+  }
+  
+  .footer-section p {
+    color: #cbd5e1;
+    line-height: 1.7;
+  }
+  
+  .footer-links {
+    list-style: none;
+  }
+  
+  .footer-links li {
+    margin-bottom: 0.8rem;
+  }
+  
+  .footer-links a {
+    color: #cbd5e1;
+    transition: color 0.3s ease;
+  }
+  
+  .footer-links a:hover {
+    color: #fbbf24;
+  }
+  
+  .social-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+  
+  .social-links a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: #374151;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
+  
+  .social-links a:hover {
+    background: #fbbf24;
+    color: #1e40af;
+    transform: translateY(-3px);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #374151;
+    color: #9ca3af;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .desktop-nav {
+      display: none;
+    }
+    
+    .nav-toggle {
+      display: block;
+    }
+    
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    
+    .hero p {
+      font-size: 1.1rem;
+    }
+    
+    .hero-stats {
+      gap: 2rem;
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .cta h3 {
+      font-size: 2rem;
+    }
+    
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav-container">
+      <a href="index.html">
+        <img src="assets/images/logo-diocese.png" alt="Diocèse de Sakania-Kipushi" class="logo">
+      </a>
+      
+      <nav class="desktop-nav">
+        <a href="index.html">Accueil</a>
+        <a href="diocese.html">Diocèse</a>
+        <a href="paroisses.html">Paroisses</a>
+        <a href="pastorale.html">Pastorale</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="caritas.html" class="active">Caritas</a>
+        <a href="education.html">Éducation</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      
+      <div class="nav-toggle" id="nav-toggle">
+        <i class='bx bx-menu'></i>
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE NAVIGATION -->
+  <div class="mobile-nav" id="mobile-nav">
+    <div class="close-nav" id="close-nav">
+      <i class='bx bx-x'></i>
+    </div>
+    <a href="index.html">Accueil</a>
+    <a href="diocese.html">Diocèse</a>
+    <a href="paroisses.html">Paroisses</a>
+    <a href="pastorale.html">Pastorale</a>
+    <a href="actualites.html">Actualités</a>
+    <a href="caritas.html" class="active">Caritas</a>
+    <a href="education.html">Éducation</a>
+    <a href="contact.html">Contact</a>
+  </div>
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Caritas & Œuvres Sociales</h1>
+      <p>Servir avec compassion et construire l'espérance dans le Diocèse de Sakania-Kipushi</p>
+      
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-number">25+</span>
+          <span class="stat-label">Projets Actifs</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">15K+</span>
+          <span class="stat-label">Personnes Aidées</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">12</span>
+          <span class="stat-label">Communautés</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="container">
+    <h2 class="section-title">Nos Domaines d'Intervention</h2>
+    
+    <div class="grid">
+      <!-- Santé Communautaire -->
+      <div class="card">
+        <img src="assets/images/sante-communautaire.jpg" alt="Santé Communautaire" class="card-img">
+        <div class="card-content">
+          <h3>Santé Communautaire</h3>
+          <p>Programmes de santé primaire, prévention du VIH/SIDA, nutrition infantile et soins aux personnes vulnérables.</p>
+          <ul class="card-features">
+            <li>Centres de santé communautaires</li>
+            <li>Programmes de vaccination</li>
+            <li>Sensibilisation santé</li>
+            <li>Soins aux personnes âgées</li>
+          </ul>
+          <a href="#" class="card-btn">
+            En savoir plus
+            <i class='bx bx-chevron-right'></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Sécurité Alimentaire -->
+      <div class="card">
+        <img src="assets/images/securite-alimentaire.jpg" alt="Sécurité Alimentaire" class="card-img">
+        <div class="card-content">
+          <h3>Sécurité Alimentaire</h3>
+          <p>Agriculture durable, élevage et programmes nutritionnels pour lutter contre la faim et la malnutrition.</p>
+          <ul class="card-features">
+            <li>Champs communautaires</li>
+            <li>Distribution de semences</li>
+            <li>Formation agricole</li>
+            <li>Programmes nutritionnels</li>
+          </ul>
+          <a href="#" class="card-btn">
+            En savoir plus
+            <i class='bx bx-chevron-right'></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Développement Rural -->
+      <div class="card">
+        <img src="assets/images/developpement-rural.jpg" alt="Développement Rural" class="card-img">
+        <div class="card-content">
+          <h3>Développement Rural</h3>
+          <p>Accès à l'eau potable, infrastructures communautaires et autonomisation des populations rurales.</p>
+          <ul class="card-features">
+            <li>Forages et puits</li>
+            <li>Routes rurales</li>
+            <li>Énergie solaire</li>
+            <li>Micro-crédits</li>
+          </ul>
+          <a href="#" class="card-btn">
+            En savoir plus
+            <i class='bx bx-chevron-right'></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Éducation & Formation -->
+      <div class="card">
+        <img src="assets/images/education-formation.jpg" alt="Éducation & Formation" class="card-img">
+        <div class="card-content">
+          <h3>Éducation & Formation</h3>
+          <p>Accès à l'éducation pour tous et formation professionnelle des jeunes et des femmes.</p>
+          <ul class="card-features">
+            <li>Scolarisation des enfants</li>
+            <li>Formation professionnelle</li>
+            <li>Alphabétisation adulte</li>
+            <li>Bourses d'études</li>
+          </ul>
+          <a href="#" class="card-btn">
+            En savoir plus
+            <i class='bx bx-chevron-right'></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Urgence & Réhabilitation -->
+      <div class="card">
+        <img src="assets/images/urgence-rehabilitation.jpg" alt="Urgence & Réhabilitation" class="card-img">
+        <div class="card-content">
+          <h3>Urgence & Réhabilitation</h3>
+          <p>Réponse aux crises humanitaires et programmes de reconstruction post-conflit.</p>
+          <ul class="card-features">
+            <li>Aide d'urgence</li>
+            <li>Réfugiés et déplacés</li>
+            <li>Réhabilitation</li>
+            <li>Paix et réconciliation</li>
+          </ul>
+          <a href="#" class="card-btn">
+            En savoir plus
+            <i class='bx bx-chevron-right'></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Justice & Paix -->
+      <div class="card">
+        <img src="assets/images/justice-paix.jpg" alt="Justice & Paix" class="card-img">
+        <div class="card-content">
+          <h3>Justice & Paix</h3>
+          <p>Promotion des droits humains, résolution des conflits et construction de la paix sociale.</p>
+          <ul class="card-features">
+            <li>Défense des droits</li>
+            <li>Médiation communautaire</li>
+            <li>Éducation à la paix</li>
+            <li>Dialogue social</li>
+          </ul>
+          <a href="#" class="card-btn">
+            En savoir plus
+            <i class='bx bx-chevron-right'></i>
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA SECTION -->
+    <section class="cta">
+      <div class="cta-content">
+        <h3>Rejoignez Notre Mission de Solidarité</h3>
+        <p>Votre soutien permet de transformer des vies et de construire des communautés plus résilientes. Ensemble, faisons grandir l'espérance dans le Haut-Katanga.</p>
+        <div class="cta-buttons">
+          <a href="#" class="btn-primary">
+            <i class='bx bx-heart'></i>
+            Faire un don
+          </a>
+          <a href="#" class="btn-secondary">
+            <i class='bx bx-user-plus'></i>
+            Devenir bénévole
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Caritas Sakania-Kipushi</h4>
+          <p>Service officiel d'action sociale du Diocèse de Sakania-Kipushi, œuvrant pour la dignité humaine et le développement intégral.</p>
+          <div class="social-links">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Liens Rapides</h4>
+          <ul class="footer-links">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="actualites.html">Nos Actualités</a></li>
+            <li><a href="projets.html">Nos Projets</a></li>
+            <li><a href="rapports.html">Rapports Annuels</a></li>
+            <li><a href="contact.html">Nous Contacter</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><i class='bx bx-map'></i> Avenue de la Cathédrale, Sakania</li>
+            <li><i class='bx bx-phone'></i> +243 97 000 0000</li>
+            <li><i class='bx bx-envelope'></i> caritas@diocese-sakania-kipushi.cd</li>
+            <li><i class='bx bx-time'></i> Lun-Ven: 8h00-16h00</li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2024 Caritas Diocèse de Sakania-Kipushi. Tous droits réservés.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Navigation
+    const navToggle = document.getElementById('nav-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeNav = document.getElementById('close-nav');
+
+    navToggle.addEventListener('click', () => {
+      mobileNav.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    });
+
+    closeNav.addEventListener('click', () => {
+      mobileNav.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    });
+
+    // Close mobile nav when clicking on a link
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = 'auto';
+      });
+    });
+
+    // Animation on scroll
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, observerOptions);
+
+    // Observe cards for animation
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+    });
+  </script>
+
+</body>
+</html>
