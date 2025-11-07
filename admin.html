@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - Diocèse de Kipushi-Sakania</title>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a4a7a;
+            --secondary: #d4af37;
+            --light: #f8f9fa;
+            --dark: #343a40;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+        }
+        
+        .admin-container {
+            display: flex;
+            min-height: 100vh;
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background: var(--primary);
+            color: white;
+            padding: 2rem 0;
+        }
+        
+        .sidebar-header {
+            padding: 0 1.5rem 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-nav {
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .sidebar-nav a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 1.5rem;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        
+        .sidebar-nav a:hover,
+        .sidebar-nav a.active {
+            background: rgba(255,255,255,0.1);
+            border-left: 4px solid var(--secondary);
+        }
+        
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            padding: 2rem;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+        
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #0d3a63;
+        }
+        
+        .btn-danger {
+            background: #dc3545;
+            color: white;
+        }
+        
+        .btn-danger:hover {
+            background: #c82333;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .table th,
+        .table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .table th {
+            background: var(--light);
+            font-weight: 600;
+        }
+        
+        .alert {
+            padding: 1rem;
+            border-radius: 5px;
+            margin-bottom: 1rem;
+        }
+        
+        .alert-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .alert-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--light);
+            border-radius: 5px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>Administration</h2>
+                <p>Diocèse de Kipushi-Sakania</p>
+            </div>
+            <ul class="sidebar-nav">
+                <li><a href="#dashboard" class="active" onclick="showTab('dashboard')">
+                    <i class='bx bx-dashboard'></i> Tableau de bord
+                </a></li>
+                <li><a href="#actualites" onclick="showTab('actualites')">
+                    <i class='bx bx-news'></i> Actualités
+                </a></li>
+                <li><a href="#evenements" onclick="showTab('evenements')">
+                    <i class='bx bx-calendar-event'></i> Événements
+                </a></li>
+                <li><a href="#paroisses" onclick="showTab('paroisses')">
+                    <i class='bx bx-church'></i> Paroisses
+                </a></li>
+                <li><a href="#medias" onclick="showTab('medias')">
+                    <i class='bx bx-image'></i> Médias
+                </a></li>
+                <li><a href="#" onclick="deconnexion()">
+                    <i class='bx bx-log-out'></i> Déconnexion
+                </a></li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <h1>Tableau de bord</h1>
+                <div id="user-info"></div>
+            </div>
+
+            <!-- Alert Messages -->
+            <div id="alert-message"></div>
+
+            <!-- Dashboard Tab -->
+            <div id="dashboard" class="tab-content active">
+                <div class="card">
+                    <h2>Statistiques du Diocèse</h2>
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-number" id="count-actualites">0</div>
+                            <div>Actualités publiées</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="count-evenements">0</div>
+                            <div>Événements à venir</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="count-paroisses">0</div>
+                            <div>Paroisses</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-number" id="count-newsletter">0</div>
+                            <div>Abonnés newsletter</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actualités Tab -->
+            <div id="actualites" class="tab-content">
+                <div class="card">
+                    <h2>Gérer les Actualités</h2>
+                    
+                    <form id="form-actualite" onsubmit="ajouterActualite(event)">
+                        <div class="form-group">
+                            <label for="titre">Titre</label>
+                            <input type="text" id="titre" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="contenu">Contenu</label>
+                            <textarea id="contenu" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="categorie">Catégorie</label>
+                            <select id="categorie" class="form-control" required>
+                                <option value="">Choisir une catégorie</option>
+                                <option value="evenements">Événements</option>
+                                <option value="pastorale">Vie Pastorale</option>
+                                <option value="caritative">Actions Caritatives</option>
+                                <option value="jeunesse">Jeunesse</option>
+                                <option value="construction">Construction</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="image">Image</label>
+                            <input type="file" id="image" class="form-control" accept="image/*">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="auteur">Auteur</label>
+                            <input type="text" id="auteur" class="form-control" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class='bx bx-save'></i> Publier l'actualité
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>Actualités publiées</h2>
+                    <div id="liste-actualites">
+                        <p>Chargement des actualités...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Événements Tab -->
+            <div id="evenements" class="tab-content">
+                <div class="card">
+                    <h2>Gérer les Événements</h2>
+                    <form id="form-evenement" onsubmit="ajouterEvenement(event)">
+                        <div class="form-group">
+                            <label for="titre-evenement">Titre</label>
+                            <input type="text" id="titre-evenement" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="description-evenement">Description</label>
+                            <textarea id="description-evenement" class="form-control" required></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="date-evenement">Date</label>
+                            <input type="datetime-local" id="date-evenement" class="form-control" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lieu-evenement">Lieu</label>
+                            <input type="text" id="lieu-evenement" class="form-control" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary">
+                            <i class='bx bx-save'></i> Ajouter l'événement
+                        </button>
+                    </form>
+                </div>
+
+                <div class="card">
+                    <h2>Événements à venir</h2>
+                    <div id="liste-evenements">
+                        <p>Chargement des événements...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Paroisses Tab -->
+            <div id="paroisses" class="tab-content">
+                <div class="card">
+                    <h2>Gérer les Paroisses</h2>
+                    <p>Interface de gestion des 13 paroisses du diocèse à venir...</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
+    
+    <!-- Configuration Firebase -->
+    <script src="firebase-config.js"></script>
+    
+    <script>
+        // Vérifier l'authentification
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = 'login.html';
+            } else {
+                document.getElementById('user-info').innerHTML = `
+                    <div>Connecté en tant que: ${user.email}</div>
+                `;
+                chargerStatistiques();
+                if (document.getElementById('dashboard').classList.contains('active')) {
+                    chargerActualitesListe();
+                }
+            }
+        });
+
+        // Gestion des onglets
+        function showTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.sidebar-nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+            
+            if (tabName === 'actualites') {
+                chargerActualitesListe();
+            } else if (tabName === 'evenements') {
+                chargerEvenementsListe();
+            } else if (tabName === 'dashboard') {
+                chargerStatistiques();
+            }
+        }
+
+        // Afficher les messages
+        function showAlert(message, type = 'success') {
+            const alertDiv = document.getElementById('alert-message');
+            alertDiv.innerHTML = `
+                <div class="alert alert-${type}">
+                    ${message}
+                </div>
+            `;
+            setTimeout(() => {
+                alertDiv.innerHTML = '';
+            }, 5000);
+        }
+
+        // Upload d'image
+        async function uploadImage(file) {
+            try {
+                const storageRef = firebase.storage().ref();
+                const imageRef = storageRef.child('actualites/' + Date.now() + '_' + file.name);
+                const snapshot = await imageRef.put(file);
+                const downloadURL = await snapshot.ref.getDownloadURL();
+                return downloadURL;
+            } catch (error) {
+                console.error('Erreur upload:', error);
+                throw error;
+            }
+        }
+
+        // Ajouter une actualité
+        async function ajouterActualite(event) {
+            event.preventDefault();
+            
+            const titre = document.getElementById('titre').value;
+            const contenu = document.getElementById('contenu').value;
+            const categorie = document.getElementById('categorie').value;
+            const auteur = document.getElementById('auteur').value;
+            const file = document.getElementById('image').files[0];
+            
+            try {
+                let imageUrl = '';
+                
+                if (file) {
+                    imageUrl = await uploadImage(file);
+                }
+                
+                await db.collection('actualites').add({
+                    titre: titre,
+                    contenu: contenu,
+                    categorie: categorie,
+                    auteur: auteur,
+                    imageUrl: imageUrl,
+                    date: firebase.firestore.FieldValue.serverTimestamp(),
+                    statut: 'publié'
+                });
+                
+                showAlert('Actualité publiée avec succès!');
+                document.getElementById('form-actualite').reset();
+                chargerActualitesListe();
+                chargerStatistiques();
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                showAlert('Erreur lors de la publication: ' + error.message, 'error');
+            }
+        }
+
+        // Charger les actualités
+        async function chargerActualitesListe() {
+            try {
+                const querySnapshot = await db.collection('actualites')
+                    .orderBy('date', 'desc')
+                    .get();
+                
+                const container = document.getElementById('liste-actualites');
+                
+                if (querySnapshot.empty) {
+                    container.innerHTML = '<p>Aucune actualité publiée.</p>';
+                    return;
+                }
+                
+                let html = `
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Date</th>
+                                <th>Catégorie</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                querySnapshot.forEach((doc) => {
+                    const actualite = doc.data();
+                    const date = actualite.date ? actualite.date.toDate().toLocaleDateString('fr-FR') : 'N/A';
+                    
+                    html += `
+                        <tr>
+                            <td>${actualite.titre}</td>
+                            <td>${date}</td>
+                            <td>${actualite.categorie}</td>
+                            <td>
+                                <button class="btn btn-danger" onclick="supprimerActualite('${doc.id}')">
+                                    <i class='bx bx-trash'></i> Supprimer
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                
+                html += '</tbody></table>';
+                container.innerHTML = html;
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                showAlert('Erreur lors du chargement des actualités', 'error');
+            }
+        }
+
+        // Supprimer une actualité
+        async function supprimerActualite(id) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cette actualité ?')) {
+                try {
+                    await db.collection('actualites').doc(id).delete();
+                    showAlert('Actualité supprimée avec succès');
+                    chargerActualitesListe();
+                    chargerStatistiques();
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    showAlert('Erreur lors de la suppression', 'error');
+                }
+            }
+        }
+
+        // Gestion des événements
+        async function ajouterEvenement(event) {
+            event.preventDefault();
+            
+            const titre = document.getElementById('titre-evenement').value;
+            const description = document.getElementById('description-evenement').value;
+            const date = document.getElementById('date-evenement').value;
+            const lieu = document.getElementById('lieu-evenement').value;
+            
+            try {
+                await db.collection('evenements').add({
+                    titre: titre,
+                    description: description,
+                    date: new Date(date),
+                    lieu: lieu,
+                    dateCreation: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                
+                showAlert('Événement ajouté avec succès!');
+                document.getElementById('form-evenement').reset();
+                chargerEvenementsListe();
+                chargerStatistiques();
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                showAlert('Erreur lors de l\'ajout: ' + error.message, 'error');
+            }
+        }
+
+        async function chargerEvenementsListe() {
+            try {
+                const querySnapshot = await db.collection('evenements')
+                    .orderBy('date', 'asc')
+                    .get();
+                
+                const container = document.getElementById('liste-evenements');
+                
+                if (querySnapshot.empty) {
+                    container.innerHTML = '<p>Aucun événement programmé.</p>';
+                    return;
+                }
+                
+                let html = `
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Titre</th>
+                                <th>Date</th>
+                                <th>Lieu</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                `;
+                
+                querySnapshot.forEach((doc) => {
+                    const evenement = doc.data();
+                    const date = evenement.date ? evenement.date.toDate().toLocaleDateString('fr-FR') : 'N/A';
+                    
+                    html += `
+                        <tr>
+                            <td>${evenement.titre}</td>
+                            <td>${date}</td>
+                            <td>${evenement.lieu}</td>
+                            <td>
+                                <button class="btn btn-danger" onclick="supprimerEvenement('${doc.id}')">
+                                    <i class='bx bx-trash'></i> Supprimer
+                                </button>
+                            </td>
+                        </tr>
+                    `;
+                });
+                
+                html += '</tbody></table>';
+                container.innerHTML = html;
+                
+            } catch (error) {
+                console.error('Erreur:', error);
+                showAlert('Erreur lors du chargement des événements', 'error');
+            }
+        }
+
+        async function supprimerEvenement(id) {
+            if (confirm('Êtes-vous sûr de vouloir supprimer cet événement ?')) {
+                try {
+                    await db.collection('evenements').doc(id).delete();
+                    showAlert('Événement supprimé avec succès');
+                    chargerEvenementsListe();
+                    chargerStatistiques();
+                } catch (error) {
+                    console.error('Erreur:', error);
+                    showAlert('Erreur lors de la suppression', 'error');
+                }
+            }
+        }
+
+        // Charger les statistiques
+        async function chargerStatistiques() {
+            try {
+                // Actualités
+                const actualitesSnapshot = await db.collection('actualites').get();
+                document.getElementById('count-actualites').textContent = actualitesSnapshot.size;
+                
+                // Événements à venir
+                const aujourdhui = new Date();
+                const evenementsSnapshot = await db.collection('evenements')
+                    .where('date', '>=', aujourdhui)
+                    .get();
+                document.getElementById('count-evenements').textContent = evenementsSnapshot.size;
+                
+                // Paroisses (valeur fixe pour le diocèse)
+                document.getElementById('count-paroisses').textContent = '13';
+                
+                // Newsletter
+                const newsletterSnapshot = await db.collection('newsletter').get();
+                document.getElementById('count-newsletter').textContent = newsletterSnapshot.size;
+                
+            } catch (error) {
+                console.error('Erreur statistiques:', error);
+            }
+        }
+
+        // Déconnexion
+        function deconnexion() {
+            firebase.auth().signOut().then(() => {
+                window.location.href = 'login.html';
+            });
+        }
+
+        // Charger les données initiales
+        document.addEventListener('DOMContentLoaded', function() {
+            chargerStatistiques();
+        });
+    </script>
+</body>
+</html>
