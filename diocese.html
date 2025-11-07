@@ -64,6 +64,13 @@
       color: #1e40af;
       font-weight: bold;
       box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      overflow: hidden;
+    }
+    
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
     
     .brand-title {
@@ -118,7 +125,7 @@
     /* Hero Section */
     .diocese-hero {
       background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%),
-                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231e40af"/><text x="50" y="50" font-family="Arial" font-size="10" fill="white" text-anchor="middle" dy=".3em">Cathédrale</text></svg>') center/cover;
+                  url('cathedrale.JPG') center/cover;
       color: white;
       padding: 5rem 1rem;
       text-align: center;
@@ -212,18 +219,6 @@
       object-fit: cover;
       box-shadow: 0 15px 30px rgba(0,0,0,0.2);
       transition: transform 0.3s ease;
-      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 1.1rem;
-    }
-    
-    .bishop-photo:before {
-      content: 'Photo de Monseigneur Gaston Ruvezi';
-      text-align: center;
-      padding: 1rem;
     }
     
     .bishop-photo:hover {
@@ -423,11 +418,13 @@
       box-shadow: 0 10px 25px rgba(0,0,0,0.1);
       transition: all 0.3s ease;
       height: 200px;
-      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
+    }
+    
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
     }
     
     .gallery-item:hover {
@@ -435,10 +432,8 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.2);
     }
     
-    .gallery-item:before {
-      content: 'Image du diocèse';
-      text-align: center;
-      padding: 1rem;
+    .gallery-item:hover img {
+      transform: scale(1.1);
     }
 
     /* Footer */
@@ -554,8 +549,9 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil du diocèse">
-        <div class="logo">Logo</div>
-        <img src="logo.JPG"
+        <div class="logo">
+          <img src="logo.JPG" alt="Logo du Diocèse de Sakania-Kipushi">
+        </div>
         <span class="brand-title">Diocèse de Sakania-Kipushi</span>
       </a>
       <nav class="site-nav" aria-label="Navigation principale">
@@ -624,9 +620,7 @@
       <h2>Notre Évêque</h2>
       <div class="bishop-card">
         <div class="bishop-photo-container">
-          <div class="bishop-photo">
-            src="msgaveccros.jpg" 
-          </div>
+          <img src="msgaveccros.JPG" alt="Monseigneur Gaston Ruvezi" class="bishop-photo">
         </div>
         <div class="bishop-info">
           <span class="bishop-badge">Évêque Fondateur</span>
@@ -718,22 +712,22 @@
       
       <div class="gallery-grid">
         <div class="gallery-item">
-          <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/cathedrale-sakania.jpg" -->
+          <img src="cathedrale.JPG" alt="Cathédrale de Sakania-Kipushi">
         </div>
         <div class="gallery-item">
-          <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/ordination-eveque.jpg" -->
+          <img src="ordinationtroispretres.JPG" alt="Ordination sacerdotale">
         </div>
         <div class="gallery-item">
-          <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/celebrations-diocesaines.jpg" -->
+          <img src="lespretresenchapellerouge.JPG" alt="Célébration eucharistique">
         </div>
         <div class="gallery-item">
-          <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/jeunes-diocese.jpg" -->
+          <img src="lesjeunes.JPG" alt="Jeunes du diocèse">
         </div>
         <div class="gallery-item">
-          <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/activites-pastorales.jpg" -->
+          <img src="reunionpretrechapelle.JPG" alt="Réunion des prêtres">
         </div>
         <div class="gallery-item">
-          <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/construction-eglises.jpg" -->
+          <img src="pretresetsoeurs.JPG" alt="Prêtres et soeurs du diocèse">
         </div>
       </div>
     </section>
@@ -893,8 +887,8 @@
       // Observer les sections
       const sections = document.querySelectorAll('section');
       sections.forEach(section => {
-        section.style.opacity = '1'; // Changé de 0 à 1 pour afficher immédiatement
-        section.style.transform = 'translateY(0)'; // Changé de 30px à 0
+        section.style.opacity = '1';
+        section.style.transform = 'translateY(0)';
         section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(section);
       });
@@ -902,8 +896,8 @@
       // Observer les cartes de stats
       const statCards = document.querySelectorAll('.stat-card');
       statCards.forEach((card, index) => {
-        card.style.opacity = '1'; // Changé de 0 à 1
-        card.style.transform = 'translateY(0)'; // Changé de 30px à 0
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
         card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(card);
       });
