@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Éducation Catholique — Diocèse de Sakania-Kipushi</title>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset et styles généraux */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #1e293b; 
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    .container { 
+      width: 90%; 
+      max-width: 1200px; 
+      margin: 0 auto; 
+    }
+    
+    a { 
+      text-decoration: none; 
+      color: inherit; 
+      transition: all 0.3s ease;
+    }
+
+    /* Header */
+    .site-header { 
+      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+      color: #fff; 
+      padding: 1rem 0; 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    
+    .header-inner { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 1rem; 
+    }
+    
+    .logo { 
+      height: 60px; 
+      border-radius: 8px;
+    }
+    
+    .brand-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: white;
+    }
+    
+    .site-nav { 
+      display: flex; 
+      gap: 1.5rem; 
+    }
+    
+    .site-nav a { 
+      color: #fff; 
+      font-weight: 500; 
+      padding: 0.5rem 1rem; 
+      border-radius: 8px;
+      position: relative;
+    }
+    
+    .site-nav a:hover { 
+      background: rgba(255,255,255,0.1); 
+    }
+    
+    .site-nav a.active { 
+      background: rgba(255,255,255,0.2);
+      color: #fbbf24;
+    }
+    
+    .site-nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 1rem;
+      right: 1rem;
+      height: 2px;
+      background: #fbbf24;
+      border-radius: 2px;
+    }
+
+    .nav-toggle { 
+      display: none; 
+      background: none; 
+      border: none; 
+      font-size: 1.8rem; 
+      color: #fff; 
+      cursor: pointer; 
+      padding: 0.5rem;
+    }
+
+    /* Hero Section */
+    .education-hero {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%),
+                  url('assets/images/education-hero.jpg') center/cover;
+      color: white;
+      padding: 5rem 1rem;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 3rem;
+    }
+    
+    .education-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .education-hero .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Statistics */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin: 3rem 0;
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+      color: white;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fbbf24;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* Main sections */
+    section { 
+      background: #fff; 
+      padding: 3rem 2rem; 
+      margin: 2rem 0; 
+      border-radius: 20px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+    
+    h1, h2 { 
+      color: #1e40af; 
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #fbbf24;
+      border-radius: 2px;
+    }
+    
+    h3 { 
+      margin-bottom: 1rem; 
+      color: #374151;
+      font-weight: 600;
+    }
+
+    /* Schools Grid */
+    .schools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .school-card {
+      background: #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e5e7eb;
+    }
+    
+    .school-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .school-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    
+    .school-content {
+      padding: 1.5rem;
+    }
+    
+    .school-title {
+      color: #1e40af;
+      font-size: 1.3rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+    
+    .school-location {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .school-features {
+      list-style: none;
+      margin: 1rem 0;
+    }
+    
+    .school-features li {
+      padding: 0.3rem 0;
+      color: #4b5563;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .school-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #10b981;
+      font-weight: bold;
+    }
+    
+    .school-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #2563eb;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .school-btn:hover {
+      background: #1d4ed8;
+      transform: translateX(5px);
+    }
+
+    /* Levels Section */
+    .levels-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .level-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 2rem;
+      border-radius: 15px;
+      text-align: center;
+      border-left: 4px solid #1e40af;
+      transition: all 0.3s ease;
+    }
+    
+    .level-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .level-icon {
+      font-size: 3rem;
+      color: #1e40af;
+      margin-bottom: 1rem;
+    }
+    
+    .level-title {
+      color: #1e40af;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+      color: white;
+      text-align: center;
+      padding: 4rem 2rem;
+      border-radius: 20px;
+      margin-top: 3rem;
+    }
+    
+    .cta-title {
+      color: white;
+      margin-bottom: 1rem;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .btn-primary {
+      background: #fbbf24;
+      color: #1e40af;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-primary:hover {
+      background: #f59e0b;
+      transform: translateY(-3px);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      font-weight: 600;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      border: 2px solid white;
+      transition: all 0.3s ease;
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      color: #1e40af;
+      transform: translateY(-3px);
+    }
+
+    /* Footer */
+    .site-footer { 
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #fff; 
+      padding: 3rem 0 1rem; 
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-section h4 {
+      color: #fbbf24;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: #cbd5e1;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: #fbbf24;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .site-nav { 
+        flex-direction: column; 
+        display: none; 
+        background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        right: 0;
+        padding: 1rem;
+        border-radius: 0 0 20px 20px;
+      }
+      
+      .nav-toggle { 
+        display: block; 
+      }
+      
+      .education-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .education-hero .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .schools-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .levels-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body class="page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Accueil du diocèse">
+        <img src="assets/images/logo-diocese.png" alt="Diocèse de Sakania-Kipushi" class="logo"/>
+        <span class="brand-title">Diocèse de Sakania-Kipushi</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="diocese.html">Diocèse</a>
+        <a href="paroisses.html">Paroisses</a>
+        <a href="pastorale.html">Pastorale</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="caritas.html">Caritas</a>
+        <a href="education.html" class="active">Éducation</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Ouvrir la navigation">
+        <i class='bx bx-menu'></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="education-hero">
+    <div class="container">
+      <h1>Éducation Catholique</h1>
+      <p class="subtitle">Former les leaders de demain avec des valeurs chrétiennes et une éducation de qualité</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="container main">
+
+    <!-- Statistics -->
+    <section class="education-stats">
+      <h2>Notre Réseau Éducatif</h2>
+      <p>Le diocèse de Sakania-Kipushi dispose d'un réseau éducatif complet qui accompagne plus de 15,000 élèves et étudiants à travers la région.</p>
+      
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">42</span>
+          <span class="stat-label">Écoles Primaires</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">18</span>
+          <span class="stat-label">Écoles Secondaires</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">15K+</span>
+          <span class="stat-label">Élèves</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">850+</span>
+          <span class="stat-label">Enseignants</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Établissements Phares -->
+    <section class="featured-schools">
+      <h2>Établissements Phares</h2>
+      <p>Découvrez nos principaux établissements d'enseignement qui excellent dans la formation intégrale des jeunes.</p>
+      
+      <div class="schools-grid">
+        <!-- Institut Monseigneur Mulolwa -->
+        <div class="school-card">
+          <img src="assets/images/institut-mulolwa.jpg" alt="Institut Monseigneur Mulolwa" class="school-img">
+          <div class="school-content">
+            <h3 class="school-title">Institut Monseigneur Mulolwa</h3>
+            <div class="school-location">
+              <i class='bx bx-map'></i>
+              <span>Kipushi</span>
+            </div>
+            <p>Établissement d'enseignement secondaire et technique de référence dans la région.</p>
+            <ul class="school-features">
+              <li>Enseignement général et technique</li>
+              <li>Formation professionnelle</li>
+              <li>Internat mixte</li>
+              <li>Laboratoires modernes</li>
+            </ul>
+            <a href="#" class="school-btn">
+              Découvrir
+              <i class='bx bx-chevron-right'></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- École Primaire Saint Pierre -->
+        <div class="school-card">
+          <img src="assets/images/saint-pierre.jpg" alt="École Primaire Saint Pierre" class="school-img">
+          <div class="school-content">
+            <h3 class="school-title">École Primaire Saint Pierre</h3>
+            <div class="school-location">
+              <i class='bx bx-map'></i>
+              <span>Sakania</span>
+            </div>
+            <p>Établissement primaire d'excellence formant les enfants dès le plus jeune âge.</p>
+            <ul class="school-features">
+              <li>Maternelle et primaire</li>
+              <li>Éducation chrétienne</li>
+              <li>Activités parascolaires</li>
+              <li>Cantine scolaire</li>
+            </ul>
+            <a href="#" class="school-btn">
+              Découvrir
+              <i class='bx bx-chevron-right'></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Collège Saint Augustin -->
+        <div class="school-card">
+          <img src="assets/images/saint-augustin.jpg" alt="Collège Saint Augustin" class="school-img">
+          <div class="school-content">
+            <h3 class="school-title">Collège Saint Augustin</h3>
+            <div class="school-location">
+              <i class='bx bx-map'></i>
+              <span>Kipushi</span>
+            </div>
+            <p>Collège d'enseignement général avec une forte orientation scientifique.</p>
+            <ul class="school-features">
+              <li>Section scientifique</li>
+              <li>Bibliothèque moderne</li>
+              <li>Sports et culture</li>
+              <li>Orientation scolaire</li>
+            </ul>
+            <a href="#" class="school-btn">
+              Découvrir
+              <i class='bx bx-chevron-right'></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Niveaux d'Enseignement -->
+    <section class="education-levels">
+      <h2>Nos Niveaux d'Enseignement</h2>
+      <p>Une offre éducative complète de la maternelle à la formation professionnelle.</p>
+      
+      <div class="levels-grid">
+        <div class="level-card">
+          <i class='bx bx-child level-icon'></i>
+          <h3 class="level-title">Enseignement Maternelle</h3>
+          <p>Éveil et développement des tout-petits dans un environnement chrétien sécurisé.</p>
+        </div>
+        
+        <div class="level-card">
+          <i class='bx bx-book-open level-icon'></i>
+          <h3 class="level-title">Enseignement Primaire</h3>
+          <p>Formation de base complète avec initiation aux valeurs chrétiennes et civiques.</p>
+        </div>
+        
+        <div class="level-card">
+          <i class='bx bx-graduation level-icon'></i>
+          <h3 class="level-title">Enseignement Secondaire</h3>
+          <p>Enseignement général et technique préparant aux études supérieures.</p>
+        </div>
+        
+        <div class="level-card">
+          <i class='bx bx-briefcase level-icon'></i>
+          <h3 class="level-title">Formation Professionnelle</h3>
+          <p>Formations techniques et professionnelles adaptées au marché local.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projets Éducatifs -->
+    <section class="education-projects">
+      <h2>Projets Éducatifs Innovants</h2>
+      <p>Le diocèse développe des projets novateurs pour améliorer continuellement la qualité de l'éducation.</p>
+      
+      <div class="schools-grid">
+        <div class="school-card">
+          <div class="school-content">
+            <h3 class="school-title">Programme "École Numérique"</h3>
+            <p>Introduction des technologies numériques dans les salles de classe.</p>
+            <ul class="school-features">
+              <li>Tablettes éducatives</li>
+              <li>Formation des enseignants</li>
+              <li>Contenus pédagogiques numériques</li>
+              <li>Laboratoires informatiques</li>
+            </ul>
+          </div>
+        </div>
+        
+        <div class="school-card">
+          <div class="school-content">
+            <h3 class="school-title">Projet "Alimentation Scolaire"</h3>
+            <p>Garantir une alimentation équilibrée pour tous les élèves.</p>
+            <ul class="school-features">
+              <li>Cantines scolaires</li>
+              <li>Jardins potagers éducatifs</li>
+              <li>Éducation nutritionnelle</li>
+              <li>Partenariats locaux</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2 class="cta-title">Rejoignez Notre Communauté Éducative</h2>
+      <p>Inscrivez vos enfants ou soutenez nos projets éducatifs pour construire ensemble l'avenir de notre région.</p>
+      
+      <div class="cta-buttons">
+        <a href="admissions.html" class="btn-primary">
+          <i class='bx bx-user-plus'></i>
+          Procédure d'Admission
+        </a>
+        <a href="contact.html" class="btn-secondary">
+          <i class='bx bx-envelope'></i>
+          Nous Contacter
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Éducation Catholique</h4>
+          <p>Service diocésain de l'enseignement catholique de Sakania-Kipushi.</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Coordonnées</h4>
+          <ul class="footer-links">
+            <li><i class='bx bx-map'></i> Bureau de l'Éducation, Évêché de Sakania</li>
+            <li><i class='bx bx-phone'></i> +243 97 000 0000</li>
+            <li><i class='bx bx-envelope'></i> education@diocese-sakania-kipushi.cd</li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Liens Rapides</h4>
+          <ul class="footer-links">
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="ecoles.html">Liste des Écoles</a></li>
+            <li><a href="emplois.html">Postes Vacants</a></li>
+            <li><a href="projets.html">Projets Éducatifs</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 Diocèse de Sakania-Kipushi — Service de l'Éducation Catholique</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.site-nav');
+      
+      toggle && toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !expanded);
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        
+        // Animation du bouton
+        toggle.querySelector('i').classList.toggle('bx-menu');
+        toggle.querySelector('i').classList.toggle('bx-x');
+      });
+
+      // Animation au défilement
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observer les éléments
+      const animatedElements = document.querySelectorAll('.school-card, .level-card, .stat-card');
+      animatedElements.forEach((element, index) => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(30px)';
+        element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(element);
+      });
+    });
+  </script>
+</body>
+</html>
