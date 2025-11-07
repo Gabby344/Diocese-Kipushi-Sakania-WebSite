@@ -85,6 +85,8 @@
     .brand .logo {
       height: 60px; 
       border-radius: 8px;
+      background-color: white;
+      padding: 5px;
     }
     
     .brand-title {
@@ -145,7 +147,7 @@
     /* === HERO SECTION === */
     .paroisses-hero {
       background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%), 
-                  url('assets/images/paroisses-hero.jpg') center/cover no-repeat;
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231e40af"/><text x="50" y="50" font-family="Arial" font-size="10" fill="white" text-anchor="middle" dy=".3em">Image Paroisses</text></svg>') center/cover no-repeat;
       color: white;
       padding: 6rem 1rem;
       text-align: center;
@@ -344,8 +346,8 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       transition: var(--transition);
       border: 1px solid #e2e8f0;
-      transform: translateY(30px);
-      opacity: 0;
+      opacity: 1; /* CORRECTION: Changé de 0 à 1 */
+      transform: translateY(0); /* CORRECTION: Changé de 30px à 0 */
     }
     
     .parish-card.animate {
@@ -362,17 +364,16 @@
       height: 200px;
       overflow: hidden;
       position: relative;
+      background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
     }
     
-    .parish-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: var(--transition);
-    }
-    
-    .parish-card:hover .parish-image img {
-      transform: scale(1.05);
+    .parish-image:before {
+      content: 'Image de l\'église';
+      font-size: 1.2rem;
     }
     
     .parish-type {
@@ -493,8 +494,8 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.08);
       transition: var(--transition);
       border-left: 4px solid var(--secondary);
-      transform: translateY(30px);
-      opacity: 0;
+      opacity: 1; /* CORRECTION: Changé de 0 à 1 */
+      transform: translateY(0); /* CORRECTION: Changé de 30px à 0 */
     }
     
     .deanery-card.animate {
@@ -797,7 +798,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil du diocèse">
-        <img src="assets/images/logo-diocese.png" alt="Diocèse de Sakania-Kipushi" class="logo"/>
+        <div class="logo"></div>
         <span class="brand-title">
           Diocèse de Sakania-Kipushi
           <span class="brand-subtitle">Servir le Christ dans le Haut-Katanga</span>
@@ -905,7 +906,6 @@
         <!-- Paroisse Cathédrale -->
         <div class="parish-card" data-type="urbain">
           <div class="parish-image">
-            <img src="assets/images/cathedrale-sakania.jpg" alt="Cathédrale Saint-Pierre-et-Paul">
             <span class="parish-type">Cathédrale</span>
           </div>
           <div class="parish-content">
@@ -930,7 +930,6 @@
         <!-- Paroisse Saint Jean-Bosco -->
         <div class="parish-card" data-type="urbain">
           <div class="parish-image">
-            <img src="assets/images/saint-jean-bosco.jpg" alt="Paroisse Saint Jean-Bosco">
             <span class="parish-type">Urbaine</span>
           </div>
           <div class="parish-content">
@@ -955,7 +954,6 @@
         <!-- Paroisse Sainte Thérèse -->
         <div class="parish-card" data-type="rural">
           <div class="parish-image">
-            <img src="assets/images/sainte-therese.jpg" alt="Paroisse Sainte Thérèse">
             <span class="parish-type">Rurale</span>
           </div>
           <div class="parish-content">
@@ -972,6 +970,76 @@
             </div>
             <div class="parish-actions">
               <a href="paroisse-therese.html" class="parish-btn btn-primary">Voir la paroisse</a>
+              <a href="contact.html" class="parish-btn btn-secondary">Contacter</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Ajout de plus de paroisses pour démonstration -->
+        <div class="parish-card" data-type="mission">
+          <div class="parish-image">
+            <span class="parish-type">Mission</span>
+          </div>
+          <div class="parish-content">
+            <h3>Mission Saint François d'Assise</h3>
+            <div class="parish-meta">
+              <span><i class='bx bx-map'></i> Kasumbalesa</span>
+              <span><i class='bx bx-user'></i> P. Thomas Ilunga</span>
+            </div>
+            <div class="parish-info">
+              <p><strong>Messes dominicales:</strong> 10h00</p>
+              <p><strong>Messes en semaine:</strong> Dimanche uniquement</p>
+              <p><strong>Catéchèse:</strong> Samedi 15h-17h</p>
+              <p><strong>Téléphone:</strong> +243 97 123 4570</p>
+            </div>
+            <div class="parish-actions">
+              <a href="mission-francois.html" class="parish-btn btn-primary">Voir la mission</a>
+              <a href="contact.html" class="parish-btn btn-secondary">Contacter</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="parish-card" data-type="urbain">
+          <div class="parish-image">
+            <span class="parish-type">Urbaine</span>
+          </div>
+          <div class="parish-content">
+            <h3>Paroisse Notre Dame du Rosaire</h3>
+            <div class="parish-meta">
+              <span><i class='bx bx-map'></i> Sakania Ouest</span>
+              <span><i class='bx bx-user'></i> P. Joseph Kalenga</span>
+            </div>
+            <div class="parish-info">
+              <p><strong>Messes dominicales:</strong> 8h30, 11h30</p>
+              <p><strong>Messes en semaine:</strong> 7h00 (sauf mardi)</p>
+              <p><strong>Rosaire:</strong> Lundi 17h30</p>
+              <p><strong>Téléphone:</strong> +243 97 123 4571</p>
+            </div>
+            <div class="parish-actions">
+              <a href="paroisse-rosaire.html" class="parish-btn btn-primary">Voir la paroisse</a>
+              <a href="contact.html" class="parish-btn btn-secondary">Contacter</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="parish-card" data-type="rural">
+          <div class="parish-image">
+            <span class="parish-type">Rurale</span>
+          </div>
+          <div class="parish-content">
+            <h3>Paroisse Saint Joseph Artisan</h3>
+            <div class="parish-meta">
+              <span><i class='bx bx-map'></i> Kafubu</span>
+              <span><i class='bx bx-user'></i> P. Pierre Mwamba</span>
+            </div>
+            <div class="parish-info">
+              <p><strong>Messes dominicales:</strong> 9h30</p>
+              <p><strong>Messes en semaine:</strong> Mardi et jeudi 7h30</p>
+              <p><strong>Rencontre jeunes:</strong> Vendredi 16h</p>
+              <p><strong>Téléphone:</strong> +243 97 123 4572</p>
+            </div>
+            <div class="parish-actions">
+              <a href="paroisse-joseph.html" class="parish-btn btn-primary">Voir la paroisse</a>
               <a href="contact.html" class="parish-btn btn-secondary">Contacter</a>
             </div>
           </div>
@@ -1184,9 +1252,6 @@
     document.addEventListener('DOMContentLoaded', function() {
       const cards = document.querySelectorAll('.parish-card, .deanery-card');
       cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
-        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(card);
       });
 
