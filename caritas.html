@@ -53,8 +53,15 @@
   }
   
   .logo { 
-    height: 60px; 
+    height: 60px;
+    width: 60px;
     border-radius: 8px;
+    background: #1e40af;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
   }
   
   .desktop-nav { 
@@ -256,7 +263,14 @@
   .card-img {
     width: 100%;
     height: 250px;
-    object-fit: cover;
+    background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 1rem;
     transition: transform 0.3s ease;
   }
   
@@ -457,6 +471,7 @@
     background: #374151;
     border-radius: 50%;
     transition: all 0.3s ease;
+    color: white;
   }
   
   .social-links a:hover {
@@ -531,7 +546,7 @@
   <header>
     <div class="container nav-container">
       <a href="index.html">
-        <img src="assets/images/logo-diocese.png" alt="Diocèse de Sakania-Kipushi" class="logo">
+        <div class="logo">Logo</div>
       </a>
       
       <nav class="desktop-nav">
@@ -596,7 +611,10 @@
     <div class="grid">
       <!-- Santé Communautaire -->
       <div class="card">
-        <img src="assets/images/sante-communautaire.jpg" alt="Santé Communautaire" class="card-img">
+        <div class="card-img">
+          <!-- REMPLACER PAR VOTRE IMAGE: <img src="assets/images/sante-communautaire.jpg" alt="Santé Communautaire"> -->
+          Santé Communautaire
+        </div>
         <div class="card-content">
           <h3>Santé Communautaire</h3>
           <p>Programmes de santé primaire, prévention du VIH/SIDA, nutrition infantile et soins aux personnes vulnérables.</p>
@@ -615,7 +633,10 @@
 
       <!-- Sécurité Alimentaire -->
       <div class="card">
-        <img src="assets/images/securite-alimentaire.jpg" alt="Sécurité Alimentaire" class="card-img">
+        <div class="card-img">
+          <!-- REMPLACER PAR VOTRE IMAGE: <img src="assets/images/securite-alimentaire.jpg" alt="Sécurité Alimentaire"> -->
+          Sécurité Alimentaire
+        </div>
         <div class="card-content">
           <h3>Sécurité Alimentaire</h3>
           <p>Agriculture durable, élevage et programmes nutritionnels pour lutter contre la faim et la malnutrition.</p>
@@ -634,7 +655,10 @@
 
       <!-- Développement Rural -->
       <div class="card">
-        <img src="assets/images/developpement-rural.jpg" alt="Développement Rural" class="card-img">
+        <div class="card-img">
+          <!-- REMPLACER PAR VOTRE IMAGE: <img src="assets/images/developpement-rural.jpg" alt="Développement Rural"> -->
+          Développement Rural
+        </div>
         <div class="card-content">
           <h3>Développement Rural</h3>
           <p>Accès à l'eau potable, infrastructures communautaires et autonomisation des populations rurales.</p>
@@ -653,7 +677,10 @@
 
       <!-- Éducation & Formation -->
       <div class="card">
-        <img src="assets/images/education-formation.jpg" alt="Éducation & Formation" class="card-img">
+        <div class="card-img">
+          <!-- REMPLACER PAR VOTRE IMAGE: <img src="assets/images/education-formation.jpg" alt="Éducation & Formation"> -->
+          Éducation & Formation
+        </div>
         <div class="card-content">
           <h3>Éducation & Formation</h3>
           <p>Accès à l'éducation pour tous et formation professionnelle des jeunes et des femmes.</p>
@@ -672,7 +699,10 @@
 
       <!-- Urgence & Réhabilitation -->
       <div class="card">
-        <img src="assets/images/urgence-rehabilitation.jpg" alt="Urgence & Réhabilitation" class="card-img">
+        <div class="card-img">
+          <!-- REMPLACER PAR VOTRE IMAGE: <img src="assets/images/urgence-rehabilitation.jpg" alt="Urgence & Réhabilitation"> -->
+          Urgence & Réhabilitation
+        </div>
         <div class="card-content">
           <h3>Urgence & Réhabilitation</h3>
           <p>Réponse aux crises humanitaires et programmes de reconstruction post-conflit.</p>
@@ -691,7 +721,10 @@
 
       <!-- Justice & Paix -->
       <div class="card">
-        <img src="assets/images/justice-paix.jpg" alt="Justice & Paix" class="card-img">
+        <div class="card-img">
+          <!-- REMPLACER PAR VOTRE IMAGE: <img src="assets/images/justice-paix.jpg" alt="Justice & Paix"> -->
+          Justice & Paix
+        </div>
         <div class="card-content">
           <h3>Justice & Paix</h3>
           <p>Promotion des droits humains, résolution des conflits et construction de la paix sociale.</p>
@@ -814,8 +847,8 @@
     document.addEventListener('DOMContentLoaded', () => {
       const cards = document.querySelectorAll('.card');
       cards.forEach(card => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(30px)';
+        card.style.opacity = '1'; // Changé de 0 à 1 pour afficher immédiatement
+        card.style.transform = 'translateY(0)'; // Changé de 30px à 0
         card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(card);
       });
