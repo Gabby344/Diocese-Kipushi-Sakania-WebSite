@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Le Diocèse — Diocèse de Sakania-Kipushi</title>
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Reset et styles généraux */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      color: #1e293b; 
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    
+    .container { 
+      width: 90%; 
+      max-width: 1200px; 
+      margin: 0 auto; 
+    }
+    
+    a { 
+      text-decoration: none; 
+      color: inherit; 
+      transition: all 0.3s ease;
+    }
+
+    /* Header */
+    .site-header { 
+      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+      color: #fff; 
+      padding: 1rem 0; 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+    
+    .header-inner { 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+    
+    .brand { 
+      display: flex; 
+      align-items: center; 
+      gap: 1rem; 
+    }
+    
+    .logo { 
+      height: 60px; 
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .brand-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: white;
+    }
+    
+    .site-nav { 
+      display: flex; 
+      gap: 1.5rem; 
+    }
+    
+    .site-nav a { 
+      color: #fff; 
+      font-weight: 500; 
+      padding: 0.5rem 1rem; 
+      border-radius: 8px;
+      position: relative;
+    }
+    
+    .site-nav a:hover { 
+      background: rgba(255,255,255,0.1); 
+    }
+    
+    .site-nav a.active { 
+      background: rgba(255,255,255,0.2);
+      color: #fbbf24;
+    }
+    
+    .site-nav a.active::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 1rem;
+      right: 1rem;
+      height: 2px;
+      background: #fbbf24;
+      border-radius: 2px;
+    }
+
+    .nav-toggle { 
+      display: none; 
+      background: none; 
+      border: none; 
+      font-size: 1.8rem; 
+      color: #fff; 
+      cursor: pointer; 
+      padding: 0.5rem;
+    }
+
+    /* Hero Section */
+    .diocese-hero {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%),
+                  url('assets/images/cathedrale-sakania.jpg') center/cover;
+      color: white;
+      padding: 5rem 1rem;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 3rem;
+    }
+    
+    .diocese-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .diocese-hero .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    /* Main sections */
+    section { 
+      background: #fff; 
+      padding: 3rem 2rem; 
+      margin: 2rem 0; 
+      border-radius: 20px; 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+    }
+    
+    h1, h2 { 
+      color: #1e40af; 
+      margin-bottom: 1.5rem;
+      position: relative;
+    }
+    
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: #fbbf24;
+      border-radius: 2px;
+    }
+    
+    h3 { 
+      margin-bottom: 1rem; 
+      color: #374151;
+      font-weight: 600;
+    }
+    
+    p.intro { 
+      font-size: 1.15rem; 
+      margin-bottom: 1.5rem; 
+      line-height: 1.8;
+      color: #4b5563;
+    }
+    
+    ul { 
+      list-style: none; 
+      padding-left: 0; 
+    }
+
+    /* Bishop card */
+    .bishop-card { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 3rem; 
+      align-items: flex-start;
+    }
+    
+    .bishop-photo-container {
+      flex: 0 0 300px;
+      position: relative;
+    }
+    
+    .bishop-photo { 
+      width: 100%; 
+      border-radius: 20px; 
+      object-fit: cover;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      transition: transform 0.3s ease;
+    }
+    
+    .bishop-photo:hover {
+      transform: scale(1.02);
+    }
+    
+    .bishop-info { 
+      flex: 1; 
+      min-width: 300px;
+    }
+    
+    .bishop-title {
+      color: #1e40af;
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .bishop-badge {
+      display: inline-block;
+      background: #fbbf24;
+      color: #1e40af;
+      padding: 0.3rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    /* Organigramme */
+    .org-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .org-card {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 2rem;
+      border-radius: 15px;
+      border-left: 4px solid #1e40af;
+      transition: all 0.3s ease;
+    }
+    
+    .org-card:hover {
+      transform: translateX(10px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    
+    .org-card h3 {
+      color: #1e40af;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .org-list li { 
+      margin-bottom: 0.8rem; 
+      font-weight: 500; 
+      display: flex; 
+      align-items: center; 
+      gap: 0.8rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    
+    .org-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .org-list i {
+      color: #1e40af;
+      font-size: 1.2rem;
+    }
+    
+    .sub-list { 
+      list-style: none; 
+      margin-left: 0;
+      margin-top: 0.5rem;
+    }
+    
+    .sub-list li {
+      color: #6b7280;
+      font-weight: 400;
+      border-bottom: 1px dashed #e2e8f0;
+    }
+    
+    .sub-list li::before {
+      content: '▸';
+      color: #fbbf24;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+
+    /* Timeline */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 3rem auto 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 4px;
+      background: #1e40af;
+      transform: translateX(-50%);
+    }
+    
+    .timeline-item {
+      position: relative;
+      margin-bottom: 3rem;
+      width: 45%;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 55%;
+    }
+    
+    .timeline-content {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      border-left: 4px solid #fbbf24;
+    }
+    
+    .timeline-year {
+      background: #1e40af;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      font-weight: 600;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Stats Section */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    
+    .stat-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+      color: white;
+      border-radius: 15px;
+      transition: transform 0.3s ease;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-10px);
+    }
+    
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: #fbbf24;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
+    /* Footer */
+    .site-footer { 
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      color: #fff; 
+      padding: 3rem 0 1rem; 
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-section h4 {
+      color: #fbbf24;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
+    }
+    
+    .footer-links {
+      list-style: none;
+    }
+    
+    .footer-links li {
+      margin-bottom: 0.8rem;
+    }
+    
+    .footer-links a {
+      color: #cbd5e1;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: #fbbf24;
+    }
+    
+    .footer-bottom {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid #374151;
+      color: #9ca3af;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .site-nav { 
+        flex-direction: column; 
+        display: none; 
+        background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        right: 0;
+        padding: 1rem;
+        border-radius: 0 0 20px 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      }
+      
+      .nav-toggle { 
+        display: block; 
+      }
+      
+      .bishop-card { 
+        flex-direction: column; 
+        align-items: center; 
+      }
+      
+      .bishop-photo-container {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 300px;
+      }
+      
+      .diocese-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .diocese-hero .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .timeline::before {
+        left: 30px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        left: 0 !important;
+        padding-left: 70px;
+      }
+      
+      .org-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      section {
+        padding: 2rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body class="page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Accueil du diocèse">
+        <img src="assets/images/logo-diocese.png" alt="Logo du Diocèse de Sakania-Kipushi" class="logo"/>
+        <span class="brand-title">Diocèse de Sakania-Kipushi</span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="diocese.html" class="active">Diocèse</a>
+        <a href="paroisses.html">Paroisses</a>
+        <a href="pastorale.html">Pastorale</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="caritas.html">Caritas</a>
+        <a href="education.html">Éducation</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Ouvrir la navigation">
+        <i class='bx bx-menu'></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="diocese-hero">
+    <div class="container">
+      <h1>Diocèse de Sakania-Kipushi</h1>
+      <p class="subtitle">Érigé le 25 mars 2023 - Servir le peuple de Dieu dans la foi et la charité</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="container main">
+
+    <!-- Introduction -->
+    <section class="diocese-intro">
+      <h2>Notre Diocèse</h2>
+      <p class="intro">
+        Le <strong>Diocèse de Sakania-Kipushi</strong> a été érigé canoniquement le <strong>25 mars 2023</strong> par le Pape François, 
+        par le décret "Cum ad aptius" de la Congrégation pour les Évêques. Il est issu du démembrement de l'Archidiocèse de Lubumbashi 
+        et fait partie de la Province Ecclésiastique de Lubumbashi.
+      </p>
+      <p class="intro">
+        Le territoire diocésain couvre les zones de Sakania et Kipushi dans la province du Haut-Katanga, 
+        une région riche en ressources minières mais aussi confrontée à des défis sociaux et économiques importants.
+      </p>
+
+      <!-- Statistics -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-number">18</span>
+          <span class="stat-label">Paroisses</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">32</span>
+          <span class="stat-label">Prêtres</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">24</span>
+          <span class="stat-label">Religieuses</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">250K+</span>
+          <span class="stat-label">Fidèles</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Évêque -->
+    <section class="diocese-bishop">
+      <h2>Notre Évêque</h2>
+      <div class="bishop-card">
+        <div class="bishop-photo-container">
+          <img src="assets/images/eveque-gaston-ruvezi.jpg" alt="Monseigneur Gaston Ruvezi" class="bishop-photo">
+        </div>
+        <div class="bishop-info">
+          <span class="bishop-badge">Évêque Fondateur</span>
+          <h3 class="bishop-title">Monseigneur Gaston Ruvezi, S.D.B.</h3>
+          <p>
+            <strong>Monseigneur Gaston Ruvezi</strong>, né le <strong>15 août 1966</strong> à <strong>Lubumbashi</strong>, 
+            est le premier évêque du diocèse de Sakania-Kipushi. Prêtre salésien de Don Bosco, 
+            il a été nommé par le Pape François le <strong>25 mars 2023</strong> et ordonné évêque le <strong>27 mai 2023</strong>.
+          </p>
+          
+          <h3>📚 Formation et Études</h3>
+          <ul class="org-list">
+            <li><i class='bx bx-book'></i> <strong>Philosophie</strong> - Institut Saint Augustin, Lubumbashi</li>
+            <li><i class='bx bx-graduation'></i> <strong>Théologie</strong> - Institut Saint Pierre Canisius, Kimwenza</li>
+            <li><i class='bx bx-world'></i> <strong>Spiritualité Salésienne</strong> - Formation à Rome</li>
+            <li><i class='bx bx-certification'></i> <strong>Études Spécialisées</strong> en Pastorale des Jeunes</li>
+          </ul>
+
+          <h3>🎯 Parcours Sacerdotal</h3>
+          <ul class="org-list">
+            <li><i class='bx bx-calendar-star'></i> <strong>1996</strong> - Ordination sacerdotale comme prêtre salésien</li>
+            <li><i class='bx bx-user-voice'></i> <strong>1996-2000</strong> - Vicaire à la Paroisse Saint Jean Bosco, Lubumbashi</li>
+            <li><i class='bx bx-group'></i> <strong>2000-2005</strong> - Directeur du Centre des Jeunes Don Bosco</li>
+            <li><i class='bx bx-chalkboard'></i> <strong>2005-2010</strong> - Formateur au Postulat Salésien</li>
+            <li><i class='bx bx-building'></i> <strong>2010-2018</strong> - Supérieur de la Vice-Province Salésienne</li>
+          </ul>
+
+          <h3>🌟 Engagement Pastoral</h3>
+          <ul class="org-list">
+            <li><i class='bx bx-run'></i> <strong>Expert en Pastorale des Jeunes</strong> selon la spiritualité salésienne</li>
+            <li><i class='bx bx-microphone'></i> <strong>Prédicateur et Conférencier</strong> renommé</li>
+            <li><i class='bx bx-book-open'></i> <strong>Formateur des formateurs</strong> en pédagogie salésienne</li>
+            <li><i class='bx bx-heart'></i> <strong>Engagement social</strong> auprès des jeunes défavorisés</li>
+          </ul>
+
+          <h3>🎖️ Nomination Épiscopale</h3>
+          <p>
+            Par le décret "Cum ad aptius" du 25 mars 2023, le Pape François a confié à Monseigneur Gaston Ruvezi 
+            la mission de mettre en place et de développer le nouveau diocèse de Sakania-Kipushi. 
+            Son ordination épiscopale a eu lieu en la Cathédrale Saint Pierre et Paul de Lubumbashi.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Organigramme -->
+    <section class="diocese-organization">
+      <h2>Structure Diocésaine</h2>
+      <div class="org-grid">
+        <div class="org-card">
+          <h3><i class='bx bx-user'></i> Gouvernance</h3>
+          <ul class="org-list">
+            <li><i class='bx bx-check-shield'></i> Évêque Diocésain</li>
+            <li><i class='bx bx-user-plus'></i> Vicaire Général</li>
+            <li><i class='bx bx-user-circle'></i> Vicaires Épiscopaux</li>
+            <li><i class='bx bx-briefcase-alt-2'></i> Chancellerie Diocésaine</li>
+            <li><i class='bx bx-archive'></i> Archives Diocésaines</li>
+          </ul>
+        </div>
+
+        <div class="org-card">
+          <h3><i class='bx bx-group'></i> Conseils & Commissions</h3>
+          <ul class="org-list">
+            <li><i class='bx bx-church'></i> Conseil Presbytéral</li>
+            <li><i class='bx bx-body'></i> Conseil Pastoral</li>
+            <li><i class='bx bx-line-chart'></i> Conseil Économique</li>
+            <li><i class='bx bx-book'></i> Commission Liturgique</li>
+            <li><i class='bx bx-heart'></i> Commission Caritas</li>
+          </ul>
+        </div>
+
+        <div class="org-card">
+          <h3><i class='bx bx-network-chart'></i> Services Diocésains</h3>
+          <ul class="org-list">
+            <li><i class='bx bx-microphone'></i> Communications Sociales</li>
+            <li><i class='bx bx-book-reader'></i> Catéchèse</li>
+            <li><i class='bx bx-music'></i> Liturgie et Musique Sacrée</li>
+            <li><i class='bx bx-building-house'></i> Patrimoine et Construction</li>
+            <li><i class='bx bx-user-voice'></i> Vocations et Ministères</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Histoire -->
+    <section class="diocese-history">
+      <h2>Histoire du Diocèse</h2>
+      <p class="intro">
+        Le diocèse de Sakania-Kipushi représente une nouvelle page dans l'évangélisation de la région du Haut-Katanga, 
+        répondant aux besoins pastoraux d'une population en croissance dans une zone stratégique du pays.
+      </p>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2022</span>
+            <h3>Études Préparatoires</h3>
+            <p>Consultations et études pour la création d'un nouveau diocèse dans la région de Sakania-Kipushi</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2023</span>
+            <h3>Érection Canonique</h3>
+            <p>Le Pape François érige le diocèse de Sakania-Kipushi le 25 mars 2023</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2023</span>
+            <h3>Nomination du Premier Évêque</h3>
+            <p>Monseigneur Gaston Ruvezi, S.D.B., est nommé évêque fondateur</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2023</span>
+            <h3>Ordination Épiscopale</h3>
+            <p>Ordination de Mgr Ruvezi comme évêque le 27 mai 2023</p>
+          </div>
+        </div>
+        
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2023</span>
+            <h3>Installation Canonique</h3>
+            <p>Prise de possession du diocèse et début des activités pastorales</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <span class="timeline-year">2024</span>
+            <h3>Développement Pastoral</h3>
+            <p>Mise en place des structures diocésaines et lancement des programmes d'évangélisation</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Territoire -->
+    <section class="diocese-territory">
+      <h2>Territoire et Situation</h2>
+      <p class="intro">
+        Le diocèse de Sakania-Kipushi couvre un territoire d'environ <strong>25,000 km²</strong> dans la province du Haut-Katanga, 
+        comprenant les territoires de <strong>Sakania</strong> et <strong>Kipushi</strong>, zones frontalières avec la Zambie.
+      </p>
+      
+      <h3>🌍 Caractéristiques Géographiques</h3>
+      <ul class="org-list">
+        <li><i class='bx bx-map'></i> <strong>Localisation</strong>: Sud-est de la RDC, frontière zambienne</li>
+        <li><i class='bx bx-landscape'></i> <strong>Relief</strong>: Plateau du Katanga, altitude moyenne 1200m</li>
+        <li><i class='bx bx-water'></i> <strong>Rivières</strong>: Lufira, Kafubu, Lualaba</li>
+        <li><i class='bx bx-tree'></i> <strong>Végétation</strong>: Savane arborée et forêt claire</li>
+      </ul>
+
+      <h3>👥 Population et Culture</h3>
+      <ul class="org-list">
+        <li><i class='bx bx-group'></i> <strong>Population</strong>: Environ 1.2 million d'habitants</li>
+        <li><i class='bx bx-globe'></i> <strong>Groupes Ethniques</strong>: Luba, Bemba, Sanga, Lamba</li>
+        <li><i class='bx bx-church'></i> <strong>Religions</strong>: Catholicisme majoritaire, religions traditionnelles</li>
+        <li><i class='bx bx-briefcase'></i> <strong>Activités</strong>: Mines (cuivre, cobalt), agriculture, commerce</li>
+      </ul>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h4>Diocèse de Sakania-Kipushi</h4>
+          <p>Érigé le 25 mars 2023 - Au service de l'Évangile dans le Haut-Katanga</p>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul class="footer-links">
+            <li><i class='bx bx-map'></i> Évêché de Sakania-Kipushi, Sakania</li>
+            <li><i class='bx bx-phone'></i> +243 97 000 0000</li>
+            <li><i class='bx bx-envelope'></i> diocese@sakania-kipushi.cd</li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h4>Liens Utiles</h4>
+          <ul class="footer-links">
+            <li><a href="actualites.html">Actualités</a></li>
+            <li><a href="paroisses.html">Paroisses</a></li>
+            <li><a href="caritas.html">Caritas</a></li>
+            <li><a href="education.html">Éducation Catholique</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 Diocèse de Sakania-Kipushi — Tous droits réservés</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function(){
+      const toggle = document.querySelector('.nav-toggle');
+      const nav = document.querySelector('.site-nav');
+      
+      toggle && toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', !expanded);
+        nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        
+        // Animation du bouton
+        toggle.querySelector('i').classList.toggle('bx-menu');
+        toggle.querySelector('i').classList.toggle('bx-x');
+      });
+
+      // Animation au défilement
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }
+        });
+      }, observerOptions);
+
+      // Observer les sections
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+        section.style.opacity = '0';
+        section.style.transform = 'translateY(30px)';
+        section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(section);
+      });
+
+      // Observer les cartes de stats
+      const statCards = document.querySelectorAll('.stat-card');
+      statCards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+        observer.observe(card);
+      });
+    });
+  </script>
+</body>
+</html>
