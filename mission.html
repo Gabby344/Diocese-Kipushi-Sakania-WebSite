@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Notre Mission – Diocèse de Kipushi-Sakania</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #1a4a7a;
+      --secondary: #d4af37;
+      --accent: #8b4513;
+      --light: #f8f9fa;
+      --dark: #343a40;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Roboto', sans-serif;
+      line-height: 1.6;
+      color: var(--dark);
+      background-color: #f5f5f5;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Merriweather', serif;
+      margin-bottom: 1rem;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    /* Header */
+    header {
+      background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                  url('https://images.unsplash.com/photo-1547981609-4b6bf67b7d52?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 6rem 0 4rem;
+      position: relative;
+    }
+    
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards 0.5s;
+    }
+    
+    header p {
+      font-size: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards 0.8s;
+    }
+    
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    /* Navigation */
+    nav {
+      background: var(--primary);
+      padding: 1rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+    
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-3px);
+    }
+    
+    /* Main Content */
+    main {
+      padding: 4rem 0;
+    }
+    
+    .mission {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      padding: 3rem;
+      margin-bottom: 3rem;
+    }
+    
+    .mission h2 {
+      color: var(--primary);
+      position: relative;
+      padding-bottom: 0.5rem;
+      margin-top: 2rem;
+    }
+    
+    .mission h2:first-child {
+      margin-top: 0;
+    }
+    
+    .mission h2:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background: var(--secondary);
+    }
+    
+    .mission p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+      line-height: 1.8;
+    }
+    
+    .mission ul {
+      margin: 1.5rem 0;
+      padding-left: 1.5rem;
+    }
+    
+    .mission li {
+      margin-bottom: 0.8rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+    
+    .mission li:before {
+      content: '•';
+      color: var(--secondary);
+      font-weight: bold;
+      position: absolute;
+      left: 0;
+    }
+    
+    /* Cards Section */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+    
+    .value-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: var(--transition);
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    
+    .value-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .value-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .value-icon {
+      background: var(--primary);
+      color: white;
+      padding: 1.5rem;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+    
+    .value-content {
+      padding: 1.5rem;
+    }
+    
+    .value-content h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    
+    /* Quote Section */
+    .quote-section {
+      background: linear-gradient(rgba(26, 74, 122, 0.9), rgba(26, 74, 122, 0.9)), 
+                  url('https://images.unsplash.com/photo-1518991669955-9c7e78ec80ca?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+      color: white;
+      text-align: center;
+      padding: 4rem 0;
+      margin: 4rem 0;
+      border-radius: 10px;
+    }
+    
+    .quote-section blockquote {
+      font-size: 1.5rem;
+      font-style: italic;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      position: relative;
+    }
+    
+    .quote-section blockquote:before,
+    .quote-section blockquote:after {
+      content: '"';
+      font-size: 3rem;
+      color: var(--secondary);
+      position: absolute;
+      opacity: 0.5;
+    }
+    
+    .quote-section blockquote:before {
+      top: -1rem;
+      left: -2rem;
+    }
+    
+    .quote-section blockquote:after {
+      bottom: -2rem;
+      right: -2rem;
+    }
+    
+    .quote-section cite {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    /* Footer */
+    footer {
+      background: var(--dark);
+      color: white;
+      text-align: center;
+      padding: 2rem 0;
+    }
+    
+    footer p {
+      margin-top: 1rem;
+      font-style: italic;
+      color: #ccc;
+    }
+    
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2.2rem;
+      }
+      
+      header p {
+        font-size: 1.2rem;
+      }
+      
+      .nav-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .mission {
+        padding: 2rem;
+      }
+      
+      .quote-section blockquote {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1><i class="fas fa-dove"></i> Notre Mission</h1>
+      <p>Servir Dieu, éclairer les cœurs, bâtir la communion</p>
+    </div>
+  </header>
+
+  <nav>
+    <div class="container nav-container">
+      <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+      <a href="actualites.html"><i class="fas fa-newspaper"></i> Actualités</a>
+      <a href="agenda.html"><i class="fas fa-calendar-alt"></i> Agenda</a>
+      <a href="paroisses.html"><i class="fas fa-church"></i> Paroisses</a>
+      <a href="contact.html"><i class="fas fa-phone"></i> Contact</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="mission fade-in">
+      <h2>Vision pastorale</h2>
+      <p>Le diocèse de Kipushi-Sakania est appelé à être une lumière dans la région du Katanga, une Église vivante, fraternelle et missionnaire. Nous voulons annoncer l'Évangile avec audace, accompagner les plus fragiles, et former des disciples enracinés dans la prière et l'action.</p>
+
+      <h2>Fondements bibliques</h2>
+      <ul>
+        <li>"Vous êtes la lumière du monde." – Matthieu 5:14</li>
+        <li>"Allez, de toutes les nations faites des disciples." – Matthieu 28:19</li>
+        <li>"Aimez-vous les uns les autres comme je vous ai aimés." – Jean 13:34</li>
+      </ul>
+
+      <h2>Engagements concrets</h2>
+      <p>Nos priorités pastorales incluent :</p>
+      <ul>
+        <li>La formation des jeunes et des catéchistes</li>
+        <li>La solidarité avec les familles vulnérables</li>
+        <li>La valorisation du patrimoine spirituel et culturel</li>
+        <li>La communion entre les paroisses et les communautés religieuses</li>
+      </ul>
+    </section>
+
+    <section class="values-grid">
+      <div class="value-card">
+        <div class="value-icon">
+          <i class="fas fa-hands-helping"></i>
+        </div>
+        <div class="value-content">
+          <h3>Service Communautaire</h3>
+          <p>Nous nous engageons à servir toutes les communautés de notre diocèse, en particulier les plus démunies, à travers des programmes d'aide et de développement.</p>
+        </div>
+      </div>
+      
+      <div class="value-card">
+        <div class="value-icon">
+          <i class="fas fa-pray"></i>
+        </div>
+        <div class="value-content">
+          <h3>Vie Spirituelle</h3>
+          <p>Nous favorisons une vie spirituelle profonde à travers la prière, les sacrements et la formation continue des fidèles et des ministres.</p>
+        </div>
+      </div>
+      
+      <div class="value-card">
+        <div class="value-icon">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="value-content">
+          <h3>Communion Fraternelle</h3>
+          <p>Nous cultivons la fraternité et l'unité entre toutes les paroisses et communautés, favorisant le dialogue et la collaboration.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="quote-section fade-in">
+      <blockquote>
+        "Ce qui compte par-dessus tout, c'est la foi mise en œuvre par l'amour."
+      </blockquote>
+      <cite>Galates 5:6</cite>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © Diocèse de Kipushi-Sakania – conçu par Gabby Umba
+      <p>
+        "Aimez-vous les uns les autres comme je vous ai aimés." – Jean 13:34
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll animations
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    fadeElements.forEach(element => {
+      observer.observe(element);
+    });
+    
+    // Card animations
+    const cards = document.querySelectorAll('.value-card');
+    
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    
+    cards.forEach(card => {
+      cardObserver.observe(card);
+    });
+  </script>
+</body>
+</html>
