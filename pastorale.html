@@ -1,0 +1,1312 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Vie Pastorale — Diocèse de Sakania-Kipushi</title>
+
+  <!-- Boxicons -->
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* === VARIABLES & RESET === */
+    :root {
+      --primary: #1e40af;
+      --secondary: #fbbf24;
+      --accent: #dc2626;
+      --light: #f8fafc;
+      --dark: #1e293b;
+      --gray: #64748b;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif; 
+      line-height: 1.7; 
+      color: #1e293b; 
+      background: #f8fafc;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+    }
+    
+    a {
+      text-decoration: none; 
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    img {
+      max-width: 100%; 
+      display: block;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%); 
+      color: white; 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+    
+    .site-header .container {
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 1rem 0;
+    }
+    
+    .brand {
+      display: flex; 
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .brand .logo {
+      height: 60px; 
+      border-radius: 8px;
+    }
+    
+    .brand-title {
+      font-weight: 700; 
+      font-size: 1.4rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .brand-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    
+    .site-nav {
+      display: flex; 
+      gap: 1.5rem;
+    }
+    
+    .site-nav a {
+      padding: 0.5rem 1rem; 
+      border-radius: 8px;
+      transition: var(--transition);
+      position: relative;
+      font-weight: 500;
+    }
+    
+    .site-nav a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--secondary);
+      transition: var(--transition);
+    }
+    
+    .site-nav a:hover, .site-nav a.active {
+      color: var(--secondary);
+    }
+    
+    .site-nav a:hover:after, .site-nav a.active:after {
+      width: 100%;
+    }
+    
+    .nav-toggle {
+      display: none; 
+      background: none; 
+      border: none; 
+      font-size: 1.8rem; 
+      color: white; 
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* === HERO SECTION === */
+    .pastorale-hero {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%), 
+                  url('assets/images/pastorale-hero.jpg') center/cover no-repeat;
+      color: white;
+      padding: 6rem 1rem;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 4rem;
+    }
+    
+    .pastorale-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards 0.5s;
+    }
+    
+    .pastorale-hero p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards 0.8s;
+      font-weight: 300;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === MAIN CONTENT === */
+    main {
+      padding: 2rem 0 4rem;
+    }
+
+    /* Section Header */
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-header h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+    
+    .section-header p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+
+    /* Visites Pastorales Section */
+    .visites-section {
+      margin-bottom: 5rem;
+    }
+    
+    .visite-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+      border: 1px solid #e2e8f0;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: var(--transition);
+    }
+    
+    .visite-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .visite-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    
+    .visite-header {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    
+    .eveque-photo {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--secondary);
+    }
+    
+    .visite-info h3 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1.4rem;
+    }
+    
+    .visite-meta {
+      display: flex;
+      gap: 1rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    .visite-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .visite-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 2rem;
+    }
+    
+    .visite-description h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .visite-description p {
+      color: var(--gray);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    
+    .visite-highlights {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid var(--secondary);
+    }
+    
+    .visite-highlights h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .visite-highlights ul {
+      list-style: none;
+    }
+    
+    .visite-highlights li {
+      padding: 0.5rem 0;
+      color: var(--gray);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .visite-highlights li:before {
+      content: '✓';
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    /* Sacrements Section */
+    .sacrements-section {
+      margin-bottom: 5rem;
+    }
+    
+    .sacrements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .sacrement-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: var(--transition);
+      border: 1px solid #e2e8f0;
+      text-align: center;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    .sacrement-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .sacrement-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .sacrement-icon {
+      font-size: 3.5rem;
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      transition: var(--transition);
+    }
+    
+    .sacrement-card:hover .sacrement-icon {
+      color: var(--secondary);
+      transform: scale(1.1);
+    }
+    
+    .sacrement-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    
+    .sacrement-card p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .sacrement-info {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 1.5rem;
+      border-radius: 10px;
+      margin-top: 1rem;
+    }
+    
+    .sacrement-info h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    
+    .sacrement-info p {
+      font-size: 0.9rem;
+      margin-bottom: 0;
+      color: var(--gray);
+    }
+
+    /* Mouvements Section */
+    .mouvements-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 5rem 0;
+      border-radius: 20px;
+      margin-bottom: 5rem;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .mouvements-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .mouvement-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: var(--transition);
+      border-left: 4px solid var(--secondary);
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    .mouvement-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .mouvement-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    
+    .mouvement-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .mouvement-card h3 i {
+      color: var(--secondary);
+    }
+    
+    .mouvement-card p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+    
+    .mouvement-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
+    
+    .mouvement-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    /* Formation Section */
+    .formation-section {
+      margin-bottom: 5rem;
+    }
+    
+    .formation-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .formation-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: var(--transition);
+      border: 1px solid #e2e8f0;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    .formation-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .formation-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .formation-image {
+      height: 200px;
+      overflow: hidden;
+    }
+    
+    .formation-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .formation-card:hover .formation-image img {
+      transform: scale(1.05);
+    }
+    
+    .formation-content {
+      padding: 2rem;
+    }
+    
+    .formation-content h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+    }
+    
+    .formation-content p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    
+    .formation-details {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #e2e8f0;
+    }
+    
+    .formation-duration {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    .formation-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      font-weight: 600;
+      transition: var(--transition);
+    }
+    
+    .formation-link:hover {
+      color: var(--secondary);
+      gap: 0.8rem;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%);
+      color: white;
+      padding: 5rem 2rem;
+      border-radius: 20px;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    
+    .cta-section h2 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 2.2rem;
+    }
+    
+    .cta-section p {
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-primary {
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-primary:hover {
+      background: #f59e0b;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      border: 2px solid white;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* === FOOTER === */
+    .site-footer {
+      background: var(--dark); 
+      color: white; 
+      padding: 4rem 0 2rem;
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-column h3 {
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+    
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--secondary);
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .footer-links a {
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #cbd5e1;
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+      font-size: 1.2rem;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center; 
+      padding-top: 2rem; 
+      border-top: 1px solid #374151; 
+      font-size: 0.9rem; 
+      color: #9ca3af;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 968px) {
+      .visite-content {
+        grid-template-columns: 1fr;
+      }
+      
+      .visite-header {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-nav { 
+        display: none; 
+        flex-direction: column; 
+        background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%); 
+        position: absolute; 
+        top: 100%; 
+        left: 0;
+        right: 0;
+        width: 100%; 
+        border-radius: 0;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .nav-toggle { 
+        display: block; 
+      }
+      
+      .pastorale-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .pastorale-hero p {
+        font-size: 1.2rem;
+      }
+      
+      .sacrements-grid,
+      .mouvements-grid,
+      .formation-cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn-primary, .btn-secondary {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        justify-content: center;
+      }
+    }
+
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Accueil du diocèse">
+        <img src="assets/images/logo-diocese.png" alt="Diocèse de Sakania-Kipushi" class="logo"/>
+        <span class="brand-title">
+          Diocèse de Sakania-Kipushi
+          <span class="brand-subtitle">Servir le Christ dans le Haut-Katanga</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="diocese.html">Diocèse</a>
+        <a href="paroisses.html">Paroisses</a>
+        <a href="pastorale.html" class="active">Pastorale</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="caritas.html">Caritas</a>
+        <a href="education.html">Éducation</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Ouvrir la navigation">
+        <i class='bx bx-menu'></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="pastorale-hero">
+    <div class="container">
+      <h1>Vie Pastorale</h1>
+      <p>Accompagner la croissance spirituelle et l'engagement chrétien dans notre diocèse</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="container main">
+
+    <!-- Visites Pastorales Section -->
+    <section class="visites-section">
+      <div class="section-header">
+        <h2>Visites Pastorales de l'Évêque</h2>
+        <p>Monseigneur Gaston Ruvezi au cœur des communautés paroissiales</p>
+      </div>
+      
+      <div class="visite-card">
+        <div class="visite-header">
+          <img src="assets/images/eveque-gaston-ruvezi.jpg" alt="Monseigneur Gaston Ruvezi" class="eveque-photo">
+          <div class="visite-info">
+            <h3>Visite Pastorale à la Paroisse Saint Pierre de Kipushi</h3>
+            <div class="visite-meta">
+              <span><i class='bx bx-calendar'></i> 15-17 Mars 2024</span>
+              <span><i class='bx bx-time'></i> 3 jours</span>
+              <span><i class='bx bx-group'></i> 1,200 fidèles</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="visite-content">
+          <div class="visite-description">
+            <h4>Rencontre avec la communauté paroissiale</h4>
+            <p>Monseigneur Gaston Ruvezi a consacré trois jours à la visite approfondie de la paroisse Saint Pierre de Kipushi. Cette visite pastorale s'inscrit dans son engagement à rencontrer personnellement chaque communauté du diocèse depuis son installation en mai 2023.</p>
+            
+            <h4>Déroulement de la visite</h4>
+            <p>La visite a débuté par une messe solennelle d'ouverture présidée par l'évêque, suivie de rencontres avec le conseil pastoral, les catéchistes, les mouvements de jeunesse et les œuvres caritatives. Monseigneur Ruvezi a également visité les familles, les malades et consacré du temps à l'écoute des préoccupations de la communauté.</p>
+          </div>
+          
+          <div class="visite-highlights">
+            <h4>Points Forts de la Visite</h4>
+            <ul>
+              <li>Messe solennelle avec confirmation de 45 jeunes</li>
+              <li>Rencontre avec les 25 catéchistes de la paroisse</li>
+              <li>Visite aux malades et personnes âgées</li>
+              <li>Échanges avec le conseil économique paroissial</li>
+              <li>Bénédiction des nouveaux locaux de la catéchèse</li>
+              <li>Rencontre œcuménique avec les autres confessions</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="visite-card">
+        <div class="visite-header">
+          <img src="assets/images/eveque-gaston-ruvezi.jpg" alt="Monseigneur Gaston Ruvezi" class="eveque-photo">
+          <div class="visite-info">
+            <h3>Visite à la Paroisse Notre Dame de Sakania</h3>
+            <div class="visite-meta">
+              <span><i class='bx bx-calendar'></i> 5-7 Avril 2024</span>
+              <span><i class='bx bx-time'></i> 3 jours</span>
+              <span><i class='bx bx-group'></i> 950 fidèles</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="visite-content">
+          <div class="visite-description">
+            <h4>Renforcement de la foi communautaire</h4>
+            <p>Cette deuxième visite pastorale importante a permis à Monseigneur Ruvezi d'encourager la communauté de Sakania dans sa foi et son engagement missionnaire. L'évêque a particulièrement insisté sur l'importance de la formation des laïcs et de l'évangélisation en milieu rural.</p>
+            
+            <h4>Moments marquants</h4>
+            <p>La visite a été marquée par la célébration du sacrement des malades pour 18 personnes, la bénédiction du nouveau chœur liturgique, et des échanges fructueux sur les défis pastoraux spécifiques à cette région frontalière.</p>
+          </div>
+          
+          <div class="visite-highlights">
+            <h4>Programme Réalisé</h4>
+            <ul>
+              <li>Célébration eucharistique dominicale</li>
+              <li>Administration du sacrement des malades</li>
+              <li>Rencontre avec les responsables des mouvements</li>
+              <li>Visite de l'école catholique Saint Augustin</li>
+              <li>Échanges sur les projets de développement</li>
+              <li>Veillée de prière mariale</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="visite-card">
+        <div class="visite-header">
+          <img src="assets/images/eveque-gaston-ruvezi.jpg" alt="Monseigneur Gaston Ruvezi" class="eveque-photo">
+          <div class="visite-info">
+                        <h3>Prochaines Visites Pastorales Programméees</h3>
+            <div class="visite-meta">
+              <span><i class='bx bx-calendar'></i> Mai-Juin 2024</span>
+              <span><i class='bx bx-map'></i> Paroisses rurales</span>
+              <span><i class='bx bx-group'></i> Planning en cours</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="visite-content">
+          <div class="visite-description">
+            <h4>Calendrier des prochaines visites</h4>
+            <p>Monseigneur Gaston Ruvezi poursuit son programme de visites pastorales pour rencontrer l'ensemble des communautés du diocèse. Les prochaines étapes concerneront principalement les paroisses rurales et les communautés éloignées.</p>
+            
+            <h4>Objectifs pastoraux</h4>
+            <p>Ces visites s'inscrivent dans la mise en œuvre du plan pastoral diocésain 2024-2027, avec un accent particulier sur l'accompagnement des familles, la formation des jeunes et le renforcement des communautés de base.</p>
+          </div>
+          
+          <div class="visite-highlights">
+            <h4>Paroisses à Visiter</h4>
+            <ul>
+              <li>Paroisse Sainte Thérèse de Mushoshi</li>
+              <li>Paroisse Saint Joseph de Kalebuka</li>
+              <li>Paroisse Christ-Roi de Kasombo</li>
+              <li>Paroisse Notre Dame de la Paix</li>
+              <li>Paroisse Saint Michel de Kawama</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sacrements Section -->
+    <section class="sacrements-section">
+      <div class="section-header">
+        <h2>Les Sacrements</h2>
+        <p>Découvrez les sacrements qui rythment la vie chrétienne et les démarches pour les recevoir</p>
+      </div>
+      
+      <div class="sacrements-grid">
+        <div class="sacrement-card">
+          <i class='bx bx-water sacrement-icon'></i>
+          <h3>Baptême</h3>
+          <p>Entrée dans la communauté chrétienne et commencement de la vie nouvelle dans le Christ.</p>
+          <div class="sacrement-info">
+            <h4>📅 Préparation</h4>
+            <p>3 sessions de formation pour les parents et parrains/marraines</p>
+          </div>
+        </div>
+        
+        <div class="sacrement-card">
+          <i class='bx bx-user-check sacrement-icon'></i>
+          <h3>Confirmation</h3>
+          <p>Affermissement dans la foi et don de l'Esprit Saint pour témoigner du Christ.</p>
+          <div class="sacrement-info">
+            <h4>🎯 Public</h4>
+            <p>Jeunes à partir de 15 ans après une année de catéchèse</p>
+          </div>
+        </div>
+        
+        <div class="sacrement-card">
+          <i class='bx bx-heart sacrement-icon'></i>
+          <h3>Mariage</h3>
+          <p>Alliance sacrée entre un homme et une femme devant Dieu et la communauté.</p>
+          <div class="sacrement-info">
+            <h4>⏱️ Délai</h4>
+            <p>Préparation sur 6 mois avec accompagnement du couple</p>
+          </div>
+        </div>
+        
+        <div class="sacrement-card">
+          <i class='bx bx-bible sacrement-icon'></i>
+          <h3>Eucharistie</h3>
+          <p>Première communion des enfants après leur préparation catéchétique.</p>
+          <div class="sacrement-info">
+            <h4>📚 Formation</h4>
+            <p>2 années de catéchèse en paroisse</p>
+          </div>
+        </div>
+        
+        <div class="sacrement-card">
+          <i class='bx bx-plus-medical sacrement-icon'></i>
+          <h3>Onction des Malades</h3>
+          <p>Sacrament de réconfort et de force pour les personnes souffrantes.</p>
+          <div class="sacrement-info">
+            <h4>🏥 Contact</h4>
+            <p>Service d'aumônerie hospitalière disponible</p>
+          </div>
+        </div>
+        
+        <div class="sacrement-card">
+          <i class='bx bx-confused sacrement-icon'></i>
+          <h3>Réconciliation</h3>
+          <p>Sacrament du pardon et de la miséricorde divine.</p>
+          <div class="sacrement-info">
+            <h4>⏰ Disponibilité</h4>
+            <p>Confessions chaque samedi de 16h à 17h</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mouvements Section -->
+    <section class="mouvements-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Mouvements & Associations</h2>
+          <p>Rejoignez nos communautés vivantes pour grandir ensemble dans la foi</p>
+        </div>
+        
+        <div class="mouvements-grid">
+          <div class="mouvement-card">
+            <h3><i class='bx bx-run'></i> Jeunesse Mariale</h3>
+            <p>Mouvement de jeunes dédié à la Vierge Marie pour la formation spirituelle et l'engagement missionnaire.</p>
+            <div class="mouvement-meta">
+              <span><i class='bx bx-user'></i> 15-30 ans</span>
+              <span><i class='bx bx-calendar'></i> Samedis</span>
+            </div>
+          </div>
+          
+          <div class="mouvement-card">
+            <h3><i class='bx bx-group'></i> Légion de Marie</h3>
+            <p>Association de laïcs consacrée à la Vierge Marie pour l'évangélisation et les œuvres de charité.</p>
+            <div class="mouvement-meta">
+              <span><i class='bx bx-user'></i> Adultes</span>
+              <span><i class='bx bx-calendar'></i> Hebdomadaire</span>
+            </div>
+          </div>
+          
+          <div class="mouvement-card">
+            <h3><i class='bx bx-church'></i> Chorale Diocésaine</h3>
+            <p>Ensemble musical pour l'animation des célébrations liturgiques et événements diocésains.</p>
+            <div class="mouvement-meta">
+              <span><i class='bx bx-user'></i> Tous âges</span>
+              <span><i class='bx bx-music'></i> Rép. mercredi</span>
+            </div>
+          </div>
+          
+          <div class="mouvement-card">
+            <h3><i class='bx bx-campfire'></i> Scouts Catholiques</h3>
+            <p>Mouvement d'éducation des jeunes par le jeu, l'aventure et la vie dans la nature.</p>
+            <div class="mouvement-meta">
+              <span><i class='bx bx-user'></i> 7-25 ans</span>
+              <span><i class='bx bx-calendar'></i> Week-ends</span>
+            </div>
+          </div>
+          
+          <div class="mouvement-card">
+            <h3><i class='bx bx-book-open'></i> Équipes Notre-Dame</h3>
+            <p>Mouvement pour les couples désireux de sanctifier leur mariage et leur vie familiale.</p>
+            <div class="mouvement-meta">
+              <span><i class='bx bx-user'></i> Couples</span>
+              <span><i class='bx bx-calendar'></i> Mensuel</span>
+            </div>
+          </div>
+          
+          <div class="mouvement-card">
+            <h3><i class='bx bx-world'></i> Œuvre Pontificale Missionnaire</h3>
+            <p>Engagement pour soutenir l'évangélisation dans les territoires de mission.</p>
+            <div class="mouvement-meta">
+              <span><i class='bx bx-user'></i> Tous</span>
+              <span><i class='bx bx-calendar'></i> Ponctuel</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Formation Section -->
+    <section class="formation-section">
+      <div class="section-header">
+        <h2>Formation & Catéchèse</h2>
+        <p>Programmes de formation pour approfondir votre foi et votre engagement chrétien</p>
+      </div>
+      
+      <div class="formation-cards">
+        <div class="formation-card">
+          <div class="formation-image">
+            <img src="assets/images/catechisme-enfants.jpg" alt="Catéchisme des enfants">
+          </div>
+          <div class="formation-content">
+            <h3>Catéchisme des Enfants</h3>
+            <p>Initiation à la foi chrétienne pour les enfants de 7 à 12 ans, préparation aux sacrements.</p>
+            <div class="formation-details">
+              <span class="formation-duration">
+                <i class='bx bx-time'></i> 2 ans
+              </span>
+              <a href="#" class="formation-link">
+                Inscription <i class='bx bx-right-arrow-alt'></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="formation-card">
+          <div class="formation-image">
+            <img src="assets/images/formation-adultes.jpg" alt="Formation des adultes">
+          </div>
+          <div class="formation-content">
+            <h3>Formation des Adultes</h3>
+            <p>Session d'approfondissement de la foi pour les adultes et jeunes adultes.</p>
+            <div class="formation-details">
+              <span class="formation-duration">
+                <i class='bx bx-time'></i> 6 mois
+              </span>
+              <a href="#" class="formation-link">
+                Programme <i class='bx bx-right-arrow-alt'></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="formation-card">
+          <div class="formation-image">
+            <img src="assets/images/catechumenat.jpg" alt="Catéchuménat">
+          </div>
+          <div class="formation-content">
+            <h3>Catéchuménat</h3>
+            <p>Accompagnement des adultes demandant le baptême ou les autres sacrements de l'initiation.</p>
+            <div class="formation-details">
+              <span class="formation-duration">
+                <i class='bx bx-time'></i> 1 an
+              </span>
+              <a href="#" class="formation-link">
+                S'inscrire <i class='bx bx-right-arrow-alt'></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Rejoignez Notre Communauté</h2>
+      <p>Que vous soyez en recherche, débutant dans la foi ou désireux de vous engager davantage, il y a une place pour vous dans notre Église.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn-primary">
+          <i class='bx bx-envelope'></i> Nous Contacter
+        </a>
+        <a href="paroisses.html" class="btn-secondary">
+          <i class='bx bx-church'></i> Trouver une Paroisse
+        </a>
+        <a href="visites-pastorales.html" class="btn-secondary">
+          <i class='bx bx-calendar'></i> Agenda des Visites
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Service de Pastorale</h3>
+          <p>Coordonnateur diocésain de la pastorale et de la catéchèse pour le diocèse de Sakania-Kipushi.</p>
+          <div class="social-links">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Liens Rapides</h3>
+          <div class="footer-links">
+            <a href="sacrements.html"><i class='bx bx-water'></i> Sacrements</a>
+            <a href="mouvements.html"><i class='bx bx-group'></i> Mouvements</a>
+            <a href="catechisme.html"><i class='bx bx-book-open'></i> Catéchisme</a>
+            <a href="visites-pastorales.html"><i class='bx bx-calendar-star'></i> Visites Pastorales</a>
+            <a href="contact.html"><i class='bx bx-envelope'></i> Contact Pastorale</a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact Pastorale</h3>
+          <div class="footer-links">
+            <a href="tel:+243971234568"><i class='bx bx-phone'></i> +243 97 123 4568</a>
+            <a href="mailto:pastorale@diocese-sakania-kipushi.cd"><i class='bx bx-envelope'></i> pastorale@diocese-sakania-kipushi.cd</a>
+            <a href="#"><i class='bx bx-time'></i> Lun-Ven: 8h-16h</a>
+            <a href="#"><i class='bx bx-map'></i> Bureau de la Pastorale, Évêché</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 Diocèse de Sakania-Kipushi — Service de la Pastorale</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Navigation Toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      
+      // Animation de l'icône
+      const icon = toggle.querySelector('i');
+      icon.classList.toggle('bx-menu');
+      icon.classList.toggle('bx-x');
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, observerOptions);
+
+    // Observer les cartes
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.visite-card, .sacrement-card, .mouvement-card, .formation-card');
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+
+      // Animation des sections fade-in
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeElements.forEach(element => {
+        fadeObserver.observe(element);
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.site-header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Fonction pour charger les visites pastorales depuis Firebase
+    async function chargerVisitesPastorales() {
+      try {
+        // Simulation de données (à remplacer par l'appel Firebase)
+        const visites = [
+          {
+            titre: "Visite Pastorale à la Paroisse Saint Pierre de Kipushi",
+            date: "15-17 Mars 2024",
+            duree: "3 jours",
+            participants: "1,200 fidèles",
+            description: "Monseigneur Gaston Ruvezi a consacré trois jours à la visite approfondie de la paroisse Saint Pierre de Kipushi...",
+            pointsForts: [
+              "Messe solennelle avec confirmation de 45 jeunes",
+              "Rencontre avec les 25 catéchistes de la paroisse",
+              "Visite aux malades et personnes âgées"
+            ]
+          }
+          // Ajouter d'autres visites ici
+        ];
+
+        // Le code d'intégration Firebase serait ici
+        // const querySnapshot = await db.collection('visites-pastorales')
+        //   .where('statut', '==', 'publié')
+        //   .orderBy('date', 'desc')
+        //   .get();
+
+      } catch (error) {
+        console.error('Erreur lors du chargement des visites pastorales:', error);
+      }
+    }
+
+    // Charger les données au démarrage
+    document.addEventListener('DOMContentLoaded', function() {
+      chargerVisitesPastorales();
+    });
+  </script>
+</body>
+</html>
