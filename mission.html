@@ -46,7 +46,7 @@
     /* Header */
     header {
       background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
-                  url('https://images.unsplash.com/photo-1547981609-4b6bf67b7d52?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
+                  url('https://images.unsplash.com/photo-1544830288-5a52946cffa8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80') no-repeat center center/cover;
       color: white;
       text-align: center;
       padding: 6rem 0 4rem;
@@ -168,6 +168,104 @@
       font-weight: bold;
       position: absolute;
       left: 0;
+    }
+    
+    /* Carousel Section */
+    .carousel-section {
+      padding: 4rem 0;
+      background: var(--light);
+    }
+    
+    .carousel-container {
+      position: relative;
+      max-width: 1000px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .carousel {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    
+    .carousel-item {
+      min-width: 100%;
+      position: relative;
+    }
+    
+    .carousel-item img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+    
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(transparent, rgba(0,0,0,0.8));
+      color: white;
+      padding: 2rem;
+    }
+    
+    .carousel-caption h3 {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+    
+    .carousel-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+      padding: 0 1rem;
+    }
+    
+    .carousel-btn {
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    
+    .carousel-btn:hover {
+      background: white;
+      transform: scale(1.1);
+    }
+    
+    .carousel-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 1.5rem;
+    }
+    
+    .carousel-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    
+    .carousel-indicator.active {
+      background: var(--primary);
+      transform: scale(1.2);
     }
     
     /* Cards Section */
@@ -307,6 +405,10 @@
       .quote-section blockquote {
         font-size: 1.2rem;
       }
+      
+      .carousel-item img {
+        height: 350px;
+      }
     }
   </style>
 </head>
@@ -314,7 +416,7 @@
   <header>
     <div class="container">
       <h1><i class="fas fa-dove"></i> Notre Mission</h1>
-      <p>Servir Dieu, éclairer les cœurs, bâtir la communion</p>
+      <p>Servir Dieu, éclairer les cœurs, bâtir la communion dans la région du Katanga</p>
     </div>
   </header>
 
@@ -330,24 +432,68 @@
 
   <main class="container">
     <section class="mission fade-in">
-      <h2>Vision pastorale</h2>
-      <p>Le diocèse de Kipushi-Sakania est appelé à être une lumière dans la région du Katanga, une Église vivante, fraternelle et missionnaire. Nous voulons annoncer l'Évangile avec audace, accompagner les plus fragiles, et former des disciples enracinés dans la prière et l'action.</p>
+      <h2>Vision Pastorale du Diocèse</h2>
+      <p>Le diocèse de Kipushi-Sakania, érigé le 24 avril 2023 par le Pape François, est appelé à être une lumière dans la région du Katanga. Notre Église locale, jeune et dynamique, s'engage à être une communauté vivante, fraternelle et missionnaire au service des populations de Kipushi, Sakania et leurs environs.</p>
 
-      <h2>Fondements bibliques</h2>
+      <h2>Fondements Bibliques</h2>
       <ul>
-        <li>"Vous êtes la lumière du monde." – Matthieu 5:14</li>
+        <li>"Vous êtes la lumière du monde. Une ville située sur une montagne ne peut être cachée." – Matthieu 5:14</li>
         <li>"Allez, de toutes les nations faites des disciples." – Matthieu 28:19</li>
         <li>"Aimez-vous les uns les autres comme je vous ai aimés." – Jean 13:34</li>
       </ul>
 
-      <h2>Engagements concrets</h2>
-      <p>Nos priorités pastorales incluent :</p>
+      <h2>Engagements Concrets</h2>
+      <p>Nos priorités pastorales pour l'évangélisation dans le Haut-Katanga incluent :</p>
       <ul>
-        <li>La formation des jeunes et des catéchistes</li>
-        <li>La solidarité avec les familles vulnérables</li>
-        <li>La valorisation du patrimoine spirituel et culturel</li>
-        <li>La communion entre les paroisses et les communautés religieuses</li>
+        <li>La formation des jeunes, catéchistes et agents pastoraux</li>
+        <li>La solidarité avec les familles vulnérables et les mineurs</li>
+        <li>La valorisation du patrimoine spirituel et culturel local</li>
+        <li>La communion entre les 13 paroisses et communautés religieuses</li>
+        <li>Le dialogue interreligieux et la promotion de la paix sociale</li>
       </ul>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="carousel-section fade-in">
+      <h2 style="text-align: center; color: var(--primary); margin-bottom: 2rem;">Notre Action sur le Terrain</h2>
+      <div class="carousel-container">
+        <div class="carousel" id="carousel">
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1544830288-5a52946cffa8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Cathédrale Saint-Pierre de Sakania">
+            <div class="carousel-caption">
+              <h3>Cathédrale Saint-Pierre</h3>
+              <p>Siège épiscopal du diocèse à Sakania</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Célébration eucharistique">
+            <div class="carousel-caption">
+              <h3>Célébrations Communautaires</h3>
+              <p>Messes rassemblant les fidèles des paroisses urbaines et rurales</p>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Actions caritatives">
+            <div class="carousel-caption">
+              <h3>Actions Caritatives</h3>
+              <p>Soutien aux populations défavorisées de la région</p>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-controls">
+          <button class="carousel-btn" id="prevBtn">
+            <i class='bx bx-chevron-left'></i>
+          </button>
+          <button class="carousel-btn" id="nextBtn">
+            <i class='bx bx-chevron-right'></i>
+          </button>
+        </div>
+        <div class="carousel-indicators" id="indicators">
+          <span class="carousel-indicator active"></span>
+          <span class="carousel-indicator"></span>
+          <span class="carousel-indicator"></span>
+        </div>
+      </div>
     </section>
 
     <section class="values-grid">
@@ -357,7 +503,7 @@
         </div>
         <div class="value-content">
           <h3>Service Communautaire</h3>
-          <p>Nous nous engageons à servir toutes les communautés de notre diocèse, en particulier les plus démunies, à travers des programmes d'aide et de développement.</p>
+          <p>Nous nous engageons à servir toutes les communautés de notre diocèse, en particulier les plus démunies, à travers des programmes d'aide et de développement adaptés au contexte local du Katanga.</p>
         </div>
       </div>
       
@@ -367,7 +513,7 @@
         </div>
         <div class="value-content">
           <h3>Vie Spirituelle</h3>
-          <p>Nous favorisons une vie spirituelle profonde à travers la prière, les sacrements et la formation continue des fidèles et des ministres.</p>
+          <p>Nous favorisons une vie spirituelle profonde à travers la prière, les sacrements et la formation continue des fidèles et des ministres, dans le respect des traditions locales.</p>
         </div>
       </div>
       
@@ -377,7 +523,7 @@
         </div>
         <div class="value-content">
           <h3>Communion Fraternelle</h3>
-          <p>Nous cultivons la fraternité et l'unité entre toutes les paroisses et communautés, favorisant le dialogue et la collaboration.</p>
+          <p>Nous cultivons la fraternité et l'unité entre toutes les paroisses et communautés, favorisant le dialogue et la collaboration dans cette région frontalière stratégique.</p>
         </div>
       </div>
     </section>
@@ -392,12 +538,19 @@
 
   <footer>
     <div class="container">
-      © Diocèse de Kipushi-Sakania – conçu par Gabby Umba
+      © 2024 Diocèse de Kipushi-Sakania — Érigé le 24 avril 2023
       <p>
         "Aimez-vous les uns les autres comme je vous ai aimés." – Jean 13:34
       </p>
     </div>
   </footer>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+
+  <!-- Configuration Firebase -->
+  <script src="firebase-config.js"></script>
 
   <script>
     // Scroll animations
@@ -433,6 +586,62 @@
     cards.forEach(card => {
       cardObserver.observe(card);
     });
+
+    // Carousel functionality
+    const carousel = document.getElementById('carousel');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    
+    let currentIndex = 0;
+    const totalItems = document.querySelectorAll('.carousel-item').length;
+    
+    function updateCarousel() {
+      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+      
+      // Update indicators
+      indicators.forEach((indicator, index) => {
+        if (index === currentIndex) {
+          indicator.classList.add('active');
+        } else {
+          indicator.classList.remove('active');
+        }
+      });
+    }
+    
+    nextBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateCarousel();
+    });
+    
+    prevBtn.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+      updateCarousel();
+    });
+    
+    // Auto slide
+    setInterval(() => {
+      currentIndex = (currentIndex + 1) % totalItems;
+      updateCarousel();
+    }, 5000);
+    
+    // Indicator click
+    indicators.forEach((indicator, index) => {
+      indicator.addEventListener('click', () => {
+        currentIndex = index;
+        updateCarousel();
+      });
+    });
+
+    // Navigation toggle for mobile
+    const navToggle = document.querySelector('.nav-toggle');
+    const navContainer = document.querySelector('.nav-container');
+    
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        navContainer.style.display = navContainer.style.display === 'flex' ? 'none' : 'flex';
+      });
+    }
   </script>
 </body>
 </html>
