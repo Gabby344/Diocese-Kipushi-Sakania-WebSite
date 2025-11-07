@@ -54,7 +54,14 @@
     
     .logo { 
       height: 60px; 
+      width: 60px;
       border-radius: 8px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1e40af;
+      font-weight: bold;
     }
     
     .brand-title {
@@ -109,7 +116,7 @@
     /* Hero Section */
     .education-hero {
       background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%),
-                  url('assets/images/education-hero.jpg') center/cover;
+                  url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231e40af"/><text x="50" y="50" font-family="Arial" font-size="10" fill="white" text-anchor="middle" dy=".3em">Image Éducation</text></svg>') center/cover;
       color: white;
       padding: 5rem 1rem;
       text-align: center;
@@ -225,6 +232,18 @@
       width: 100%;
       height: 200px;
       object-fit: cover;
+      background: linear-gradient(135deg, #1e40af 0%, #3730a3 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.1rem;
+      position: relative;
+    }
+    
+    .school-img:before {
+      content: 'Photo de l\'école';
+      position: absolute;
     }
     
     .school-content {
@@ -470,7 +489,7 @@
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="index.html" aria-label="Accueil du diocèse">
-        <img src="assets/images/logo-diocese.png" alt="Diocèse de Sakania-Kipushi" class="logo"/>
+        <div class="logo">Logo</div>
         <span class="brand-title">Diocèse de Sakania-Kipushi</span>
       </a>
       <nav class="site-nav" aria-label="Navigation principale">
@@ -533,7 +552,9 @@
       <div class="schools-grid">
         <!-- Institut Monseigneur Mulolwa -->
         <div class="school-card">
-          <img src="assets/images/institut-mulolwa.jpg" alt="Institut Monseigneur Mulolwa" class="school-img">
+          <div class="school-img">
+            <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/institut-mulolwa.jpg" -->
+          </div>
           <div class="school-content">
             <h3 class="school-title">Institut Monseigneur Mulolwa</h3>
             <div class="school-location">
@@ -556,7 +577,9 @@
 
         <!-- École Primaire Saint Pierre -->
         <div class="school-card">
-          <img src="assets/images/saint-pierre.jpg" alt="École Primaire Saint Pierre" class="school-img">
+          <div class="school-img">
+            <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/saint-pierre.jpg" -->
+          </div>
           <div class="school-content">
             <h3 class="school-title">École Primaire Saint Pierre</h3>
             <div class="school-location">
@@ -579,7 +602,9 @@
 
         <!-- Collège Saint Augustin -->
         <div class="school-card">
-          <img src="assets/images/saint-augustin.jpg" alt="Collège Saint Augustin" class="school-img">
+          <div class="school-img">
+            <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/saint-augustin.jpg" -->
+          </div>
           <div class="school-content">
             <h3 class="school-title">Collège Saint Augustin</h3>
             <div class="school-location">
@@ -592,6 +617,79 @@
               <li>Bibliothèque moderne</li>
               <li>Sports et culture</li>
               <li>Orientation scolaire</li>
+            </ul>
+            <a href="#" class="school-btn">
+              Découvrir
+              <i class='bx bx-chevron-right'></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Ajout d'autres écoles pour démonstration -->
+        <div class="school-card">
+          <div class="school-img">
+            <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/ecole-sainte-anne.jpg" -->
+          </div>
+          <div class="school-content">
+            <h3 class="school-title">École Sainte Anne</h3>
+            <div class="school-location">
+              <i class='bx bx-map'></i>
+              <span>Sakania</span>
+            </div>
+            <p>École primaire pour filles avec un programme éducatif complet.</p>
+            <ul class="school-features">
+              <li>Éducation spécialisée filles</li>
+              <li>Activités artistiques</li>
+              <li>Encadrement personnalisé</li>
+              <li>Bibliothèque enfantine</li>
+            </ul>
+            <a href="#" class="school-btn">
+              Découvrir
+              <i class='bx bx-chevron-right'></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="school-card">
+          <div class="school-img">
+            <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/lycee-saint-michel.jpg" -->
+          </div>
+          <div class="school-content">
+            <h3 class="school-title">Lycée Saint Michel</h3>
+            <div class="school-location">
+              <i class='bx bx-map'></i>
+              <span>Kipushi</span>
+            </div>
+            <p>Lycée d'enseignement général avec sections littéraire et scientifique.</p>
+            <ul class="school-features">
+              <li>Préparation au baccalauréat</li>
+              <li>Laboratoires scientifiques</li>
+              <li>Centre multimédia</li>
+              <li>Programme d'échanges</li>
+            </ul>
+            <a href="#" class="school-btn">
+              Découvrir
+              <i class='bx bx-chevron-right'></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="school-card">
+          <div class="school-img">
+            <!-- REMPLACER PAR VOTRE PHOTO: src="assets/images/ecole-notre-dame.jpg" -->
+          </div>
+          <div class="school-content">
+            <h3 class="school-title">École Notre Dame</h3>
+            <div class="school-location">
+              <i class='bx bx-map'></i>
+              <span>Sakania</span>
+            </div>
+            <p>École mixte avec un programme éducatif moderne et innovant.</p>
+            <ul class="school-features">
+              <li>Pédagogie active</li>
+              <li>Classes numériques</li>
+              <li>Jardin pédagogique</li>
+              <li>Éveil musical</li>
             </ul>
             <a href="#" class="school-btn">
               Découvrir
@@ -755,8 +853,8 @@
       // Observer les éléments
       const animatedElements = document.querySelectorAll('.school-card, .level-card, .stat-card');
       animatedElements.forEach((element, index) => {
-        element.style.opacity = '0';
-        element.style.transform = 'translateY(30px)';
+        element.style.opacity = '1'; // Changé de 0 à 1 pour afficher immédiatement
+        element.style.transform = 'translateY(0)'; // Changé de 30px à 0
         element.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
         observer.observe(element);
       });
