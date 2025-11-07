@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Paroisses — Diocèse de Sakania-Kipushi</title>
+
+  <!-- Boxicons -->
+  <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* === VARIABLES & RESET === */
+    :root {
+      --primary: #1e40af;
+      --secondary: #fbbf24;
+      --accent: #dc2626;
+      --light: #f8fafc;
+      --dark: #1e293b;
+      --gray: #64748b;
+      --transition: all 0.3s ease;
+    }
+    
+    * {
+      margin: 0; 
+      padding: 0; 
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif; 
+      line-height: 1.7; 
+      color: #1e293b; 
+      background: #f8fafc;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+    }
+    
+    a {
+      text-decoration: none; 
+      color: inherit;
+      transition: var(--transition);
+    }
+    
+    img {
+      max-width: 100%; 
+      display: block;
+    }
+    
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* === HEADER === */
+    .site-header {
+      background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%); 
+      color: white; 
+      position: sticky; 
+      top: 0; 
+      z-index: 1000; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      backdrop-filter: blur(10px);
+    }
+    
+    .site-header .container {
+      display: flex; 
+      align-items: center; 
+      justify-content: space-between; 
+      padding: 1rem 0;
+    }
+    
+    .brand {
+      display: flex; 
+      align-items: center;
+      gap: 1rem;
+    }
+    
+    .brand .logo {
+      height: 60px; 
+      border-radius: 8px;
+    }
+    
+    .brand-title {
+      font-weight: 700; 
+      font-size: 1.4rem;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .brand-subtitle {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+    
+    .site-nav {
+      display: flex; 
+      gap: 1.5rem;
+    }
+    
+    .site-nav a {
+      padding: 0.5rem 1rem; 
+      border-radius: 8px;
+      transition: var(--transition);
+      position: relative;
+      font-weight: 500;
+    }
+    
+    .site-nav a:after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: 0;
+      left: 0;
+      background-color: var(--secondary);
+      transition: var(--transition);
+    }
+    
+    .site-nav a:hover, .site-nav a.active {
+      color: var(--secondary);
+    }
+    
+    .site-nav a:hover:after, .site-nav a.active:after {
+      width: 100%;
+    }
+    
+    .nav-toggle {
+      display: none; 
+      background: none; 
+      border: none; 
+      font-size: 1.8rem; 
+      color: white; 
+      cursor: pointer;
+      padding: 0.5rem;
+    }
+
+    /* === HERO SECTION === */
+    .paroisses-hero {
+      background: linear-gradient(135deg, rgba(30, 64, 175, 0.9) 0%, rgba(55, 48, 163, 0.9) 100%), 
+                  url('assets/images/paroisses-hero.jpg') center/cover no-repeat;
+      color: white;
+      padding: 6rem 1rem;
+      text-align: center;
+      border-radius: 0 0 30px 30px;
+      margin-bottom: 4rem;
+    }
+    
+    .paroisses-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards 0.5s;
+    }
+    
+    .paroisses-hero p {
+      font-size: 1.4rem;
+      max-width: 800px;
+      margin: 0 auto;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s forwards 0.8s;
+      font-weight: 300;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* === STATISTICS === */
+    .stats-section {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%);
+      color: white;
+      border-radius: 20px;
+      margin-bottom: 4rem;
+    }
+    
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 2rem 1rem;
+    }
+    
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--secondary);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .stat-label {
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    /* === MAP SECTION === */
+    .map-section {
+      padding: 4rem 0;
+      margin-bottom: 4rem;
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-header h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .section-header h2:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 2px;
+    }
+    
+    .section-header p {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--gray);
+      font-size: 1.1rem;
+    }
+    
+    .map-container {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      border: 1px solid #e2e8f0;
+    }
+    
+    .map-placeholder {
+      background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+      height: 500px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--gray);
+      font-size: 1.1rem;
+      text-align: center;
+    }
+    
+    .map-legend {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-top: 2rem;
+      flex-wrap: wrap;
+    }
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    .legend-color {
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+    }
+    
+    .legend-urbain { background: var(--primary); }
+    .legend-rural { background: var(--secondary); }
+    .legend-mission { background: var(--accent); }
+
+    /* === PARISH GRID === */
+    .parish-section {
+      padding: 4rem 0;
+      margin-bottom: 4rem;
+    }
+    
+    .filters {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    
+    .filter-btn {
+      background: white;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+    
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(30, 64, 175, 0.2);
+    }
+    
+    .parish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+    
+    .parish-card {
+      background: white;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: var(--transition);
+      border: 1px solid #e2e8f0;
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    .parish-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .parish-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    }
+    
+    .parish-image {
+      height: 200px;
+      overflow: hidden;
+      position: relative;
+    }
+    
+    .parish-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+    
+    .parish-card:hover .parish-image img {
+      transform: scale(1.05);
+    }
+    
+    .parish-type {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 0.4rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    
+    .parish-content {
+      padding: 2rem;
+    }
+    
+    .parish-content h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
+      line-height: 1.3;
+    }
+    
+    .parish-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      color: var(--gray);
+      font-size: 0.9rem;
+    }
+    
+    .parish-meta span {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .parish-info {
+      margin-bottom: 1.5rem;
+    }
+    
+    .parish-info p {
+      color: var(--gray);
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .parish-info strong {
+      color: var(--primary);
+      min-width: 120px;
+      display: inline-block;
+    }
+    
+    .parish-actions {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .parish-btn {
+      flex: 1;
+      text-align: center;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
+    
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .btn-primary:hover {
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-2px);
+    }
+    
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    /* === DEANERIES SECTION === */
+    .deaneries-section {
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      padding: 5rem 0;
+      border-radius: 20px;
+      margin-bottom: 4rem;
+      border: 1px solid #e2e8f0;
+    }
+    
+    .deaneries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .deanery-card {
+      background: white;
+      border-radius: 15px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+      transition: var(--transition);
+      border-left: 4px solid var(--secondary);
+      transform: translateY(30px);
+      opacity: 0;
+    }
+    
+    .deanery-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .deanery-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    }
+    
+    .deanery-card h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .deanery-card h3 i {
+      color: var(--secondary);
+    }
+    
+    .deanery-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .deanery-stat {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      border-radius: 10px;
+    }
+    
+    .deanery-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+      display: block;
+    }
+    
+    .deanery-label {
+      font-size: 0.8rem;
+      color: var(--gray);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    
+    .deanery-parishes {
+      margin-top: 1rem;
+    }
+    
+    .deanery-parishes h4 {
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+    
+    .deanery-parishes ul {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    .deanery-parishes li {
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .deanery-parishes li:before {
+      content: '▸';
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    /* === CTA SECTION === */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%);
+      color: white;
+      padding: 5rem 2rem;
+      border-radius: 20px;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    
+    .cta-section h2 {
+      color: white;
+      margin-bottom: 1rem;
+      font-size: 2.2rem;
+    }
+    
+    .cta-section p {
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+    
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    
+    .btn-large {
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 1rem 2rem;
+      border-radius: 50px;
+      font-weight: 600;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .btn-large:hover {
+      background: #f59e0b;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(251, 191, 36, 0.3);
+    }
+
+    /* === FOOTER === */
+    .site-footer {
+      background: var(--dark); 
+      color: white; 
+      padding: 4rem 0 2rem;
+      margin-top: 4rem;
+    }
+    
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 3rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-column h3 {
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+      color: var(--secondary);
+      font-weight: 600;
+    }
+    
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--secondary);
+    }
+    
+    .footer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    
+    .footer-links a {
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: #cbd5e1;
+    }
+    
+    .footer-links a:hover {
+      color: var(--secondary);
+      padding-left: 5px;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+      font-size: 1.2rem;
+    }
+    
+    .social-links a:hover {
+      background: var(--secondary);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+    
+    .footer-bottom {
+      text-align: center; 
+      padding-top: 2rem; 
+      border-top: 1px solid #374151; 
+      font-size: 0.9rem; 
+      color: #9ca3af;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 968px) {
+      .parish-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      }
+      
+      .deaneries-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .parish-actions {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .site-nav { 
+        display: none; 
+        flex-direction: column; 
+        background: linear-gradient(135deg, var(--primary) 0%, #3730a3 100%); 
+        position: absolute; 
+        top: 100%; 
+        left: 0;
+        right: 0;
+        width: 100%; 
+        border-radius: 0;
+        padding: 1rem;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      
+      .nav-toggle { 
+        display: block; 
+      }
+      
+      .paroisses-hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .paroisses-hero p {
+        font-size: 1.2rem;
+      }
+      
+      .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .btn-large {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+        justify-content: center;
+      }
+      
+      .filters {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+      }
+      
+      .filter-btn {
+        white-space: nowrap;
+      }
+    }
+
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s, transform 0.8s;
+    }
+    
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body class="page">
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Accueil du diocèse">
+        <img src="assets/images/logo-diocese.png" alt="Diocèse de Sakania-Kipushi" class="logo"/>
+        <span class="brand-title">
+          Diocèse de Sakania-Kipushi
+          <span class="brand-subtitle">Servir le Christ dans le Haut-Katanga</span>
+        </span>
+      </a>
+      <nav class="site-nav" aria-label="Navigation principale">
+        <a href="index.html">Accueil</a>
+        <a href="diocese.html">Diocèse</a>
+        <a href="paroisses.html" class="active">Paroisses</a>
+        <a href="pastorale.html">Pastorale</a>
+        <a href="actualites.html">Actualités</a>
+        <a href="caritas.html">Caritas</a>
+        <a href="education.html">Éducation</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+      <button class="nav-toggle" aria-expanded="false" aria-label="Ouvrir la navigation">
+        <i class='bx bx-menu'></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="paroisses-hero">
+    <div class="container">
+      <h1>Paroisses du Diocèse</h1>
+      <p>Découvrez les communautés chrétiennes qui vivent et célèbrent la foi dans le Haut-Katanga</p>
+    </div>
+  </section>
+
+  <!-- STATISTICS -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-number">24</span>
+          <span class="stat-label">Paroisses</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <span class="stat-label">Doyennés</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">32</span>
+          <span class="stat-label">Prêtres</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">250K+</span>
+          <span class="stat-label">Fidèles</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <main class="container main">
+
+    <!-- MAP SECTION -->
+    <section class="map-section">
+      <div class="section-header">
+        <h2>Carte du Diocèse</h2>
+        <p>Localisez les paroisses et doyennés sur le territoire diocésain</p>
+      </div>
+      
+      <div class="map-container">
+        <div class="map-placeholder">
+          <div>
+            <i class='bx bx-map' style="font-size: 4rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+            <p>Carte interactive des paroisses du diocèse de Sakania-Kipushi</p>
+            <p style="font-size: 0.9rem; margin-top: 0.5rem;">Territoire couvrant Sakania, Kipushi et les zones minières</p>
+          </div>
+        </div>
+        
+        <div class="map-legend">
+          <div class="legend-item">
+            <span class="legend-color legend-urbain"></span>
+            <span>Paroisses urbaines</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color legend-rural"></span>
+            <span>Paroisses rurales</span>
+          </div>
+          <div class="legend-item">
+            <span class="legend-color legend-mission"></span>
+            <span>Missions</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARISHES SECTION -->
+    <section class="parish-section">
+      <div class="section-header">
+        <h2>Nos Paroisses</h2>
+        <p>Trouvez votre communauté paroissiale, horaires des messes et informations de contact</p>
+      </div>
+      
+      <div class="filters">
+        <button class="filter-btn active" data-filter="all">Toutes les paroisses</button>
+        <button class="filter-btn" data-filter="urbain">Paroisses urbaines</button>
+        <button class="filter-btn" data-filter="rural">Paroisses rurales</button>
+        <button class="filter-btn" data-filter="mission">Missions</button>
+      </div>
+      
+      <div class="parish-grid">
+        <!-- Paroisse Cathédrale -->
+        <div class="parish-card" data-type="urbain">
+          <div class="parish-image">
+            <img src="assets/images/cathedrale-sakania.jpg" alt="Cathédrale Saint-Pierre-et-Paul">
+            <span class="parish-type">Cathédrale</span>
+          </div>
+          <div class="parish-content">
+            <h3>Cathédrale Saint-Pierre-et-Paul</h3>
+            <div class="parish-meta">
+              <span><i class='bx bx-map'></i> Sakania Centre</span>
+              <span><i class='bx bx-user'></i> P. Jean Mulongo</span>
+            </div>
+            <div class="parish-info">
+              <p><strong>Messes dominicales:</strong> 7h30, 10h00, 17h00</p>
+              <p><strong>Messes en semaine:</strong> 6h30 (sauf lundi)</p>
+              <p><strong>Confessions:</strong> Samedi 16h-17h</p>
+              <p><strong>Téléphone:</strong> +243 97 123 4567</p>
+            </div>
+            <div class="parish-actions">
+              <a href="paroisse-cathedrale.html" class="parish-btn btn-primary">Voir la paroisse</a>
+              <a href="contact.html" class="parish-btn btn-secondary">Contacter</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Paroisse Saint Jean-Bosco -->
+        <div class="parish-card" data-type="urbain">
+          <div class="parish-image">
+            <img src="assets/images/saint-jean-bosco.jpg" alt="Paroisse Saint Jean-Bosco">
+            <span class="parish-type">Urbaine</span>
+          </div>
+          <div class="parish-content">
+            <h3>Paroisse Saint Jean-Bosco</h3>
+            <div class="parish-meta">
+              <span><i class='bx bx-map'></i> Kipushi Centre</span>
+              <span><i class='bx bx-user'></i> P. Michel Kabongo</span>
+            </div>
+            <div class="parish-info">
+              <p><strong>Messes dominicales:</strong> 8h00, 11h00, 18h00</p>
+              <p><strong>Messes en semaine:</strong> 7h00</p>
+              <p><strong>Adoration:</strong> Jeudi 18h-19h</p>
+              <p><strong>Téléphone:</strong> +243 97 123 4568</p>
+            </div>
+            <div class="parish-actions">
+              <a href="paroisse-jean-bosco.html" class="parish-btn btn-primary">Voir la paroisse</a>
+              <a href="contact.html" class="parish-btn btn-secondary">Contacter</a>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Paroisse Sainte Thérèse -->
+        <div class="parish-card" data-type="rural">
+          <div class="parish-image">
+            <img src="assets/images/sainte-therese.jpg" alt="Paroisse Sainte Thérèse">
+            <span class="parish-type">Rurale</span>
+          </div>
+          <div class="parish-content">
+            <h3>Paroisse Sainte Thérèse de l'Enfant-Jésus</h3>
+            <div class="parish-meta">
+              <span><i class='bx bx-map'></i> Mushoshi</span>
+              <span><i class='bx bx-user'></i> P. André Kabila</span>
+            </div>
+            <div class="parish-info">
+              <p><strong>Messes dominicales:</strong> 9h00</p>
+              <p><strong>Messes en semaine:</strong> Mercredi et vendredi 7h00</p>
+              <p><strong>Catéchèse:</strong> Samedi 14h-16h</p>
+              <p><strong>Téléphone:</strong> +243 97 123 4569</p>
+            </div>
+            <div class="parish-actions">
+              <a href="paroisse-therese.html" class="parish-btn btn-primary">Voir la paroisse</a>
+              <a href="contact.html" class="parish-btn btn-secondary">Contacter</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DEANERIES SECTION -->
+    <section class="deaneries-section">
+      <div class="container">
+        <div class="section-header">
+          <h2>Doyennés du Diocèse</h2>
+          <p>Structure territoriale organisant la vie pastorale et la coordination des paroisses</p>
+        </div>
+        
+        <div class="deaneries-grid">
+          <!-- Doyenné de Sakania -->
+          <div class="deanery-card">
+            <h3><i class='bx bx-church'></i> Doyenné de Sakania</h3>
+            <p>Zone urbaine et périurbaine couvrant le centre administratif du diocèse.</p>
+            <div class="deanery-stats">
+              <div class="deanery-stat">
+                <span class="deanery-number">8</span>
+                <span class="deanery-label">Paroisses</span>
+              </div>
+              <div class="deanery-stat">
+                <span class="deanery-number">12</span>
+                <span class="deanery-label">Prêtres</span>
+              </div>
+            </div>
+            <div class="deanery-parishes">
+              <h4>Paroisses principales:</h4>
+              <ul>
+                <li>Cathédrale Saint-Pierre-et-Paul</li>
+                <li>Saint Jean-Baptiste</li>
+                <li>Notre Dame du Rosaire</li>
+                <li>Saint Joseph Artisan</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Doyenné de Kipushi -->
+          <div class="deanery-card">
+            <h3><i class='bx bx-church'></i> Doyenné de Kipushi</h3>
+            <p>Région minière et industrielle avec une forte présence de jeunes familles.</p>
+            <div class="deanery-stats">
+              <div class="deanery-stat">
+                <span class="deanery-number">6</span>
+                <span class="deanery-label">Paroisses</span>
+              </div>
+              <div class="deanery-stat">
+                <span class="deanery-number">8</span>
+                <span class="deanery-label">Prêtres</span>
+              </div>
+            </div>
+            <div class="deanery-parishes">
+              <h4>Paroisses principales:</h4>
+              <ul>
+                <li>Saint Jean-Bosco</li>
+                <li>Sainte Marie-Madeleine</li>
+                <li>Saint Charles Lwanga</li>
+                <li>Christ-Roi</li>
+              </ul>
+            </div>
+          </div>
+          
+          <!-- Doyenné Rural -->
+          <div class="deanery-card">
+            <h3><i class='bx bx-church'></i> Doyenné Rural</h3>
+            <p>Territoires agricoles et communautés villageoises dispersées.</p>
+            <div class="deanery-stats">
+              <div class="deanery-stat">
+                <span class="deanery-number">10</span>
+                <span class="deanery-label">Paroisses</span>
+              </div>
+              <div class="deanery-stat">
+                <span class="deanery-number">12</span>
+                <span class="deanery-label">Prêtres</span>
+              </div>
+            </div>
+            <div class="deanery-parishes">
+              <h4>Paroisses principales:</h4>
+              <ul>
+                <li>Sainte Thérèse de Mushoshi</li>
+                <li>Saint Michel de Kawama</li>
+                <li>Notre Dame de la Paix</li>
+                <li>Saint Augustin</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+      <h2>Vous Cherchez une Paroisse ?</h2>
+      <p>Que vous soyez nouveau dans la région ou que vous cherchiez à vous rapprocher d'une communauté, nous sommes là pour vous aider.</p>
+      <div class="cta-buttons">
+        <a href="contact.html" class="btn-large">
+          <i class='bx bx-phone'></i> Nous Contacter
+        </a>
+        <a href="horaires-messes.html" class="btn-large">
+          <i class='bx bx-time'></i> Horaires des Messes
+        </a>
+        <a href="carte-interactive.html" class="btn-large">
+          <i class='bx bx-map'></i> Carte Interactive
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>Service des Paroisses</h3>
+          <p>Coordination de la vie paroissiale et accompagnement des communautés chrétiennes du diocèse.</p>
+          <div class="social-links">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Liens Rapides</h3>
+          <div class="footer-links">
+            <a href="horaires-messes.html"><i class='bx bx-time'></i> Horaires des Messes</a>
+            <a href="carte-paroisses.html"><i class='bx bx-map'></i> Carte des Paroisses</a>
+            <a href="doyennes.html"><i class='bx bx-group'></i> Doyennés</a>
+            <a href="contact-paroisses.html"><i class='bx bx-envelope'></i> Contact Paroisses</a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Contact Paroisses</h3>
+          <div class="footer-links">
+            <a href="tel:+243971234570"><i class='bx bx-phone'></i> +243 97 123 4570</a>
+            <a href="mailto:paroisses@diocese-sakania-kipushi.cd"><i class='bx bx-envelope'></i> paroisses@diocese-sakania-kipushi.cd</a>
+            <a href="#"><i class='bx bx-time'></i> Lun-Ven: 8h-16h</a>
+            <a href="#"><i class='bx bx-map'></i> Bureau des Paroisses, Évêché</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2024 Diocèse de Sakania-Kipushi — Service des Paroisses</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS -->
+  <script>
+    // Navigation Toggle
+    const toggle = document.querySelector('.nav-toggle');
+    const nav = document.querySelector('.site-nav');
+    toggle?.addEventListener('click', () => {
+      const expanded = toggle.getAttribute('aria-expanded') === 'true';
+      toggle.setAttribute('aria-expanded', !expanded);
+      nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+      
+      // Animation de l'icône
+      const icon = toggle.querySelector('i');
+      icon.classList.toggle('bx-menu');
+      icon.classList.toggle('bx-x');
+    });
+
+    // Filter functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const parishCards = document.querySelectorAll('.parish-card');
+    
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        // Add active class to clicked button
+        button.classList.add('active');
+        
+        const filter = button.getAttribute('data-filter');
+        
+        parishCards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-type') === filter) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('animate');
+        }
+      });
+    }, observerOptions);
+
+    // Observer les cartes
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.parish-card, .deanery-card');
+      cards.forEach(card => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(card);
+      });
+
+      // Animation des sections fade-in
+      const fadeElements = document.querySelectorAll('.fade-in');
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      fadeElements.forEach(element => {
+        fadeObserver.observe(element);
+      });
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.site-header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Charger les paroisses depuis Firebase (exemple)
+    async function chargerParoisses() {
+      try {
+        // Le code d'intégration Firebase serait ici
+        // const querySnapshot = await db.collection('paroisses')
+        //   .where('statut', '==', 'active')
+        //   .orderBy('nom')
+        //   .get();
+        
+        // querySnapshot.forEach((doc) => {
+        //   const paroisse = doc.data();
+        //   // Ajouter la paroisse au DOM
+        // });
+        
+      } catch (error) {
+        console.error('Erreur lors du chargement des paroisses:', error);
+      }
+    }
+
+    // Charger les données au démarrage
+    document.addEventListener('DOMContentLoaded', function() {
+      chargerParoisses();
+    });
+  </script>
+</body>
+</html>
