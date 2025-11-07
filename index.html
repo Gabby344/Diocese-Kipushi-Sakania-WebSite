@@ -314,8 +314,8 @@
       gap: 0.8rem;
     }
 
-    /* === CAROUSEL SECTION === */
-    .carousel-section {
+    /* === ACTUALITES SECTION === */
+    .actualites-section {
       padding: 5rem 0;
       background: white;
     }
@@ -346,85 +346,85 @@
       color: #666;
       font-size: 1.1rem;
     }
-    .carousel-container {
+    .news-grid { 
+      display:grid; 
+      gap:2.5rem; 
+      grid-template-columns:repeat(auto-fit, minmax(350px,1fr)); 
+      margin-bottom: 4rem;
+    }
+    .news-card { 
+      background:#fff; 
+      border-radius:15px; 
+      overflow:hidden; 
+      box-shadow:0 5px 20px rgba(0,0,0,0.08); 
+      transition:0.4s;
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    .news-card.animate {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .news-card:hover { 
+      transform:translateY(-10px); 
+      box-shadow:0 15px 30px rgba(0,0,0,0.15); 
+    }
+    .news-card img { 
+      width:100%; 
+      height:220px; 
+      object-fit:cover; 
+      transition: var(--transition);
+    }
+    .news-card:hover img {
+      transform: scale(1.05);
+    }
+    .news-card .content { 
+      padding:1.8rem; 
       position: relative;
-      max-width: 1000px;
-      margin: 0 auto;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     }
-    .carousel {
-      display: flex;
-      transition: transform 0.5s ease;
+    .news-category {
+      display: inline-block;
+      background: var(--secondary);
+      color: var(--dark);
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-bottom: 1rem;
     }
-    .carousel-item {
-      min-width: 100%;
-      position: relative;
+    .news-card h3 { 
+      color:var(--primary); 
+      margin-bottom:0.8rem; 
+      font-size: 1.4rem;
+      line-height: 1.4;
     }
-    .carousel-item img {
-      width: 100%;
-      height: 500px;
-      object-fit: cover;
-      display: block;
-    }
-    .carousel-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(transparent, rgba(0,0,0,0.8));
-      color: white;
-      padding: 2rem;
-    }
-    .carousel-caption h3 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-    }
-    .carousel-controls {
-      position: absolute;
-      top: 50%;
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      transform: translateY(-50%);
-      padding: 0 1rem;
-    }
-    .carousel-btn {
-      background: rgba(255, 255, 255, 0.8);
-      border: none;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
+    .news-card p.date { 
+      font-size:0.9rem; 
+      color:#666; 
+      margin-bottom:1rem; 
       display: flex;
       align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 1.2rem;
+      gap: 0.5rem;
+    }
+    .news-card p.date i {
+      color: var(--secondary);
+    }
+    .news-card p { 
+      margin-bottom: 1.5rem;
+      color: #666;
+      line-height: 1.7;
+    }
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       color: var(--primary);
-    }
-    .carousel-btn:hover {
-      background: white;
-      transform: scale(1.1);
-    }
-    .carousel-indicators {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 1.5rem;
-    }
-    .carousel-indicator {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background: #ccc;
-      cursor: pointer;
+      font-weight: 500;
       transition: var(--transition);
     }
-    .carousel-indicator.active {
-      background: var(--primary);
-      transform: scale(1.2);
+    .read-more:hover {
+      color: var(--secondary);
+      gap: 0.8rem;
     }
 
     /* === EVENTS === */
@@ -631,9 +631,6 @@
         flex-direction: column;
         align-items: center;
       }
-      .carousel-item img {
-        height: 350px;
-      }
       .newsletter-form {
         flex-direction: column;
         gap: 0.5rem;
@@ -660,7 +657,7 @@
       <nav class="site-nav" aria-label="Navigation principale">
         <a href="index.html" class="active">Accueil</a>
         <a href="diocese.html">Diocèse</a>
-        <a href="mission.html">Mission</a><a href="paroisses.html">Paroisses</a>
+        <a href="paroisses.html">Paroisses</a>
         <a href="pastorale.html">Pastorale</a>
         <a href="actualites.html">Actualités</a>
         <a href="caritas.html">Caritas</a>
@@ -724,50 +721,18 @@
     </div>
   </section>
 
-  <!-- CAROUSEL SECTION -->
-  <section class="carousel-section">
+  <!-- ACTUALITES SECTION -->
+  <section class="actualites-section">
     <div class="container">
       <div class="section-header fade-in">
-        <h2>Vie du Diocèse</h2>
-        <p>Découvrez les moments forts et les activités de notre communauté diocésaine</p>
+        <h2>Dernières Actualités</h2>
+        <p>Restez informé des dernières nouvelles de notre diocèse</p>
       </div>
-      <div class="carousel-container">
-        <div class="carousel" id="carousel">
-          <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1586773860418-d37222d8fce3?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Célébration eucharistique">
-            <div class="carousel-caption">
-              <h3>Célébration Eucharistique</h3>
-              <p>Messe dominicale présidée par Monseigneur l'Évêque</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1596464716127-f2a82984de30?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Activités caritatives">
-            <div class="carousel-caption">
-              <h3>Actions Caritatives</h3>
-              <p>Distribution de vivres aux familles démunies de la région</p>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80" alt="Formation des jeunes">
-            <div class="carousel-caption">
-              <h3>Formation des Jeunes</h3>
-              <p>Session de catéchèse pour les jeunes du diocèse</p>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-controls">
-          <button class="carousel-btn" id="prevBtn">
-            <i class='bx bx-chevron-left'></i>
-          </button>
-          <button class="carousel-btn" id="nextBtn">
-            <i class='bx bx-chevron-right'></i>
-          </button>
-        </div>
-        <div class="carousel-indicators" id="indicators">
-          <span class="carousel-indicator active"></span>
-          <span class="carousel-indicator"></span>
-          <span class="carousel-indicator"></span>
-        </div>
+      <div class="news-grid" id="actualites-accueil">
+        <!-- Les actualités seront chargées dynamiquement ici -->
+      </div>
+      <div style="text-align: center;">
+        <a href="actualites.html" class="btn btn-primary">Voir toutes les actualités</a>
       </div>
     </div>
   </section>
@@ -779,25 +744,8 @@
         <h2>Événements à Venir</h2>
         <p>Participez aux prochaines activités organisées par le diocèse</p>
       </div>
-      <div class="events-grid">
-        <article class="event-card">
-          <span class="event-date">Samedi 25 Octobre 2025</span>
-          <h3>Conférence Spirituelle</h3>
-          <p>Une journée de réflexion et de partage sur la foi chrétienne dans le monde contemporain.</p>
-          <a href="#" class="event-link">En savoir plus <i class='bx bx-right-arrow-alt'></i></a>
-        </article>
-        <article class="event-card">
-          <span class="event-date">Dimanche 2 Novembre 2025</span>
-          <h3>Journée Caritas</h3>
-          <p>Rassemblement pour les actions caritatives du diocèse au centre communautaire.</p>
-          <a href="#" class="event-link">En savoir plus <i class='bx bx-right-arrow-alt'></i></a>
-        </article>
-        <article class="event-card">
-          <span class="event-date">Samedi 15 Novembre 2025</span>
-          <h3>Pèlerinage Diocésain</h3>
-          <p>Pèlerinage annuel au sanctuaire marial de Kipushi. Départ à 7h00 de la cathédrale.</p>
-          <a href="#" class="event-link">En savoir plus <i class='bx bx-right-arrow-alt'></i></a>
-        </article>
+      <div class="events-grid" id="evenements-accueil">
+        <!-- Les événements seront chargés dynamiquement ici -->
       </div>
     </div>
   </section>
@@ -807,7 +755,7 @@
     <div class="container">
       <h2>Restez Informés</h2>
       <p>Abonnez-vous à notre newsletter pour recevoir les actualités et événements du diocèse</p>
-      <form class="newsletter-form">
+      <form class="newsletter-form" id="newsletter-form">
         <input type="email" class="newsletter-input" placeholder="Votre adresse email" required>
         <button type="submit" class="newsletter-btn">S'abonner</button>
       </form>
@@ -821,6 +769,12 @@
         <div class="footer-column">
           <h3>Diocèse de Kipushi-Sakania</h3>
           <p>Servir le Christ, porter l'Évangile au cœur du Katanga. Une communauté vivante, enracinée dans la foi et tournée vers l'espérance.</p>
+          <div class="social-links">
+            <a href="#"><i class='bx bxl-facebook'></i></a>
+            <a href="#"><i class='bx bxl-youtube'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
+          </div>
         </div>
         <div class="footer-column">
           <h3>Liens Rapides</h3>
@@ -841,11 +795,19 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <p>© 2025 Diocèse de Kipushi-Sakania — Tous droits réservés · Conçu avec <i class='bx bx-heart' style="color:#ff9800"></i> par Gabby Umba</p>
+        <p>© 2024 Diocèse de Kipushi-Sakania — Tous droits réservés</p>
       </div>
     </div>
   </footer>
 
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-storage-compat.js"></script>
+  
+  <!-- Configuration Firebase -->
+  <script src="firebase-config.js"></script>
+  
   <!-- JS -->
   <script>
     // Navigation Toggle
@@ -893,56 +855,132 @@
       showHeroSlide(currentHeroSlide);
     }, 5000);
 
-    // Carousel functionality
-    const carousel = document.getElementById('carousel');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-    const indicators = document.querySelectorAll('.carousel-indicator');
-    
-    let currentIndex = 0;
-    const totalItems = document.querySelectorAll('.carousel-item').length;
-    
-    function updateCarousel() {
-      carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-      
-      // Update indicators
-      indicators.forEach((indicator, index) => {
-        if (index === currentIndex) {
-          indicator.classList.add('active');
-        } else {
-          indicator.classList.remove('active');
-        }
-      });
+    // Charger les actualités pour la page d'accueil
+    function chargerActualitesAccueil() {
+      db.collection("actualites")
+        .where("statut", "==", "publié")
+        .orderBy("date", "desc")
+        .limit(3)
+        .get()
+        .then((querySnapshot) => {
+          const container = document.getElementById('actualites-accueil');
+          container.innerHTML = '';
+          
+          if (querySnapshot.empty) {
+            container.innerHTML = '<p>Aucune actualité pour le moment.</p>';
+            return;
+          }
+          
+          querySnapshot.forEach((doc) => {
+            const actualite = doc.data();
+            const card = creerCarteActualite(actualite, doc.id);
+            container.innerHTML += card;
+          });
+          
+          // Animer les cartes après chargement
+          setTimeout(() => {
+            document.querySelectorAll('.news-card').forEach(card => {
+              card.classList.add('animate');
+            });
+          }, 100);
+        })
+        .catch((error) => {
+          console.error("Erreur:", error);
+          document.getElementById('actualites-accueil').innerHTML = '<p>Erreur lors du chargement des actualités.</p>';
+        });
     }
-    
-    nextBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % totalItems;
-      updateCarousel();
-    });
-    
-    prevBtn.addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + totalItems) % totalItems;
-      updateCarousel();
-    });
-    
-    // Auto slide
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % totalItems;
-      updateCarousel();
-    }, 6000);
-    
-    // Indicator click
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', () => {
-        currentIndex = index;
-        updateCarousel();
+
+    // Charger les événements pour la page d'accueil
+    function chargerEvenementsAccueil() {
+      const aujourdhui = new Date();
+      
+      db.collection("evenements")
+        .where("date", ">=", aujourdhui)
+        .orderBy("date", "asc")
+        .limit(3)
+        .get()
+        .then((querySnapshot) => {
+          const container = document.getElementById('evenements-accueil');
+          container.innerHTML = '';
+          
+          if (querySnapshot.empty) {
+            container.innerHTML = '<p>Aucun événement à venir.</p>';
+            return;
+          }
+          
+          querySnapshot.forEach((doc) => {
+            const evenement = doc.data();
+            const card = creerCarteEvenement(evenement);
+            container.innerHTML += card;
+          });
+          
+          // Animer les cartes après chargement
+          setTimeout(() => {
+            document.querySelectorAll('.event-card').forEach(card => {
+              card.classList.add('animate');
+            });
+          }, 100);
+        })
+        .catch((error) => {
+          console.error("Erreur:", error);
+          document.getElementById('evenements-accueil').innerHTML = '<p>Erreur lors du chargement des événements.</p>';
+        });
+    }
+
+    function creerCarteActualite(actualite, id) {
+      const date = actualite.date ? actualite.date.toDate().toLocaleDateString('fr-FR') : 'Date non disponible';
+      const contenuAbrege = actualite.contenu.length > 120 ? actualite.contenu.substring(0, 120) + '...' : actualite.contenu;
+      
+      return `
+        <article class="news-card">
+          <img src="${actualite.imageUrl || 'https://images.unsplash.com/photo-1547981609-4b6bf67b7d52?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'}" alt="${actualite.titre}">
+          <div class="content">
+            <span class="news-category">${actualite.categorie || 'Général'}</span>
+            <h3>${actualite.titre}</h3>
+            <p class="date"><i class='bx bx-calendar'></i> ${date}</p>
+            <p>${contenuAbrege}</p>
+            <a href="actualite-details.html?id=${id}" class="read-more">Lire la suite <i class='bx bx-right-arrow-alt'></i></a>
+          </div>
+        </article>
+      `;
+    }
+
+    function creerCarteEvenement(evenement) {
+      const date = evenement.date ? evenement.date.toDate().toLocaleDateString('fr-FR') : 'Date non disponible';
+      
+      return `
+        <article class="event-card">
+          <span class="event-date">${date}</span>
+          <h3>${evenement.titre}</h3>
+          <p>${evenement.description}</p>
+          <a href="evenement-details.html?id=${evenement.id}" class="event-link">Plus d'infos <i class='bx bx-right-arrow-alt'></i></a>
+        </article>
+      `;
+    }
+
+    // Gestion de la newsletter
+    document.getElementById('newsletter-form')?.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const email = this.querySelector('input[type="email"]').value;
+      
+      db.collection("newsletter").add({
+        email: email,
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+        statut: "actif"
+      })
+      .then(() => {
+        alert('Merci pour votre inscription à notre newsletter !');
+        this.reset();
+      })
+      .catch((error) => {
+        console.error("Erreur:", error);
+        alert('Une erreur est survenue. Veuillez réessayer.');
       });
     });
 
     // Scroll animations
     const fadeElements = document.querySelectorAll('.fade-in');
     const cards = document.querySelectorAll('.card');
-    const eventCards = document.querySelectorAll('.event-card');
     
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
@@ -967,9 +1005,11 @@
     cards.forEach(card => {
       cardObserver.observe(card);
     });
-    
-    eventCards.forEach(card => {
-      cardObserver.observe(card);
+
+    // Charger les données au démarrage
+    document.addEventListener('DOMContentLoaded', function() {
+      chargerActualitesAccueil();
+      chargerEvenementsAccueil();
     });
   </script>
 </body>
