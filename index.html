@@ -302,6 +302,81 @@
       transform: scale(1.2);
     }
 
+    /* === ÉVANGILE DU JOUR === */
+    .evangile-section {
+      padding: 4rem 0;
+      background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .evangile-card {
+      background: white;
+      border-radius: 20px;
+      padding: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+      border-left: 5px solid var(--secondary);
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .evangile-card::before {
+      content: '"';
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 4rem;
+      color: var(--secondary);
+      opacity: 0.2;
+      font-family: serif;
+    }
+
+    .evangile-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .evangile-date {
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .evangile-reference {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-align: right;
+    }
+
+    .evangile-content {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #374151;
+      text-align: justify;
+      margin-bottom: 2rem;
+      min-height: 120px;
+    }
+
+    .evangile-loading {
+      text-align: center;
+      color: #64748b;
+      font-style: italic;
+    }
+
+    .evangile-footer {
+      text-align: center;
+      padding-top: 1rem;
+      border-top: 1px solid #e2e8f0;
+    }
+
     /* === QUICK CARDS === */
     .quick-cards {
       padding: 5rem 0;
@@ -842,6 +917,16 @@
       .stats-grid {
         grid-template-columns: repeat(2, 1fr);
       }
+      
+      .evangile-header {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      
+      .evangile-content {
+        font-size: 1.1rem;
+      }
     }
   </style>
 </head>
@@ -911,6 +996,32 @@
       <span class="hero-indicator active" data-slide="0"></span>
       <span class="hero-indicator" data-slide="1"></span>
       <span class="hero-indicator" data-slide="2"></span>
+    </div>
+  </section>
+
+  <!-- ÉVANGILE DU JOUR -->
+  <section class="evangile-section">
+    <div class="container">
+      <div class="section-header fade-in">
+        <h2>Évangile du Jour</h2>
+        <p>La Parole de Dieu pour aujourd'hui</p>
+      </div>
+      <div class="evangile-card">
+        <div class="evangile-header">
+          <span class="evangile-date" id="evangile-date"></span>
+          <span class="evangile-reference" id="evangile-reference"></span>
+        </div>
+        <div class="evangile-content">
+          <p id="evangile-text" class="evangile-loading">
+            <i class='bx bx-loader-circle bx-spin'></i> Chargement de l'Évangile du jour...
+          </p>
+        </div>
+        <div class="evangile-footer">
+          <button class="btn-secondary" onclick="chargerEvangile()">
+            <i class='bx bx-refresh'></i> Actualiser
+          </button>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -1212,6 +1323,86 @@
         });
       }, 300);
     });
+
+    // === FONCTION POUR CHARGER L'ÉVANGILE DU JOUR ===
+    async function chargerEvangile() {
+      const dateElement = document.getElementById('evangile-date');
+      const referenceElement = document.getElementById('evangile-reference');
+      const texteElement = document.getElementById('evangile-text');
+      
+      // Mettre à jour la date
+      const aujourdhui = new Date();
+      dateElement.textContent = aujourdhui.toLocaleDateString('fr-FR', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+      });
+
+      // Afficher le chargement
+      texteElement.innerHTML = '<i class="bx bx-loader-circle bx-spin"></i> Chargement de l\'Évangile du jour...';
+      referenceElement.textContent = '';
+
+      try {
+        // Format de date pour l'API AELF (YYYY-MM-DD)
+        const dateAPI = aujourdhui.toISOString().split('T')[0];
+        
+        // Appel à l'API AELF
+        const response = await fetch(`https://api.aelf.org/v1/messes/${dateAPI}/france`);
+        
+        if (!response.ok) {
+          throw new Error('API non disponible');
+        }
+        
+        const data = await response.json();
+        
+        // Chercher l'évangile dans les lectures
+        let evangileTrouve = false;
+        
+        if (data.lectures && Array.isArray(data.lectures)) {
+          for (const lecture of data.lectures) {
+            if (lecture.type === 'evangile' || lecture.livre.toLowerCase().includes('évangile') || 
+                lecture.livre.toLowerCase().includes('jean') || lecture.livre.toLowerCase().includes('matthieu') ||
+                lecture.livre.toLowerCase().includes('marc') || lecture.livre.toLowerCase().includes('luc')) {
+              
+              referenceElement.textContent = `${lecture.livre} ${lecture.chapitre}, ${lecture.versets}`;
+              texteElement.textContent = lecture.contenu || 'Évangile non disponible pour aujourd\'hui.';
+              evangileTrouve = true;
+              break;
+            }
+          }
+        }
+        
+        if (!evangileTrouve) {
+          throw new Error('Évangile non trouvé');
+        }
+        
+      } catch (error) {
+        console.log('Erreur API AELF:', error);
+        // Fallback avec un évangile par défaut
+        const evangilesFallback = [
+          {
+            reference: "Jean 14,6",
+            texte: "Jésus lui dit : « Je suis le Chemin, la Vérité et la Vie. Personne ne va vers le Père sans passer par moi. »"
+          },
+          {
+            reference: "Matthieu 5,3-12",
+            texte: "Heureux les pauvres de cœur, car le royaume des Cieux est à eux. Heureux les doux, car ils recevront la terre en héritage..."
+          },
+          {
+            reference: "Marc 4,26-34", 
+            texte: "Il en est du règne de Dieu comme d'un homme qui jette en terre la semence : nuit et jour, qu'il dorme ou qu'il se lève, la semence germe et grandit, il ne sait comment."
+          }
+        ];
+        
+        const randomEvangile = evangilesFallback[Math.floor(Math.random() * evangilesFallback.length)];
+        referenceElement.textContent = randomEvangile.reference;
+        texteElement.textContent = randomEvangile.texte;
+      }
+    }
+
+    // Charger l'évangile au démarrage
+    document.addEventListener('DOMContentLoaded', chargerEvangile);
   </script>
 </body>
 </html>
